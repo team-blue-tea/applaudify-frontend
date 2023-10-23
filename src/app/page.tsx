@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
 
 const Landing = () => {
   return (
-    <p>This is the landing page</p>
-  )
-}
+    <header>
+      
+    </header>
 
-export default Landing
+
+  )};
+
+export default Landing;
