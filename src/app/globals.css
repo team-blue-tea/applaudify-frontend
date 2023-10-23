@@ -1,3 +1,86 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* core colors */
+  --core-paper: #f8f6f2;
+  --core-stone: #a0a0a0;
+  --core-metal: #303030;
+  --core-charcoal: #0d0d0d;
+  --core-black: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: var(--core-charcoal);
+}
+
+.landingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 40px 20px;
+}
+
+.landingPage header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.landingPage main {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+  flex-direction: column;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.startBtn {
+  width: 310px;
+  height: 40px;
+  background-color: var(--core-charcoal);
+  color: var(--core-paper);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.singleFeature {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+footer p {
+  margin-top: 30px;
+}
