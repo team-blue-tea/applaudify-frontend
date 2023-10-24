@@ -37,7 +37,6 @@ h3 {
 h4 {
   font-size: 16px;
   font-weight: 600;
-
 }
 
 p {
@@ -123,3 +122,18 @@ footer {
 footer p {
   margin-top: 30px;
 }
+
+/* .login-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.login-button {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+} */
