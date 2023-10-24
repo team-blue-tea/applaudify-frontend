@@ -73,6 +73,7 @@ p {
   flex-direction: column;
   width: 100%;
   gap: 140px;
+  /* test */
 }
 
 .hero {
