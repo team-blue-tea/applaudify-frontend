@@ -9,25 +9,26 @@ const Landing = () => {
     <div className='landingPage'>
       <header>
         <Image
-        src={logo}
-        alt='logo'
-        width={46}
-        height={24}
+          src={logo}
+          alt='logo'
+          width={46}
+          height={24}
         ></Image>
         <Link href='/about'>About</Link>
         <Link href='https://github.com/orgs/team-blue-tea/repositories'>
           Docs
         </Link>
-        <Link href='/login'>Login</Link>
+        <Link href='/login'><button className='headerLogin'>Login</button></Link>
       </header>
       <main>
         <section className='hero'>
           <Image
-          src={title}
-          alt='applaudify'
+            src={title}
+            alt='applaudify'
+            width={200}
           ></Image>
           <h3>Where achievements get applauded</h3>
-          <p>
+          <p className='introText'>
             Collect, manage, and showcase your professional testimonials -
             because every applaud matters.
           </p>
@@ -38,7 +39,7 @@ const Landing = () => {
         <section className='features'>
           <article className='singleFeature'>
             <div className='header'>
-              <p>all your applauds in one place</p>
+              <h4>all your applauds in one place</h4>
               <h2>applauds inbox</h2>
             </div>
             <p>
@@ -49,7 +50,7 @@ const Landing = () => {
           </article>
           <article className='singleFeature'>
             <div className='header'>
-              <p>celebrate achievements together</p>
+              <h4>celebrate achievements together</h4>
               <h2>social feed</h2>
             </div>
             <p>
@@ -59,7 +60,7 @@ const Landing = () => {
           </article>
           <article className='singleFeature'>
             <div className='header'>
-              <p>redefining your professional profile</p>
+              <h4>redefining your professional profile</h4>
               <h2>dynamic profile</h2>
             </div>
             <p>
