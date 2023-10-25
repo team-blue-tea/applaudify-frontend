@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int       @id @default(autoincrement())
+  email            String    @unique
+  name             String
+  profilePic       String // URL to the profile picture
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+  bio        String?
+  skills     String?
+  experience String?
+}
+
+model Applaud {
+  id          Int      @id @default(autoincrement())
+  content     String // The content of the affirmation/applaud
+  authorId    Int // ID of the person who gave the applaud
+  recipientId Int // ID of the person who received the applaud
+  createdAt   DateTime @default(now())
+}
+
+
+
+// Lvan id 1 create a applaud id 3 sent to Ilija id 2 
+
+// Lvan {
+//   id: 1
+//   authoredApplauds: [3]
+//   receivedApplauds: []
+// }
+
+// Ilija {
+//  id: 2
+//  authoredApplauds: []
+//  receivedApplauds: [3]
+// }
+
+// Applaud {
+//  id: 3
+//  authorId: 1
+//  recipientId: 2
