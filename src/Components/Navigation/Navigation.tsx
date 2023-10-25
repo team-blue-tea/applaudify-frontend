@@ -13,6 +13,8 @@ const Navigation = () => {
       <Link href='/profile'>
         <button className=''>Profile</button>
       </Link>
+      <Link href='/about'>About</Link>
+      <Link href='/'>The App</Link>
     </div>
   );
 };
