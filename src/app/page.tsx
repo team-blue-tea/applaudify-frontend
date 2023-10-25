@@ -8,17 +8,21 @@ const Landing = () => {
   return (
     <div className='landingPage'>
       <header>
-        <Image
-          src={logo}
-          alt='logo'
-          width={46}
-          height={24}
-        ></Image>
+        <Link href='/'>
+          <Image
+            src={logo}
+            alt='logo'
+            width={46}
+            height={24}
+          ></Image>
+        </Link>
         <Link href='/about'>About</Link>
         <Link href='https://github.com/orgs/team-blue-tea/repositories'>
           Docs
         </Link>
-        <Link href='/login'><button className='headerLogin'>Login</button></Link>
+        <Link href='/login'>
+          <button className='headerLogin'>Login</button>
+        </Link>
       </header>
       <main>
         <section className='hero'>
