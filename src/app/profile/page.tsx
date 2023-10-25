@@ -2,8 +2,8 @@
 
 import Navigation from '@/components/Navigation/Navigation';
 import React, { useState } from 'react';
-import mockPhotoOne from '@/assets/mockPhotoOne.png';
-import mockPhotoTwo from '@/assets/mockPhotoTwo.png';
+import Ilija from '@/assets/Ilija.png';
+import Lvan from '@/assets/Lvan.png';
 import Image from 'next/image';
 import Bio from '@/components/Bio/Bio';
 import Experience from '@/components/Experience/Experience';
@@ -22,7 +22,7 @@ const Profile = () => {
         <section className='flex flex-col gap-3 items-center w-full'>
           <h4>Profile name</h4>
           <Image
-            src={mockPhotoOne}
+            src={Ilija}
             alt='Profile photo'
             width={80}
           ></Image>
@@ -35,7 +35,7 @@ const Profile = () => {
         <section className='flex flex-col gap-4 border-solid border border-metal p-4'>
           <article className='flex items-center gap-6 p-2 border-solid border border-stone'>
             <Image
-              src={mockPhotoTwo}
+              src={Lvan}
               alt='Sender Profile'
               width={50}
             ></Image>
@@ -50,7 +50,7 @@ const Profile = () => {
               <p className='text-xs'>Receiver Position, Company</p>
             </div>
             <Image
-              src={mockPhotoOne}
+              src={Ilija}
               alt='Receiver Profile'
               width={50}
             ></Image>
