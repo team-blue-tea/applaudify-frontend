@@ -1,7 +1,6 @@
 'use client';
-
-import Navigation from '@/components/Navigation/Navigation';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Ilija from '@/assets/Ilija.png';
 import Lvan from '@/assets/Lvan.png';
 import Image from 'next/image';
@@ -15,7 +14,11 @@ const Profile = () => {
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between'>
-        <Navigation />
+        <Link href='/menu'>
+          <button className='border-solid border border-charcoal px-4 py-1'>
+            Menu
+          </button>
+        </Link>
         <button>Edit</button>
       </header>
       <main className='flex flex-col items-center gap-10'>

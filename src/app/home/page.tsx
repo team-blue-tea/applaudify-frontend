@@ -3,13 +3,23 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Ilija from '@/assets/Ilija.png';
 import Lvan from '@/assets/Lvan.png';
-import Navigation from '@/components/Navigation/Navigation';
+import { getAllApplauds, getAllMembers } from '@/libs/DB';
+// import Menu from '@/components/Menu/Menu';
 
-const Home = () => {
+const Home = async () => {
+  const applauds = await getAllApplauds();
+  const members = await getAllMembers();
+  // console.log('Here come the applauds', applauds);
+  // console.log('Here come the members', members);
+
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex w-full justify-between'>
-        <Navigation />
+        <Link href='/menu'>
+          <button className='border-solid border border-charcoal px-4 py-1'>
+            Menu
+          </button>
+        </Link>
         <Link href='/applauds'>
           <button className='border-solid border border-charcoal px-4 py-1'>
             Applauds
