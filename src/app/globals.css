@@ -18,11 +18,12 @@
   text-decoration: none;
   color: var(--core-charcoal);
   background-color: var(--core-paper);
+  font-family: avenir next, sans-serif;
 }
 
 h2 {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: lowercase;
 }
 
@@ -40,7 +41,6 @@ h4 {
 }
 
 p {
-  font-family: avenir next, sans-serif;
   font-size: 16px;
 }
 
@@ -92,7 +92,8 @@ p {
   height: 40px;
   background-color: var(--core-charcoal);
   color: var(--core-paper);
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 200;
   cursor: pointer;
 }
 

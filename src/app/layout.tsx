@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Josefin_Sans } from 'next/font/google';
 import NextAuthProviders from '@/utils/nextAuthProviders';
 import './globals.css';
 
-const josefinSans = Josefin_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Applaudify',
@@ -17,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={josefinSans.className}>
+      <body>
         <NextAuthProviders>{children}</NextAuthProviders>
       </body>
     </html>
