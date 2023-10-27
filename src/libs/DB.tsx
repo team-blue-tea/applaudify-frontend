@@ -1,5 +1,5 @@
 import axios from "axios";
-const java_backend_uri = 'http://localhost:8080';
+const java_backend_uri = 'http://127.0.0.1:8080';
 
 const getAllApplauds = async () => {
   try {
