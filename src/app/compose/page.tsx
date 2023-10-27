@@ -1,18 +1,20 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 import { getAllMembers } from '@/libs/DB';
-
-// import InputEmoji from "react-input-emoji";
+import { MemberT } from '@/types/MemberT';
 
 const Compose = () => {
-  const [members, setMembers] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-  const [filteredMembers, setFilteredMembers] = useState([]);
+  const [members, setMembers] = useState<MemberT[]>([]);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
 
   useEffect(() => {
     getAllMembers().then((members) => {
       setMembers(members);
+    })
+    .catch((error) => {
+      console.error('Error fetching members:', error);
     });
   }, []);
 
@@ -20,13 +22,12 @@ const Compose = () => {
     setFilteredMembers(
       members.filter(
         (member) =>
-          member &&
           member.name.toLowerCase().includes(searchValue.toLowerCase())
       )
     );
   }, [searchValue, members]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
@@ -34,7 +35,7 @@ const Compose = () => {
     setSearchValue(name);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
 
@@ -61,19 +62,19 @@ const Compose = () => {
           value={searchValue}
           onChange={handleInputChange}
         />
-        {searchValue && filteredMembers[0].name as string !== searchValue as string && (
-          <div>
-            {filteredMembers.map((member) => (
-              
-              <div
-                key={member.id}
-                onClick={() => handleMemberSelect(member.name)}
-              >
-                {member.name}
-              </div>
-            ))}
-          </div>
-        )}
+        {searchValue &&
+          (filteredMembers[0].name as string) !== (searchValue as string) && (
+            <div>
+              {filteredMembers.map((member: MemberT) => (
+                <div
+                  key={member.id}
+                  onClick={() => handleMemberSelect(member.name)}
+                >
+                  {member.name}
+                </div>
+              ))}
+            </div>
+          )}
         <input
           type='text'
           placeholder='Message'
