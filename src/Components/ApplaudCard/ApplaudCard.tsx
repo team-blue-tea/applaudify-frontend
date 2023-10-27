@@ -7,7 +7,7 @@ type ApplaudProps = {
 };
 
 const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
-  console.log('Here come the applauds', applauds);
+  // console.log('Here come the applauds', applauds);
 
   return (
     <>

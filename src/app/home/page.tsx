@@ -5,7 +5,7 @@ import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 
 const Home = async () => {
   const applauds = await getAllApplauds();
-  console.log('Here come the applauds', applauds);
+  // console.log('Here come the applauds', applauds);
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
