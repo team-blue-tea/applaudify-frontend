@@ -1,11 +1,52 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getAllApplauds, getAllMembers } from '@/libs/DB';
+import { getAllApplauds, getAllMembers, addNewMember } from '@/libs/DB';
 import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
+import { useSession } from 'next-auth/react';
+import { ApplaudT } from '@/types/ApplaudT';
+import { MemberT } from '@/types/MemberT';
 
-const Home = async () => {
-  const applauds = await getAllApplauds();
-  // console.log('Here come the applauds', applauds);
+const useFetchData = () => {
+  const [applauds, setApplauds] = useState<ApplaudT[]>([]);
+  const [existingMembers, setExistingMembers] = useState<MemberT[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const applauds = await getAllApplauds();
+      setApplauds(applauds);
+    })();
+    (async () => {
+      const existingMembers = await getAllMembers();
+      setExistingMembers(existingMembers);
+    })();
+  }, []);
+
+  return { applauds, existingMembers }
+}
+
+const Home = () => {
+  const { applauds, existingMembers } = useFetchData();
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (existingMembers.length === 0 || !session) {
+      return;
+    }
+    const currentMember = {
+      email: session?.user?.email as string,
+      name: session?.user?.name as string,
+      avatarUrl: session?.user?.image as string,
+    };
+    const emails = existingMembers.map((member) => member.email);
+    const matchedEmail = emails.filter(
+      (email) => email === session?.user?.email
+    );
+    if (matchedEmail.length === 0)
+      (async () => {
+        await addNewMember(currentMember);
+      })();
+  }, [existingMembers, session]);
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
