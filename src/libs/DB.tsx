@@ -1,4 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
+import { NewMemberT } from '@/types/NewMemberT';
+import { NewApplaudT } from '@/types/NewApplaudT';
+
 const java_backend_uri = 'http://127.0.0.1:8080';
 
 const getAllApplauds = async () => {
@@ -6,10 +9,40 @@ const getAllApplauds = async () => {
     const uri = `${java_backend_uri}/api/v1/applauds`;
     const res = await axios.get(uri);
     return res.data;
-
   } catch (error) {
     console.error('An error occurred while fetching applauds -------->', error);
     return null;
+  }
+};
+
+// const getProfileApplauds = async () => {
+//   try {
+//     const uri = `${java_backend_uri}/api/v1/profile-applauds`;
+//     const res = await axios.get(uri);
+//     return res.data;
+//   } catch (error) {
+//     console.error('An error occurred while fetching applauds -------->', error);
+//     return null;
+//   }
+// };
+
+const addNewMember = async (newMember: NewMemberT) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/members`;
+    const addNewUser = await axios.post(uri, newMember);
+    return addNewUser.data;
+  } catch (error) {
+    console.error('An error occurred while adding new member -------->', error);
+  }
+};
+
+const sendNewApplaud = async (newApplaud: NewApplaudT) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/applauds`;
+    const sendNewApplaud = await axios.post(uri, newApplaud);
+    console.log(sendNewApplaud.data);
+  } catch (error) {
+    console.error('An error occured while sending a new applaud --->', error);
   }
 };
 
@@ -18,32 +51,10 @@ const getAllMembers = async () => {
     const uri = `${java_backend_uri}/api/v1/members`;
     const res = await axios.get(uri);
     return res.data;
-
   } catch (error) {
     console.error('An error occurred while fetching members -------->', error);
     return null;
   }
-}
+};
 
-export { getAllApplauds, getAllMembers };
-
-// export async function getAllApplauds() {
-//   const response = await fetch(`${BACKEND_URL}/api/v1/applauds`);
-//   const applauds = await response.json();
-//   return applauds;
-// }
-
-// export async function getAllUsers() {
-//   const response = await fetch(`${BACKEND_URL}/api/v1/members`);
-//   const members = await response.json();
-//   return members;
-// }
-
-
-
-
-// export async function addUserToDb() {
-//     try {
-//         const
-//     }
-// }
+export { getAllApplauds, getAllMembers, addNewMember, sendNewApplaud };
