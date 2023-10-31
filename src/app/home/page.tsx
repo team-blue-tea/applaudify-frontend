@@ -7,9 +7,10 @@ import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
 
-const useFetchData = () => {
+const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
   const [existingMembers, setExistingMembers] = useState<MemberT[]>([]);
+  const { data: session } = useSession();
 
   useEffect(() => {
     (async () => {
@@ -21,13 +22,6 @@ const useFetchData = () => {
       setExistingMembers(existingMembers);
     })();
   }, []);
-
-  return { applauds, existingMembers }
-}
-
-const Home = () => {
-  const { applauds, existingMembers } = useFetchData();
-  const { data: session } = useSession();
 
   useEffect(() => {
     if (existingMembers.length === 0 || !session) {
@@ -42,10 +36,13 @@ const Home = () => {
     const matchedEmail = emails.filter(
       (email) => email === session?.user?.email
     );
-    if (matchedEmail.length === 0)
+    if (matchedEmail.length === 0) {
       (async () => {
         await addNewMember(currentMember);
       })();
+    } else {
+      return;
+    }
   }, [existingMembers, session]);
 
   return (
