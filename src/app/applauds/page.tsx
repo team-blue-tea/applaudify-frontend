@@ -1,7 +1,28 @@
+'use client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { ApplaudT } from '@/types/ApplaudT';
+import { getAllApplauds } from '@/libs/DB';
 
 const Applauds = () => {
+  const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (!session) {
+      return;
+    }
+    const filteredName = session?.user?.name;
+    (async () => {
+      const applauds: ApplaudT[] = await getAllApplauds();
+      const filteredApplauds = applauds.filter(
+        (applaud) => applaud.receiver.name === filteredName
+      );
+      setFilteredApplauds(filteredApplauds);
+    })();
+  }, [session]);
+
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between'>
@@ -17,19 +38,42 @@ const Applauds = () => {
           />
         </div>
         <section className='flex flex-col gap-7'>
+          {filteredApplauds.map((applaud) => {
+            const firstName = applaud.sender.name.split(' ')[0];
+            return (
+              <article key={applaud.id}>
+                <Link
+                  href={`applauds/${applaud.id}`}
+                  className='p-2 border border-charcoal'
+                >
+                  {firstName} sent a new Applaud
+                </Link>
+              </article>
+            );
+          })}
           <article>
-            <p className='p-2 border border-charcoal'>Tim sent you a new Applaud</p>
-            {/* <p className='p-2 border border-charcoal'>`${senderName} sent you a new Applaud`</p> */}
+            <Link
+              href={'/applauds/hugo'}
+              className='p-2 border border-charcoal'
+            >
+              Hugo sent a new Applaud
+            </Link>
           </article>
           <article>
-            <p className='p-2 border border-charcoal'>Ilija sent you a new Applaud</p>
+            <Link
+              href={'/applauds/vanessa'}
+              className='p-2 border border-charcoal'
+            >
+              Vanessa sent a new Applaud
+            </Link>
           </article>
           <article>
-            <p className='p-2 border border-charcoal'>Lee reacted on your Applaud</p>
-            {/* <p className='p-2 border border-charcoal'>`${receiverName} reacted on your Applaud`</p> */}
-          </article>
-          <article>
-            <p className='p-2 border border-charcoal'>You sent a Applaud to Lee</p>
+            <Link
+              href={'/applauds/ahsan'}
+              className='p-2 border border-charcoal'
+            >
+              Ahsan sent a new Applaud
+            </Link>
           </article>
         </section>
       </main>
