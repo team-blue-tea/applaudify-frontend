@@ -7,10 +7,10 @@ import React, {
   useRef,
 } from 'react';
 import Link from 'next/link';
-import { getAllMembers, sendNewApplaud } from '@/libs/DB';
-import { MemberT } from '@/types/MemberT';
+import { getAllMembers, sendNewApplaud } from '@/app/libs/DB';
+import { MemberT } from '@/app/types/MemberT';
 import { useSession } from 'next-auth/react';
-import { NewApplaudT } from '@/types/NewApplaudT';
+import { NewApplaudT } from '@/app/types/NewApplaudT';
 
 const Compose = () => {
   const [members, setMembers] = useState<MemberT[]>([]);

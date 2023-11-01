@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllApplauds } from '@/libs/DB';
-import { ApplaudT } from '@/types/ApplaudT';
+import { getAllApplauds } from '@/app/libs/DB';
+import { ApplaudT } from '@/app/types/ApplaudT';
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const applauds = (await getAllApplauds()) as ApplaudT[];
   const filteredApplaud = applauds.filter((applaud) => applaud.id === slug);
-  
+
   const { sender, comment } = filteredApplaud[0];
 
   return (

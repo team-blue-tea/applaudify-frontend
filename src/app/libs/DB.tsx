@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { NewMemberT } from '@/types/NewMemberT';
-import { NewApplaudT } from '@/types/NewApplaudT';
+import { NewMemberT } from '@/app/types/NewMemberT';
+import { NewApplaudT } from '@/app/types/NewApplaudT';
 
 const java_backend_uri = 'http://127.0.0.1:8080';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { ApplaudT } from '@/types/ApplaudT';
+import { ApplaudT } from '@/app/types/ApplaudT';
 
 type ApplaudProps = {
   applauds: ApplaudT[];
@@ -30,7 +30,6 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                 <h4 className='text-sm'>{sender.name}</h4>
                 <p className='text-xs'>{sender.jobTitle}</p>
                 <p className='text-xs'>{sender.company}</p>
-                
               </div>
             </article>
             <article className='flex items-center justify-end gap-6 p-2 border-solid border border-stone'>
