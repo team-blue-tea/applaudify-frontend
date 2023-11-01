@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import NextAuthProviders from '@/app/utils/nextAuthProviders';
+import NextAuthProviders from '@/utils/nextAuthProviders';
 import './globals.css';
 
 

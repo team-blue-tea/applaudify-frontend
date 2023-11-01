@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { ApplaudT } from '@/app/types/ApplaudT';
-import { getAllApplauds } from '@/app/libs/DB';
+import { ApplaudT } from '@/types/ApplaudT';
+import { getAllApplauds } from '@/libs/DB';
 
 const Applauds = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
