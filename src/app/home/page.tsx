@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getAllApplauds, getAllMembers, addNewMember } from '@/app/libs/DB';
-import ApplaudCard from '@/app/components/ApplaudCard/ApplaudCard';
+import { getAllApplauds, getAllMembers, addNewMember } from '@/libs/DB';
+import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import { useSession } from 'next-auth/react';
-import { ApplaudT } from '@/app/types/ApplaudT';
-import { MemberT } from '@/app/types/MemberT';
+import { ApplaudT } from '@/types/ApplaudT';
+import { MemberT } from '@/types/MemberT';
 
 const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);

@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Ilija from '../../assets/Ilija.png';
-import Lvan from '../../assets/Lvan.png';
-import Tim from '../../assets/Tim.png';
-import Sudha from '../../assets/Sudha.png';
-import logo from '../../assets/Logo.png';
+import ilija from '@/assets/ilija.png';
+import lvan from '@/assets/lvan.png';
+import tim from '@/assets/tim.png';
+import sudha from '@/assets/sudha.png';
+import logo from '@/assets/logo.png';
 
 const About = () => {
   return (
@@ -50,7 +50,7 @@ const About = () => {
         <Link href='https://www.linkedin.com/in/lvan-ni/'>
           <article className='flex flex-col items-center'>
             <Image
-              src={Lvan}
+              src={lvan}
               alt='Lvan Photo'
               width={100}
             ></Image>
@@ -58,34 +58,34 @@ const About = () => {
           </article>
         </Link>
         <Link href='https://www.linkedin.com/in/ilijakrilovic/'>
-        <article className='flex flex-col items-center'>
-          <Image
-            src={Ilija}
-            alt='Ilija Photo'
-            width={100}
-          ></Image>
-          <h4>Ilija Krilovic</h4>
-        </article>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={ilija}
+              alt='ilija Photo'
+              width={100}
+            ></Image>
+            <h4>ilija Krilovic</h4>
+          </article>
         </Link>
         <Link href='https://www.linkedin.com/in/sudha-madhuri-poojari/'>
-        <article className='flex flex-col items-center'>
-          <Image
-            src={Sudha}
-            alt='Suhda Photo'
-            width={100}
-          ></Image>
-          <h4 className='text-center'>Sudha Madhuri Poojari</h4>
-        </article>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={sudha}
+              alt='Suhda Photo'
+              width={100}
+            ></Image>
+            <h4 className='text-center'>Sudha Madhuri Poojari</h4>
+          </article>
         </Link>
         <Link href='https://www.linkedin.com/in/tim-hansson-meng-b9087b118/'>
-        <article className='flex flex-col items-center'>
-          <Image
-            src={Tim}
-            alt='Tim Photo'
-            width={100}
-          ></Image>
-          <h4 className='text-center'>Tim Hansson Meng</h4>
-        </article>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={tim}
+              alt='tim Photo'
+              width={100}
+            ></Image>
+            <h4 className='text-center'>tim Hansson Meng</h4>
+          </article>
         </Link>
       </section>
       <footer>

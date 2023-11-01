@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllApplauds } from '@/app/libs/DB';
-import { ApplaudT } from '@/app/types/ApplaudT';
+import { getAllApplauds } from '@/libs/DB';
+import { ApplaudT } from '@/types/ApplaudT';
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;

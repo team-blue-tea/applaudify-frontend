@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { ApplaudT } from '@/app/types/ApplaudT';
+import { ApplaudT } from '@/types/ApplaudT';
 
 type ApplaudProps = {
   applauds: ApplaudT[];
