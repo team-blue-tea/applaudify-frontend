@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Ilija from '@/assets/Ilija.png';
-import Lvan from '@/assets/Lvan.png';
-import Tim from '@/assets/Tim.png';
-import Sudha from '@/assets/Sudha.png';
-import logo from '@/assets/Logo.png';
+import Ilija from '../../assets/Ilija.png';
+import Lvan from '../../assets/Lvan.png';
+import Tim from '../../assets/Tim.png';
+import Sudha from '../../assets/Sudha.png';
+import logo from '../../assets/Logo.png';
 
 const About = () => {
   return (

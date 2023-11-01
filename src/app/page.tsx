@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '@/assets/Logo.png';
-import title from '@/assets/title.png';
+import logo from '../assets/Logo.png';
+import title from '../assets/title.png';
 
 const Landing = () => {
   return (
