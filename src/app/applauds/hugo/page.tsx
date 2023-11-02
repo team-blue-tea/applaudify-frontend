@@ -38,8 +38,8 @@ const Hugo = () => {
             work with you again in the future.&apos;
           </p>
         </section>
-        <p className="text-center border-solid border border-metal p-2">
-          Applaud published.
+        <p className="text-center border-solid border border-metal p-2 ">
+          Applaud Published
         </p>
       </main>
     </div>

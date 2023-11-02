@@ -39,7 +39,7 @@ const Ahsan = () => {
           </p>
         </section>
         <p className="text-center border-solid border border-metal p-2">
-          Applaud published.
+          Applaud Published
         </p>
       </main>
     </div>
