@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getAllApplauds, getAllMembers, addNewMember } from '@/libs/DB';
-import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
+import ApplaudCard from '@/Components/ApplaudCard/ApplaudCard';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       const applauds = await getAllApplauds();
-      setApplauds(applauds);
+      setApplauds(applauds!);
     })();
     (async () => {
       const existingMembers = await getAllMembers();
