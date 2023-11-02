@@ -11,11 +11,11 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
 
   return (
     <>
-      {applauds.map((applaud) => {
+      {applauds.reverse().map((applaud) => {
         const { id, sender, receiver, comment } = applaud;
         return (
           <section
-            key={id}
+            key={applauds.indexOf(applaud)}
             className='flex flex-col gap-4 border-solid border border-metal p-4'
           >
             <article className='flex items-center gap-6 p-2 border-solid border border-stone'>
