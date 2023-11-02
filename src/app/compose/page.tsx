@@ -68,7 +68,14 @@ const Compose = () => {
     };
     console.log(newApplaud);
     sendNewApplaud(newApplaud);
+    
+    setTimeout(() => {
+      window.location.href = '/home';
+    }
+    , 1000);
   };
+
+
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
