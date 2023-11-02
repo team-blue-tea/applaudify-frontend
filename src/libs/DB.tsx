@@ -1,18 +1,19 @@
-import axios from "axios";
-import { NewMemberT } from "@/types/NewMemberT";
-import { NewApplaudT } from "@/types/NewApplaudT";
+import axios from 'axios';
+import { NewMemberT } from '@/types/NewMemberT';
+import { NewApplaudT } from '@/types/NewApplaudT';
+import { ApplaudT } from '@/types/ApplaudT';
 
-const java_backend_uri = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://applaudify-backend.fly.dev';
-
+const java_backend_uri =
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'https://applaudify-backend.fly.dev';
 
 const getAllApplauds = async () => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds`;
     const res = await axios.get(uri);
-    console.log(res.data);
-    return res.data;
+    const reversedApplauds = res.data.reverse();
+    return reversedApplauds;
   } catch (error) {
-    console.error("An error occurred while fetching applauds -------->", error);
+    console.error('An error occurred while fetching applauds -------->', error);
     return null;
   }
 };
@@ -23,7 +24,7 @@ const addNewMember = async (newMember: NewMemberT) => {
     const addNewUser = await axios.post(uri, newMember);
     return addNewUser.data;
   } catch (error) {
-    console.error("An error occurred while adding new member -------->", error);
+    console.error('An error occurred while adding new member -------->', error);
   }
 };
 
@@ -33,7 +34,7 @@ const sendNewApplaud = async (newApplaud: NewApplaudT) => {
     const sendNewApplaud = await axios.post(uri, newApplaud);
     console.log(sendNewApplaud.data);
   } catch (error) {
-    console.error("An error occured while sending a new applaud --->", error);
+    console.error('An error occured while sending a new applaud --->', error);
   }
 };
 
@@ -43,7 +44,7 @@ const getAllMembers = async () => {
     const res = await axios.get(uri);
     return res.data;
   } catch (error) {
-    console.error("An error occurred while fetching members -------->", error);
+    console.error('An error occurred while fetching members -------->', error);
     return null;
   }
 };
@@ -54,10 +55,24 @@ const setApplaudRead = async (applaudId: string) => {
     const setApplaudRead = await axios.put(uri, {
       read: true,
     });
-    console.log("Applaud updated.");
   } catch (error) {
     console.error(
-      "An error occurred while setting Applaud to read --->",
+      'An error occurred while setting Applaud to read --->',
+      error
+    );
+    return null;
+  }
+};
+
+const setApplaudPublished = async (applaudId: string) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/applauds/${applaudId}`;
+    const setApplaudPublished = await axios.put(uri, {
+      published: true,
+    });
+  } catch (error) {
+    console.error(
+      'An error occured while setting Applaud to published --->',
       error
     );
     return null;
@@ -70,4 +85,5 @@ export {
   addNewMember,
   sendNewApplaud,
   setApplaudRead,
+  setApplaudPublished,
 };
