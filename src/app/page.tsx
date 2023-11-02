@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '@/assets/Logo.png';
+import logo from '@/assets/logo.png';
 import title from '@/assets/title.png';
 
 const Landing = () => {

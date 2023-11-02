@@ -21,7 +21,7 @@ const Applauds = () => {
       );
       setFilteredApplauds(filteredApplauds);
     })();
-  }, [session]);
+  }, [session, filteredApplauds]);
 
   return (
     <div className="flex flex-col mx-10 mt-14 gap-10">

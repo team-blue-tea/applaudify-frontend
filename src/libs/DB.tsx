@@ -2,7 +2,8 @@ import axios from "axios";
 import { NewMemberT } from "@/types/NewMemberT";
 import { NewApplaudT } from "@/types/NewApplaudT";
 
-const java_backend_uri = "http://127.0.0.1:8080";
+const java_backend_uri = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://applaudify-backend.fly.dev';
+
 
 const getAllApplauds = async () => {
   try {
@@ -15,17 +16,6 @@ const getAllApplauds = async () => {
     return null;
   }
 };
-
-// const getProfileApplauds = async () => {
-//   try {
-//     const uri = `${java_backend_uri}/api/v1/profile-applauds`;
-//     const res = await axios.get(uri);
-//     return res.data;
-//   } catch (error) {
-//     console.error('An error occurred while fetching applauds -------->', error);
-//     return null;
-//   }
-// };
 
 const addNewMember = async (newMember: NewMemberT) => {
   try {

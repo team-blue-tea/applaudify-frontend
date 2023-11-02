@@ -8,7 +8,7 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const applauds = (await getAllApplauds()) as ApplaudT[];
   const filteredApplaud = applauds.filter((applaud) => applaud.id === slug);
-  
+
   const { sender, comment } = filteredApplaud[0];
 
   return (
