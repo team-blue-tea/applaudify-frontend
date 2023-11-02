@@ -13,7 +13,7 @@ const Vanessa = () => {
       <header className="flex justify-between">
         <Link href="/applauds">←</Link>
         <h4>Applaud from Vanessa</h4>
-        <div>...</div>
+        <div></div>
       </header>
       <main className="flex flex-col items-center gap-10">
         <section className="flex flex-col gap-4 border-solid border border-metal p-4">
