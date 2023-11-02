@@ -3,6 +3,8 @@ export type ApplaudT = {
   sender: SenderT;
   receiver: ReceiverT;
   comment: string;
+  read: boolean;
+  published: boolean;
 };
 
 export type SenderT = {
