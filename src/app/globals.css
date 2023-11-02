@@ -4,11 +4,20 @@
 
 :root {
   /* core colors */
-  --core-paper: #f8f6f2;
-  --core-stone: #a0a0a0;
-  --core-metal: #303030;
-  --core-charcoal: #0d0d0d;
   --core-black: #000000;
+  --core-metal: #0D0D0D;
+  --core-charcoal: #303030;
+  --core-stone: #626262;
+  --core-silver: #BAB8B5;
+  --core-paper: #f8f6f2;
+  --core-white: #ffffff;
+
+  /* accent */
+  --accent-cream: #F8F1E2;
+  --accent-sunlight: #FBE880;
+  --accent-lime: #E4F285;
+  --accent-sakura: #FFAEC8;
+  --accent-sky: #A7D0FB;
 }
 
 * {
@@ -16,7 +25,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  color: var(--core-charcoal);
+  color: var(--core-metal);
   background-color: var(--core-paper);
   font-family: avenir next, sans-serif;
 }
