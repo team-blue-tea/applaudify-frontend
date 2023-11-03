@@ -19,6 +19,7 @@ const Compose = () => {
   const { data: session } = useSession();
 
   const commentRef = useRef<HTMLTextAreaElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const currentEmail = session?.user?.email;
   const currentMember = members.find(
@@ -66,16 +67,14 @@ const Compose = () => {
       receiver: receiverId,
       comment: applaudComment,
     };
-    console.log(newApplaud);
     sendNewApplaud(newApplaud);
-    
+    const form = formRef.current;
+    form?.reset();
+
     setTimeout(() => {
-      window.location.href = '/home';
-    }
-    , 1000);
+      window.location.href = '/applauds/sent';
+    }, 500);
   };
-
-
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
@@ -93,6 +92,7 @@ const Compose = () => {
         id='sendApplaud'
         className='flex flex-col gap-10'
         onSubmit={handleSubmit}
+        ref={formRef}
       >
         <input
           type='text'
