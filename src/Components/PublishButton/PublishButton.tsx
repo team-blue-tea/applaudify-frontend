@@ -9,6 +9,10 @@ type PublishButtonProps = {
 const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
   const handlePublishClick = () => {
     setApplaudPublished(slug);
+    setTimeout(() => {
+      window.location.href = '/home';
+    }, 1000);
+
   };
 
   return (
