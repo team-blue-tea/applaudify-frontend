@@ -11,7 +11,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
 
   return (
     <>
-      {applauds.reverse().map((applaud) => {
+      {applauds.reverse().filter(applaud => applaud.published === true).map((applaud) => {
         const { id, sender, receiver, comment } = applaud;
         return (
           <section
