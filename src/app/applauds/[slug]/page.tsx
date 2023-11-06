@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllApplauds } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
-import PublishButton from '@/Components/PublishButton/PublishButton';
-import UnpublishButton from '@/Components/UnpublishButton/page';
+import PublishButton from '@/components/PublishButton/PublishButton';
+import UnpublishButton from '@/components/UnpublishButton/page';
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
@@ -38,12 +38,12 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
           </article>
           <p className='text-center'>{comment}</p>
         </section>
-        {published ? (<div className='flex flex-col items-center gap-10'>
-          <p className='text-center'>
-            Applaud Published!
-          </p>
-          <UnpublishButton slug={slug} />
-          </div>) : (
+        {published ? (
+          <div className='flex flex-col items-center gap-10'>
+            <p className='text-center'>Applaud Published!</p>
+            <UnpublishButton slug={slug} />
+          </div>
+        ) : (
           <PublishButton slug={slug} />
         )}
       </main>

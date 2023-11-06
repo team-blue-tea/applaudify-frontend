@@ -7,7 +7,7 @@ import {
   addNewMember,
   getNumberOfUnreadApplaudsByMemberEmail,
 } from '@/libs/DB';
-import ApplaudCard from '@/Components/ApplaudCard/ApplaudCard';
+import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
