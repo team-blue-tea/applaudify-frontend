@@ -76,6 +76,21 @@ const setApplaudPublished = async (applaudId: string) => {
   }
 };
 
+const setApplaudUnpublished = async (applaudId: string) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/applauds/published/${applaudId}`;
+    await axios.put(uri, {
+      published: false,
+    });
+  } catch (error) {
+    console.error(
+      'An error occured while setting Applaud to published --->',
+      error
+    );
+    return null;
+  }
+}
+
 const getPublishedApplaudsByMemberEmail = async (memberEmail: string) => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds/published/${memberEmail}`;
@@ -105,6 +120,7 @@ export {
   sendNewApplaud,
   setApplaudRead,
   setApplaudPublished,
+  setApplaudUnpublished,
   getPublishedApplaudsByMemberEmail,
-  getNumberOfUnreadApplaudsByMemberEmail
+  getNumberOfUnreadApplaudsByMemberEmail,
 };
