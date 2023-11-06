@@ -26,11 +26,7 @@ const Landing = () => {
       </header>
       <main>
         <section className='hero'>
-          <Image
-            src={title}
-            alt='applaudify'
-            width={200}
-          ></Image>
+          <h1>applaudify</h1>
           <h3>Where achievements get applauded</h3>
           <p className='introText'>
             Collect, manage, and showcase your professional testimonials -
