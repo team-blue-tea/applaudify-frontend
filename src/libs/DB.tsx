@@ -10,8 +10,7 @@ const getAllApplauds = async () => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds`;
     const res = await axios.get(uri);
-    const reversedApplauds = res.data.reverse();
-    return reversedApplauds;
+    return res.data.reverse();
   } catch (error) {
     console.error('An error occurred while fetching applauds -------->', error);
     return null;
@@ -21,8 +20,7 @@ const getAllApplauds = async () => {
 const addNewMember = async (newMember: NewMemberT) => {
   try {
     const uri = `${java_backend_uri}/api/v1/members`;
-    const addNewUser = await axios.post(uri, newMember);
-    return addNewUser.data;
+    await axios.post(uri, newMember);
   } catch (error) {
     console.error('An error occurred while adding new member -------->', error);
   }
@@ -31,8 +29,7 @@ const addNewMember = async (newMember: NewMemberT) => {
 const sendNewApplaud = async (newApplaud: NewApplaudT) => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds`;
-    const sendNewApplaud = await axios.post(uri, newApplaud);
-    console.log(sendNewApplaud.data);
+    await axios.post(uri, newApplaud);
   } catch (error) {
     console.error('An error occured while sending a new applaud --->', error);
   }
@@ -51,8 +48,8 @@ const getAllMembers = async () => {
 
 const setApplaudRead = async (applaudId: string) => {
   try {
-    const uri = `${java_backend_uri}/api/v1/applauds/${applaudId}`;
-    const setApplaudRead = await axios.put(uri, {
+    const uri = `${java_backend_uri}/api/v1/applauds/unread/${applaudId}`;
+    await axios.put(uri, {
       read: true,
     });
   } catch (error) {
@@ -66,8 +63,8 @@ const setApplaudRead = async (applaudId: string) => {
 
 const setApplaudPublished = async (applaudId: string) => {
   try {
-    const uri = `${java_backend_uri}/api/v1/applauds/${applaudId}`;
-    const setApplaudPublished = await axios.put(uri, {
+    const uri = `${java_backend_uri}/api/v1/applauds/published/${applaudId}`;
+    await axios.put(uri, {
       published: true,
     });
   } catch (error) {
