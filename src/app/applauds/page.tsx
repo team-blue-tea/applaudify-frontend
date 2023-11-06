@@ -31,7 +31,7 @@ const Applauds = () => {
         <Link href='/home'>←</Link>
         <Link href='/compose'>New</Link>
       </header>
-      <main className='flex flex-col items-center gap-10'>
+      <main className='flex flex-col items-center gap-10 mt-5'>
         <section className='flex flex-col gap-7'>
           {filteredApplauds.map((applaud) => {
             const firstName = applaud.sender.name.split(' ')[0];
