@@ -5,19 +5,26 @@
 :root {
   /* core colors */
   --core-black: #000000;
-  --core-metal: #0D0D0D;
+  --core-metal: #0d0d0d;
   --core-charcoal: #303030;
   --core-stone: #626262;
-  --core-silver: #BAB8B5;
+  --core-silver: #bab8b5;
   --core-paper: #f8f6f2;
   --core-white: #ffffff;
 
   /* accent */
-  --accent-cream: #F8F1E2;
-  --accent-sunlight: #FBE880;
-  --accent-lime: #E4F285;
-  --accent-sakura: #FFAEC8;
-  --accent-sky: #A7D0FB;
+  --accent-cream: #f8f1e2;
+  --accent-sunlight: #fbe880;
+  --accent-lime: #e4f285;
+  --accent-sakura: #ffaec8;
+  --accent-sky: #a7d0fb;
+  --accent-ombre: linear-gradient(
+    91deg,
+    #fbe880 7.04%,
+    #e4f285 35.37%,
+    #ffaec8 65.05%,
+    #a7d0fb 93.38%
+  );
 }
 
 * {
