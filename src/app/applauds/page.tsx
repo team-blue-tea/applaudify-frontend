@@ -47,7 +47,7 @@ const Applauds = () => {
                   className="p-2 border border-charcoal"
                   onClick={() => setApplaudRead(applaud.id as string)}
                 >
-                  {firstName} sent a new Applaud
+                 {!applaud.read && "•" } {firstName} sent a new Applaud
                 </Link>
               </article>
             );

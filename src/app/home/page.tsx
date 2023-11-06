@@ -1,7 +1,12 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getAllApplauds, getAllMembers, addNewMember } from '@/libs/DB';
+import {
+  getAllApplauds,
+  getAllMembers,
+  addNewMember,
+  getNumberOfUnreadApplaudsByMemberEmail,
+} from '@/libs/DB';
 import ApplaudCard from '@/Components/ApplaudCard/ApplaudCard';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
@@ -11,17 +16,28 @@ const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
   const [existingMembers, setExistingMembers] = useState<MemberT[]>([]);
   const { data: session } = useSession();
+  const [notifications, setNotifications] = useState<string>('');
 
   useEffect(() => {
+    if (!session) {
+      return;
+    }
     (async () => {
       const applauds = await getAllApplauds();
+      const memberEmail = session?.user?.email;
+      const unreadNotifications = await getNumberOfUnreadApplaudsByMemberEmail(
+        memberEmail as string
+      );
+      if (unreadNotifications !== 0) {
+        setNotifications(unreadNotifications);
+      }
       setApplauds(applauds!);
     })();
     (async () => {
       const existingMembers = await getAllMembers();
       setExistingMembers(existingMembers);
     })();
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     if (existingMembers.length === 0 || !session) {
@@ -55,7 +71,7 @@ const Home = () => {
         </Link>
         <Link href='/applauds'>
           <button className='border-solid border border-charcoal px-4 py-1'>
-            Applauds
+            {notifications} Applauds
           </button>
         </Link>
       </header>

@@ -79,6 +79,28 @@ const setApplaudPublished = async (applaudId: string) => {
   }
 };
 
+const getPublishedApplaudsByMemberEmail = async (memberEmail: string) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/applauds/published/${memberEmail}`;
+    const getPublishedApplaudsByMemberId = await axios.get(uri);
+    return getPublishedApplaudsByMemberId.data;
+  } catch (error) {
+    console.error('An error occurred while fetching Applauds by Member Email -------->', error);
+    return null;
+  }
+}
+
+const getNumberOfUnreadApplaudsByMemberEmail = async (memberEmail: string) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/applauds/unread/${memberEmail}`;
+    const res = await axios.get(uri);
+    return res.data;
+  } catch (error) {
+    console.error('An error occurred while fetching Applauds by Member Email -------->', error);
+    return null;
+  }
+}
+
 export {
   getAllApplauds,
   getAllMembers,
@@ -86,4 +108,6 @@ export {
   sendNewApplaud,
   setApplaudRead,
   setApplaudPublished,
+  getPublishedApplaudsByMemberEmail,
+  getNumberOfUnreadApplaudsByMemberEmail
 };

@@ -1,13 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import ApplaudCard from "@/Components/ApplaudCard/ApplaudCard";
+import { getPublishedApplaudsByMemberEmail } from "@/libs/DB";
+import { ApplaudT } from "@/types/ApplaudT";
 
 const Profile = () => {
   // const [profileInfo, setProfileInfo] = useState(Bio);
   // const [profileApplauds, getProfileApplauds] = useState([]);
   const [activeTab, setActiveTab] = useState("Bio");
+  const [publishedApplauds, setPublishedApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
 
   const firstName = session?.user?.name?.split(" ")[0];
@@ -15,6 +19,17 @@ const Profile = () => {
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
   };
+
+  useEffect(() => {
+    if (!session) {
+      return;
+    }
+    const memberEmail = session.user?.email;
+  (async () =>  {
+    const publishedApplaudsByMemberEmail = await getPublishedApplaudsByMemberEmail(memberEmail as string);
+    setPublishedApplauds(publishedApplaudsByMemberEmail)
+  })();
+  }, [session])
 
   return (
     <div className="flex flex-col mx-10 mt-14 gap-10">
@@ -95,6 +110,9 @@ const Profile = () => {
               </section>
             )}
           </div>
+        </section>
+        <section>
+          <ApplaudCard applauds={publishedApplauds}/>
         </section>
         <section className="flex flex-col gap-4 border-solid border border-metal p-4">
           <article className="flex items-center gap-6 p-2 border-solid border border-stone">
