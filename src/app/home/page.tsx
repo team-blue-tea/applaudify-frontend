@@ -28,6 +28,7 @@ const Home = () => {
       const unreadNotifications = await getNumberOfUnreadApplaudsByMemberEmail(
         memberEmail as string
       );
+      console.log(unreadNotifications);
       if (unreadNotifications !== 0) {
         setNotifications(unreadNotifications);
       }
