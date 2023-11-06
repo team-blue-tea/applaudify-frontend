@@ -5,6 +5,7 @@ export type ApplaudT = {
   comment: string;
   read: boolean;
   published: boolean;
+  createdAt: string;
 };
 
 export type SenderT = {
