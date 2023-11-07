@@ -10,7 +10,7 @@ const getAllApplauds = async () => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds`;
     const res = await axios.get(uri);
-    return res.data.reverse();
+    return res.data;
   } catch (error) {
     console.error('An error occurred while fetching applauds -------->', error);
     return null;
