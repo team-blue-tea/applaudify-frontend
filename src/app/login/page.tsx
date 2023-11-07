@@ -14,7 +14,10 @@ const Login = () => {
       <button className='w-1/2 h-10 border border-charcoal'>
         Continue with Google
       </button>
-      <button className='w-1/2 h-10 border border-charcoal'>
+      <button
+        className='w-1/2 h-10 border border-charcoal'
+        onClick={() => signIn('linkedin', { callbackUrl: '/home' })}
+      >
         Continue with LinkedIn
       </button>
     </div>
