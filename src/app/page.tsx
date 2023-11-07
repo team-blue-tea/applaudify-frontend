@@ -12,8 +12,8 @@ const Landing = () => {
           <Image
             src={logo}
             alt='logo'
-            width={46}
-            height={24}
+            width={36}
+            height={18}
           ></Image>
         </Link>
         <Link href='/about'>About</Link>
