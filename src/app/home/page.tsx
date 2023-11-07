@@ -24,12 +24,10 @@ const Home = () => {
     }
     (async () => {
       const applauds = await getAllApplauds();
-      console.log(applauds);
       const memberEmail = session?.user?.email;
       const unreadNotifications = await getNumberOfUnreadApplaudsByMemberEmail(
         memberEmail as string
       );
-      console.log(unreadNotifications);
       if (unreadNotifications !== 0) {
         setNotifications(unreadNotifications);
       }
