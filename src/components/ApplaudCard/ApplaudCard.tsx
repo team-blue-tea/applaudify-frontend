@@ -7,7 +7,6 @@ type ApplaudProps = {
 };
 
 const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
-  // console.log('Here come the applauds', applauds);
   return (
     <>
       {[...applauds].reverse().filter(applaud => applaud.published === true).map((applaud) => {
