@@ -1,28 +1,38 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import ilija from "@/assets/ilija.png";
-import lvan from "@/assets/lvan.png";
-import tim from "@/assets/tim.png";
-import sudha from "@/assets/sudha.png";
-import logo from "@/assets/logo.png";
+'use client';
+import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import ilija from '@/assets/ilija.png';
+import lvan from '@/assets/lvan.png';
+import tim from '@/assets/tim.png';
+import sudha from '@/assets/sudha.png';
+import logo from '@/assets/logo.png';
 
 const About = () => {
+  const { data: session } = useSession();
   return (
-    <div className="landingPage">
+    <div className='landingPage'>
       <header>
-        <Link href="/">
-          <Image src={logo} alt="logo" width={46} height={24}></Image>
+        <Link href='/'>
+          <Image
+            src={logo}
+            alt='logo'
+            width={36}
+            height={18}
+          ></Image>
         </Link>
-        <Link href="/about">About</Link>
-        <Link href="https://github.com/orgs/team-blue-tea/repositories">
+        <Link href='/about'>About</Link>
+        <Link href='https://github.com/orgs/team-blue-tea/repositories'>
           Docs
         </Link>
-        <Link href="/login">
-          <button className="headerLogin">Login</button>
-        </Link>
+        { !session &&
+          <Link href='/login'>
+            <button className='headerLogin'>Login</button>
+          </Link>
+        }
       </header>
-      <section className="flex flex-col gap-10">
+      <section className='flex flex-col gap-10'>
         <h3>About Us</h3>
         <p>
           At Applaudify, we understand that for freelancers and consultants,
@@ -34,36 +44,52 @@ const About = () => {
           professionals bring to the table.
         </p>
       </section>
-      <section className="flex flex-col gap-10">
+      <section className='flex flex-col gap-10'>
         <h3>Our Team</h3>
         <p>
           Behind Applaudify is a team of dedicated individuals, each bringing a
           unique set of skills and experiences to the table:
         </p>
       </section>
-      <section className="grid grid-cols-2 gap-10">
-        <Link href="https://www.linkedin.com/in/lvan-ni/">
-          <article className="flex flex-col items-center">
-            <Image src={lvan} alt="Lvan Photo" width={100}></Image>
+      <section className='grid grid-cols-2 gap-10'>
+        <Link href='https://www.linkedin.com/in/lvan-ni/'>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={lvan}
+              alt='Lvan Photo'
+              width={100}
+            ></Image>
             <h4>Lvan Ni</h4>
           </article>
         </Link>
-        <Link href="https://www.linkedin.com/in/ilijakrilovic/">
-          <article className="flex flex-col items-center">
-            <Image src={ilija} alt="ilija Photo" width={100}></Image>
+        <Link href='https://www.linkedin.com/in/ilijakrilovic/'>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={ilija}
+              alt='ilija Photo'
+              width={100}
+            ></Image>
             <h4>Ilija Krilovic</h4>
           </article>
         </Link>
-        <Link href="https://www.linkedin.com/in/sudha-madhuri-poojari/">
-          <article className="flex flex-col items-center">
-            <Image src={sudha} alt="Suhda Photo" width={100}></Image>
-            <h4 className="text-center">Sudha Madhuri Poojari</h4>
+        <Link href='https://www.linkedin.com/in/sudha-madhuri-poojari/'>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={sudha}
+              alt='Suhda Photo'
+              width={100}
+            ></Image>
+            <h4 className='text-center'>Sudha Madhuri Poojari</h4>
           </article>
         </Link>
-        <Link href="https://www.linkedin.com/in/tim-hansson-meng-b9087b118/">
-          <article className="flex flex-col items-center">
-            <Image src={tim} alt="tim Photo" width={100}></Image>
-            <h4 className="text-center">Tim Hansson Meng</h4>
+        <Link href='https://www.linkedin.com/in/tim-hansson-meng-b9087b118/'>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={tim}
+              alt='tim Photo'
+              width={100}
+            ></Image>
+            <h4 className='text-center'>Tim Hansson Meng</h4>
           </article>
         </Link>
       </section>
