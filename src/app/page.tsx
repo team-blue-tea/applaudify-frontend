@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/assets/logo.png';
-import title from '@/assets/title.png';
 
 const Landing = () => {
   return (
@@ -16,8 +15,18 @@ const Landing = () => {
             height={18}
           ></Image>
         </Link>
-        <Link href='/about'>About</Link>
-        <Link href='https://github.com/orgs/team-blue-tea/repositories'>
+        <Link
+          href='/about'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
+          About
+        </Link>
+        <Link
+          href='https://github.com/orgs/team-blue-tea/repositories'
+          rel='noopener noreferrer'
+          target='_blank'
+        >
           Docs
         </Link>
         <Link href='/login'>
