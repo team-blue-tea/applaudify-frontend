@@ -34,7 +34,11 @@
   text-decoration: none;
   color: var(--core-metal);
   background-color: var(--core-paper);
-  font-family: avenir next, sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 700;
 }
 
 h2 {
@@ -44,7 +48,7 @@ h2 {
 
 h3 {
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 120%;
   text-align: center;
 }
@@ -56,6 +60,7 @@ h4 {
 
 p {
   font-size: 16px;
+  font-family: avenir next, sans-serif;
 }
 
 .landingPage {
@@ -77,7 +82,7 @@ p {
 }
 
 .headerLogin {
-  border: 0.5px solid var(--core-charcoal);
+  border: 0.5px solid var(--core-metal);
   padding: 2px 9px;
 }
 
@@ -97,14 +102,14 @@ p {
 
 .introText {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
   font-size: 18px;
 }
 
 .startBtn {
   width: 310px;
   height: 40px;
-  background-color: var(--core-charcoal);
+  background-color: var(--core-metal);
   color: var(--core-paper);
   font-size: 18px;
   font-weight: 200;
