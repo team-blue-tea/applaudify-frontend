@@ -108,7 +108,7 @@ const getNumberOfUnreadApplaudsByMemberEmail = async (memberEmail: string) => {
     const res = await axios.get(uri);
     return res.data;
   } catch (error) {
-    console.error('An error occurred while fetching Applauds by Member Email -------->', error);
+    console.error('An error occurred while fetching Notifications by Member Email -------->', error);
     return null;
   }
 }
