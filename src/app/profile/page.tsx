@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import ApplaudCard from '@/things/ApplaudCard/ApplaudCard';
+import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import { getPublishedApplaudsByMemberEmail } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
 

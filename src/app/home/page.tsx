@@ -10,7 +10,7 @@ import {
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
-import ApplaudCard from '@/things/ApplaudCard/ApplaudCard';
+import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 
 const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
