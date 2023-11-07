@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import {
   getAllApplauds,
@@ -14,52 +14,47 @@ import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 
 const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
-  const [existingMembers, setExistingMembers] = useState<MemberT[]>([]);
   const { data: session } = useSession();
   const [notifications, setNotifications] = useState<string>('');
 
   useEffect(() => {
-    if (!session) {
-      return;
-    }
+    if (!session) return;
+    let isSubscribed = true;
     (async () => {
       const applauds = await getAllApplauds();
-      const memberEmail = session?.user?.email;
-      const unreadNotifications = await getNumberOfUnreadApplaudsByMemberEmail(
-        memberEmail as string
-      );
-      if (unreadNotifications !== 0) {
-        setNotifications(unreadNotifications);
+      const members = await getAllMembers();
+      if (isSubscribed) {
+        setApplauds(applauds);
       }
-      setApplauds(applauds!);
+
+      if (
+        isSubscribed &&
+        !members.some((member: MemberT) => member.email === session.user?.email)
+      ) {
+        await addNewMember({
+          email: session?.user?.email as string,
+          name: session?.user?.name as string,
+          avatarUrl: session?.user?.image as string,
+        });
+      }
     })();
-    (async () => {
-      const existingMembers = await getAllMembers();
-      setExistingMembers(existingMembers);
-    })();
+    return () => {
+      isSubscribed = false;
+    };
   }, [session]);
 
   useEffect(() => {
-    if (existingMembers.length === 0 || !session) {
-      return;
-    }
-    const currentMember = {
-      email: session?.user?.email as string,
-      name: session?.user?.name as string,
-      avatarUrl: session?.user?.image as string,
-    };
-    const emails = existingMembers.map((member) => member.email);
-    const matchedEmail = emails.filter(
-      (email) => email === session?.user?.email
-    );
-    if (matchedEmail.length === 0) {
       (async () => {
-        await addNewMember(currentMember);
+        const memberEmail = session?.user?.email;
+        if (memberEmail) {
+          const unreadNotifications =
+            await getNumberOfUnreadApplaudsByMemberEmail(memberEmail as string);
+          if (unreadNotifications !== 0) {
+            setNotifications(unreadNotifications);
+          }
+        }
       })();
-    } else {
-      return;
-    }
-  }, [existingMembers, session]);
+  }, [ session]);
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
