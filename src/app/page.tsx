@@ -1,9 +1,13 @@
+'use client';
 import React from 'react';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/assets/logo.png';
 
 const Landing = () => {
+  const { data: session } = useSession();
+
   return (
     <div className='landingPage'>
       <header>
@@ -29,9 +33,18 @@ const Landing = () => {
         >
           Docs
         </Link>
-        <Link href='/login'>
-          <button className='headerLogin'>Login</button>
-        </Link>
+        {!session ? (
+          <Link href='/login'>
+            <button className='headerLogin'>Login</button>
+          </Link>
+        ) : (
+          <button
+            className='headerLogin'
+            onClick={() => signOut({ callbackUrl: '/' })}
+          >
+            Sign out
+          </button>
+        )}
       </header>
       <main>
         <section className='hero'>
@@ -41,9 +54,15 @@ const Landing = () => {
             Collect, manage, and showcase your professional testimonials -
             because every applaud matters.
           </p>
-          <Link href='/login'>
-            <button className='startBtn'>Let&apos;s Start</button>
-          </Link>
+          {!session ? (
+            <Link href='/login'>
+              <button className='startBtn'>Let&apos;s Start</button>
+            </Link>
+          ) : (
+            <Link href='/home'>
+              <button className='startBtn'>Let&apos;s Start</button>
+            </Link>
+          )}
         </section>
         <section className='features'>
           <article className='singleFeature'>
@@ -81,9 +100,15 @@ const Landing = () => {
       </main>
       <footer>
         <h3>ready to showcase your achievements?</h3>
-        <Link href='/login'>
-          <button className='startBtn'>Let&apos;s Start</button>
-        </Link>
+        {!session ? (
+          <Link href='/login'>
+            <button className='startBtn'>Let&apos;s Start</button>
+          </Link>
+        ) : (
+          <Link href='/home'>
+            <button className='startBtn'>Let&apos;s Start</button>
+          </Link>
+        )}
         <p>© 2023 Applaudify</p>
       </footer>
     </div>
