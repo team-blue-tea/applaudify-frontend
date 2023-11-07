@@ -14,6 +14,8 @@ import { NewApplaudT } from '@/types/NewApplaudT';
 
 const Compose = () => {
   const [members, setMembers] = useState<MemberT[]>([]);
+  const [toText, setToText] = useState<string>('To');
+  const [applaudText, setApplaudText] = useState<string>('Applaud');
   const [searchValue, setSearchValue] = useState<string>('');
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
   const { data: session } = useSession();
@@ -76,6 +78,16 @@ const Compose = () => {
     }, 500);
   };
 
+  const handleFocus = () => {
+    setToText('Type to search...');
+    setApplaudText('Start your applaud here...' );
+  }
+
+  const handleBlur = () => {
+    setToText('To');
+    setApplaudText('Applaud');
+  }
+
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between'>
@@ -96,9 +108,11 @@ const Compose = () => {
       >
         <input
           type='text'
-          placeholder='To'
+          placeholder={toText}
           value={searchValue}
           onChange={handleInputChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         {searchValue &&
           (filteredMembers[0].name as string) !== (searchValue as string) && (
@@ -115,7 +129,9 @@ const Compose = () => {
           )}
         <textarea
           rows={10}
-          placeholder='Comment'
+          placeholder={applaudText}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           ref={commentRef}
         />
       </form>
