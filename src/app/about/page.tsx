@@ -1,6 +1,6 @@
 'use client';
-import React, { useState } from 'react';
-import { useSession } from 'next-auth/react';
+import React from 'react';
+import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ilija from '@/assets/ilija.png';
@@ -26,11 +26,18 @@ const About = () => {
         <Link href='https://github.com/orgs/team-blue-tea/repositories'>
           Docs
         </Link>
-        { !session &&
+        {!session ? (
           <Link href='/login'>
             <button className='headerLogin'>Login</button>
           </Link>
-        }
+        ) : (
+          <button
+            className='headerLogin'
+            onClick={() => signOut({ callbackUrl: '/' })}
+          >
+            Sign out
+          </button>
+        )}
       </header>
       <section className='flex flex-col gap-10'>
         <h3>About Us</h3>
