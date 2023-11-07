@@ -8,8 +8,6 @@ import { getPublishedApplaudsByMemberEmail } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
 
 const Profile = () => {
-  // const [profileInfo, setProfileInfo] = useState(Bio);
-  // const [profileApplauds, getProfileApplauds] = useState([]);
   const [activeTab, setActiveTab] = useState('Bio');
   const [publishedApplauds, setPublishedApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
@@ -40,7 +38,7 @@ const Profile = () => {
             Menu
           </button>
         </Link>
-        <button>Edit</button>
+        {/* <button>Edit</button> */}
       </header>
       <main className='flex flex-col items-center gap-10'>
         <section className='flex flex-col gap-3 items-center w-full'>
