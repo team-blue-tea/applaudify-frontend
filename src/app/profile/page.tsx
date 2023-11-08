@@ -6,8 +6,11 @@ import { useSession } from 'next-auth/react';
 import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import { getPublishedApplaudsByMemberEmail } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
+import { motion, AnimatePresence } from 'framer-motion';
+import { initialTabs as tabs } from '@/types/Tabs';
 
 const Profile = () => {
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [activeTab, setActiveTab] = useState('Bio');
   const [publishedApplauds, setPublishedApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
@@ -50,15 +53,98 @@ const Profile = () => {
             height={80}
             className='rounded-full'
           ></Image>
-          <article className='flex justify-around w-full'>
+          <nav className='flex justify-around w-full'>
+              {tabs.map((item) => (
+                <button
+                  key={item.label}
+                  className={item === selectedTab ? 'selected' : ''}
+                  onClick={() => {
+                    handleTabClick(item.label);
+                    setSelectedTab(item);
+                  }}
+                >
+                  {`${item.label}`}
+                  {item === selectedTab ? (
+                    <motion.div
+                      className='underline'
+                      layoutId='underline'
+                    />
+                  ) : null}
+                </button>
+              ))}
+          </nav>
+          <div>
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={selectedTab ? selectedTab.label : 'empty'}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {activeTab === 'Bio' && (
+                  <section className='flex flex-col gap-4 border-solid border border-metal p-4'>
+                    <p>
+                      Hey, I&apos;m {session?.user?.name}! With over 6 years of
+                      experience as a frontend developer, I&apos;ve had the
+                      privilege to collaborate with innovative startups and
+                      renowned global brands. Passionate about crafting
+                      intuitive and dynamic user interfaces, I strive to blend
+                      design with functionality. Always up for a new challenge!
+                    </p>
+                  </section>
+                )}
+                {activeTab === 'Skills' && (
+                  <section className='flex flex-col gap-4 border-solid border border-metal p-4'>
+                    <ul>
+                      <li>JavaScript</li>
+                      <li>React.js & Next.js</li>
+                      <li>CSS, SCSS & TailwindCSS</li>
+                      <li>Responsive Web Design</li>
+                      <li>UX/UI Design Principles</li>
+                      <li>Performance Optimization</li>
+                      <li>Cross-Browser Compatibility</li>
+                      <li>Storybook & Component Driven Design</li>
+                    </ul>
+                  </section>
+                )}
+                {activeTab === 'Experience' && (
+                  <section className='flex flex-col gap-4 border-solid border border-metal p-4'>
+                    <ul>
+                      <li>
+                        Freelance Frontend Developer (2017-Present). Worked with
+                        various startups and established companies, transforming
+                        their design visions into fully responsive and
+                        user-friendly web applications.
+                      </li>
+                      <li>
+                        Senior Frontend Developer at WebSolutions AB
+                        (2015-2017). Led a team of developers in building
+                        scalable and maintainable web applications. Played a key
+                        role in transitioning the team to React and modern CSS
+                        frameworks.
+                      </li>
+                      <li>
+                        Frontend Developer Intern at NordicWeb Group
+                        (2014-2015). Began my professional journey here, quickly
+                        becoming an integral part of the team. Worked closely
+                        with designers to ensure pixel-perfect implementations.
+                      </li>
+                    </ul>
+                  </section>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          {/*           <article className='flex justify-around w-full'>
             <button onClick={() => handleTabClick('Bio')}>Bio</button>
             <button onClick={() => handleTabClick('Skills')}>Skills</button>
             <button onClick={() => handleTabClick('Experience')}>
               Experience
             </button>
-          </article>
-          <div>
-            {activeTab === 'Bio' && (
+          </article> */}
+          {/* <div> */}
+          {/* {activeTab === 'Bio' && (
               <section className='flex flex-col gap-4 border-solid border border-metal p-4'>
                 <p>
                   Hey, I&apos;m {session?.user?.name}! With over 6 years of
@@ -108,7 +194,7 @@ const Profile = () => {
                 </ul>
               </section>
             )}
-          </div>
+          </div> */}
         </section>
         <section>
           <ApplaudCard applauds={publishedApplauds} />
