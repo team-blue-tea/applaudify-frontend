@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   getAllApplauds,
@@ -58,17 +58,37 @@ const Home = () => {
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
-      <header className='flex w-full justify-between'>
-        <Link href='/menu'>
-          <button className='border-solid border border-charcoal px-4 py-1'>
+      <header className='flex flex-col items-center gap-10'>
+        <Link href='/home'>
+          <h1 className='header-logo ombre-text'>applaudify</h1>
+        </Link>
+        <div className='flex justify-between w-full items-center'>
+          <Link
+            href='/menu'
+            className='header-nav'
+          >
             Menu
-          </button>
-        </Link>
-        <Link href='/applauds'>
-          <button className='border-solid border border-charcoal px-4 py-1'>
-            {notifications} Applauds
-          </button>
-        </Link>
+          </Link>
+          <div className='flex gap-5 items-center'>
+            <Link
+              href='/profile'
+              className='header-nav'
+            >
+              Profile
+            </Link>
+            <Link
+              href='/applauds'
+              className='flex gap-2 items-center header-nav header-btn'
+            >
+              Inbox
+              {notifications !== '' && (
+                <div className='counter-border'>
+                  <div className='counter small'>{notifications}</div>
+                </div>
+              )}
+            </Link>
+          </div>
+        </div>
       </header>
       <main className='flex flex-col gap-8 mt-6'>
         <ApplaudCard applauds={applauds} />
