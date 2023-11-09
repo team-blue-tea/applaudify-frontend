@@ -28,10 +28,10 @@
     @apply font-josefin text-16 font-400;
   }
   .name {
-    @apply font-josefin text-14 font-600 capitalize;
+    @apply font-josefin text-16 font-600 capitalize;
   }
   .title-company {
-    @apply font-avenir text-10 font-500;
+    @apply font-avenir text-12 font-500;
   }
   .small {
     @apply font-avenir text-12 font-500;
