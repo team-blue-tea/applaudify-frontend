@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { ApplaudT } from '@/types/ApplaudT';
 import arrow from '@/assets/card/arrow.png';
+import Link from 'next/link';
 
 type ApplaudProps = {
   applauds: ApplaudT[];
@@ -20,6 +21,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
               key={applauds.indexOf(applaud)}
               className='applaud-card'
             >
+              <Link href={`/member/${sender.id}`}>
               <article className='sender-name-card'>
                 <div className='name-card-spacing text-right'>
                   <h4 className='name'>{sender.name}</h4>
@@ -36,6 +38,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                   className='profile-img'
                 ></Image>
               </article>
+              </Link>
               <Image
                 src={arrow}
                 alt='Arrow'
@@ -43,6 +46,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                 height={16}
                 className='self-center'
               ></Image>
+              <Link href={`/member/${receiver.id}`}>
               <article className='receiver-name-card'>
                 <Image
                   src={receiver.avatarUrl}
@@ -59,6 +63,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                   </div>
                 </div>
               </article>
+              </Link>
               <p className='text-center pt-5 body-main'>&apos;{comment}&apos;</p>
             </section>
           );
