@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import { getAllMembers, getPublishedApplaudsByMemberEmail } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
 import { motion, AnimatePresence } from 'framer-motion';
 import { initialTabs as tabs } from '@/types/Tabs';
 import { MemberT } from '@/types/MemberT';
+import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import arrow from '@/assets/card/arrow.png';
 
 const Profile = () => {
