@@ -1,25 +1,26 @@
-"use client";
+'use client';
 import React, {
   useEffect,
   useState,
   ChangeEvent,
   FormEvent,
   useRef,
-} from "react";
-import Link from "next/link";
-import { getAllMembers, sendNewApplaud } from "@/libs/DB";
-import { MemberT } from "@/types/MemberT";
-import { useSession } from "next-auth/react";
-import { NewApplaudT } from "@/types/NewApplaudT";
+} from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import back from '@/assets/nav/back.png';
+import { getAllMembers, sendNewApplaud } from '@/libs/DB';
+import { MemberT } from '@/types/MemberT';
+import { useSession } from 'next-auth/react';
+import { NewApplaudT } from '@/types/NewApplaudT';
 
 const Compose = () => {
   const [members, setMembers] = useState<MemberT[]>([]);
-  const [toText, setToText] = useState<string>("To");
-  const [applaudText, setApplaudText] = useState<string>("Applaud");
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [applaudText, setApplaudText] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
   const { data: session } = useSession();
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const commentRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -40,7 +41,7 @@ const Compose = () => {
         setMembers(members);
       })
       .catch((error) => {
-        console.error("Error fetching members:", error);
+        console.error('Error fetching members:', error);
       });
   }, []);
 
@@ -58,22 +59,22 @@ const Compose = () => {
 
   const handleMemberSelect = (name: string) => {
     setSearchValue(name);
-    setErrorMessage("");
+    setErrorMessage('');
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const applaudComment = commentRef.current?.value || "";
+    const applaudComment = commentRef.current?.value || '';
 
     if (!members.some((member) => member.name === searchValue)) {
-      setErrorMessage("Please select the receiver");
+      setErrorMessage('Please select the receiver');
       return;
     }
-    if (!applaudComment || applaudComment.trim() === "") {
+    if (!applaudComment || applaudComment.trim() === '') {
       setErrorMessage("Let's finish the Applaud before sending");
       setTimeout(() => {
-        setErrorMessage("");
+        setErrorMessage('');
       }, 2000);
       return;
     }
@@ -87,33 +88,43 @@ const Compose = () => {
     form?.reset();
 
     setTimeout(() => {
-      window.location.href = "/applauds/sent";
+      window.location.href = '/applauds/sent';
     }, 500);
   };
 
   const handleFocus = () => {
-    setToText("Type to search...");
-    setApplaudText("Start your applaud here...");
+    setApplaudText('Start your applaud here...');
   };
 
   const handleBlur = () => {
-    setToText("To");
-    setApplaudText("Applaud");
+    setApplaudText('Applaud');
   };
 
   return (
-    <div className="flex flex-col mx-10 mt-14 gap-10">
-      <header className="flex justify-between">
-        <Link href="/applauds">←</Link>
+    <div className='flex flex-col mx-10 mt-14 gap-10'>
+      <header className='flex justify-between items-center'>
+        <Link href='/home'>
+          <Image
+            src={back}
+            alt='back'
+            width={30}
+            height={30}
+          ></Image>
+        </Link>
         {searchValue && filteredMembers.length > 0 ? (
-          <button type="submit" form="sendApplaud" onClick={handleSubmit}>
+          <button
+            className='text-center button w-20 px-2 py-1 border border-silver rounded-3xl'
+            type='submit'
+            form='sendApplaud'
+            onClick={handleSubmit}
+          >
             Send
           </button>
         ) : (
           <button
-            className="text-silver"
-            type="submit"
-            form="sendApplaud"
+            className='text-center text-silver w-20 px-2 py-1 border border-paper rounded-3xl'
+            type='submit'
+            form='sendApplaud'
             disabled
           >
             Send
@@ -121,19 +132,22 @@ const Compose = () => {
         )}
       </header>
       <form
-        id="sendApplaud"
-        className="flex flex-col gap-10"
+        id='sendApplaud'
+        className='flex flex-col gap-10'
         onSubmit={handleSubmit}
         ref={formRef}
       >
-        <input
-          type="text"
-          placeholder={toText}
-          value={searchValue}
-          onChange={handleInputChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
+        <div className='flex'>
+          <p className='border-b border-b-gray-200 button'>To:</p>
+          <input
+            type='text'
+            value={searchValue}
+            onChange={handleInputChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            className='border-b border-b-gray-200 button w-full caret-blue-500 focus:outline-none px-2'
+          />
+        </div>
         {searchValue &&
           filteredMembers.length > 0 &&
           (filteredMembers[0].name as string) !== (searchValue as string) && (
@@ -158,6 +172,7 @@ const Compose = () => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           ref={commentRef}
+          className='border rounded-3xl p-3 focus:outline-silver'
         />
       </form>
     </div>
