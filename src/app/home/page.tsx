@@ -44,17 +44,17 @@ const Home = () => {
   }, [session]);
 
   useEffect(() => {
-      (async () => {
-        const memberEmail = session?.user?.email;
-        if (memberEmail) {
-          const unreadNotifications =
-            await getNumberOfUnreadApplaudsByMemberEmail(memberEmail as string);
-          if (unreadNotifications !== 0) {
-            setNotifications(unreadNotifications);
-          }
+    (async () => {
+      const memberEmail = session?.user?.email;
+      if (memberEmail) {
+        const unreadNotifications =
+          await getNumberOfUnreadApplaudsByMemberEmail(memberEmail as string);
+        if (unreadNotifications !== 0) {
+          setNotifications(unreadNotifications);
         }
-      })();
-  }, [ session]);
+      }
+    })();
+  }, [session]);
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
