@@ -79,6 +79,16 @@ const About = () => {
             <h4>Ilija Krilovic</h4>
           </article>
         </Link>
+        <Link href='https://www.linkedin.com/in/tim-hansson-meng/'>
+          <article className='flex flex-col items-center'>
+            <Image
+              src={tim}
+              alt='tim Photo'
+              width={100}
+            ></Image>
+            <h4 className='text-center'>Tim Hansson Meng</h4>
+          </article>
+        </Link>
         <Link href='https://www.linkedin.com/in/sudha-madhuri-poojari/'>
           <article className='flex flex-col items-center'>
             <Image
@@ -87,16 +97,6 @@ const About = () => {
               width={100}
             ></Image>
             <h4 className='text-center'>Sudha Madhuri Poojari</h4>
-          </article>
-        </Link>
-        <Link href='https://www.linkedin.com/in/tim-hansson-meng-b9087b118/'>
-          <article className='flex flex-col items-center'>
-            <Image
-              src={tim}
-              alt='tim Photo'
-              width={100}
-            ></Image>
-            <h4 className='text-center'>Tim Hansson Meng</h4>
           </article>
         </Link>
       </section>
