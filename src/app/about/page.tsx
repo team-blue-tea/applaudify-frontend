@@ -3,10 +3,10 @@ import React from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ilija from '@/assets/ilija.png';
-import lvan from '@/assets/lvan.png';
-import tim from '@/assets/tim.png';
-import sudha from '@/assets/sudha.png';
+import ilija from '@/assets/about/ilija.png';
+import lvan from '@/assets/about/lvan.png';
+import tim from '@/assets/about/tim.png';
+import sudha from '@/assets/about/sudha.png';
 import logo from '@/assets/logo.png';
 
 const About = () => {
