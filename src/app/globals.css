@@ -7,22 +7,28 @@
 @layer components {
   /* Text Styles */
   .header-nav {
-    @apply font-josefin text-16 font-500 capitalize;
+    @apply font-avenir text-16 font-500 capitalize;
   }
   .title-logo {
     @apply font-josefin text-60 font-700 lowercase;
   }
+  .header-logo {
+    @apply font-josefin text-36 font-700 lowercase;
+  }
   .sub-title {
-    @apply font-josefin text-30 font-500 capitalize;
+    @apply font-josefin text-30 font-600 lowercase;
   }
   .sub-header {
-    @apply font-josefin text-16 font-600 capitalize;
+    @apply font-josefin text-16 font-600 lowercase;
   }
   .header {
     @apply font-josefin text-30 font-700 lowercase;
   }
   .body-main {
     @apply font-avenir text-16 font-500;
+  }
+  .body-small {
+    @apply font-avenir text-14 font-500;
   }
   .button {
     @apply font-josefin text-16 font-400;
@@ -34,7 +40,7 @@
     @apply font-avenir text-12 font-500;
   }
   .small {
-    @apply font-avenir text-12 font-500;
+    @apply font-avenir text-10 font-500;
   }
 
   /* Applaud Card Layout */
@@ -42,16 +48,32 @@
     @apply flex flex-col p-4 mb-8 gap-2.5 border-solid border border-silver rounded-3xl;
   }
   .sender-name-card {
-    @apply flex items-center justify-end gap-8 px-3.5 py-2.5 border-solid border border-silver rounded-2xl;
+    @apply flex items-center justify-end gap-8 px-3.5 py-2 border-solid border border-silver rounded-2xl;
   }
   .receiver-name-card {
-    @apply flex items-center gap-8 px-3.5 py-2.5 border-solid border border-silver rounded-2xl bg-paper;
+    @apply flex items-center gap-8 px-3.5 py-2 border-solid border border-silver rounded-2xl bg-paper;
   }
   .name-card-spacing {
     @apply flex flex-col gap-1;
   }
   .profile-img {
     @apply rounded-full outline outline-1 outline-silver;
+  }
+
+  /* Button */
+  .header-btn {
+    @apply border-solid border border-silver rounded-2xl px-2.5 py-1 h-8;
+  }
+  .start-btn {
+    @apply flex items-center justify-center w-full border-solid border border-silver rounded-3xl p-2.5;
+  }
+  .login-btn {
+    @apply flex items-center justify-between w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5;
+  }
+
+  /* Special */
+  .ombre-text {
+    @apply text-transparent bg-clip-text bg-logo;
   }
 }
 
@@ -64,6 +86,24 @@
   --core-silver: #bab8b5;
   --core-paper: #f8f6f2;
   --core-white: #ffffff;
+  --core-border: linear-gradient(
+    125deg,
+    #3db3e2 16.46%,
+    #9ed7f3 36.98%,
+    #d7bdf5 51.69%,
+    #cc81f1 60.85%,
+    #e96069 71.67%,
+    #f09674 91.21%
+  );
+  --core-logo: linear-gradient(
+    125deg,
+    #68d0f9 16.46%,
+    #9ed7f3 36.98%,
+    #d7bdf5 51.69%,
+    #cc81f1 60.85%,
+    #e96069 71.67%,
+    #f09674 91.21%
+  );
 }
 
 * {
@@ -75,110 +115,15 @@
   background-color: var(--core-white);
 }
 
-h1 {
-  font-size: 60px;
-  font-weight: 700;
+.counter-border {
+  position: relative;
+  border-radius: 30px;
+  padding: 1.5px;
+  background-image: var(--core-logo);
 }
 
-h2 {
-  font-size: 30px;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 120%;
-  text-align: center;
-}
-
-h4 {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-p {
-  font-size: 16px;
-  font-family: avenir next, sans-serif;
-}
-
-.landingPage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 60px 40px 20px;
-  gap: 40px;
-}
-
-.landingPage header {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  font-family: avenir next, sans-serif;
-  font-size: 14px;
-  margin-bottom: 30px;
-}
-
-.headerLogin {
-  border: 0.5px solid var(--core-metal);
-  padding: 2px 9px;
-}
-
-.landingPage main {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 140px;
-}
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.introText {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 18px;
-}
-
-.startBtn {
-  width: 310px;
-  height: 40px;
-  background-color: var(--core-metal);
-  color: var(--core-paper);
-  font-size: 18px;
-  font-weight: 200;
-  cursor: pointer;
-}
-
-.features {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 100px;
-}
-
-.singleFeature {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 80px;
-}
-
-footer p {
-  margin-top: 30px;
-  font-size: 14px;
+.counter {
+  background: var(--core-white);
+  padding: 2px 6.5px;
+  border-radius: 30px;
 }
