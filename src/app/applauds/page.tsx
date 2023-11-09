@@ -1,9 +1,11 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
+import back from '@/assets/nav/back.png';
 
 const Applauds = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
@@ -27,12 +29,25 @@ const Applauds = () => {
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
-      <header className='flex justify-between'>
-        <Link href='/home'>←</Link>
-        <Link href='/compose'>New</Link>
+      <header className='flex justify-between items-center'>
+        <Link href='/home'>
+          <Image
+          src={back}
+          alt='back'
+          width={30}
+          height={30}
+          >
+          </Image>
+        </Link>
+        <Link
+          className='text-center button w-20 px-2 py-1 border border-silver rounded-3xl'
+          href='/compose'
+        >
+          New
+        </Link>
       </header>
-      <main className='flex flex-col items-center gap-10 mt-5'>
-        <section className='flex flex-col gap-7'>
+      <main className='flex flex-col items-center'>
+        <section className='flex flex-col gap-7 w-full'>
           {filteredApplauds.map((applaud) => {
             const firstName = applaud.sender.name.split(' ')[0];
             const commentPreview = applaud.comment
@@ -50,60 +65,64 @@ const Applauds = () => {
             });
             return (
               applaud && (
-                <article key={applaud.id}>
+                <article
+                  className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'
+                  key={applaud.id}
+                >
                   <Link
                     href={`applauds/${applaud.id}`}
-                    className='flex flex-col p-2 gap-2 border border-charcoal'
                     onClick={() => setApplaudRead(applaud.id as string)}
                   >
-                    <div className='flex justify-between'>
-                      <h4>
-                        {!applaud.read && '•'} {firstName}
-                      </h4>
-                      <p>
+                    <div className='flex justify-between w-full items-center'>
+                      <div className='flex items-center justify-center gap-5'>
+                        {!applaud.read && (
+                          <h4 className='button text-blue-400'>•</h4>
+                        )}
+                        {<h4 className='button font-bold'>{firstName}</h4>}
+                      </div>
+                      <p className='title-company'>
                         {weekdayString}, {dateString}
                       </p>
                     </div>
-                    <p>{commentPreview}...</p>
+                    <p className='body-small pt-1 text-stone'>
+                      {commentPreview}...
+                    </p>
                   </Link>
                 </article>
               )
             );
           })}
-          <article>
-            <Link
-              href={'/applauds/hugo'}
-              className='flex flex-col p-2 border border-charcoal'
-            >
-              <div className='flex justify-between'>
-                <h4>Hugo</h4>
-                <p>Thu, May 24, 2023</p>
+          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'>
+            <Link href={'/applauds/hugo'}>
+              <div className='flex justify-between items-center'>
+                <h4 className='button font-bold'>Hugo</h4>
+                <p className='title-company'>Thu, May 24, 2023</p>
               </div>
-              <p>{firstName} is a great developer! ...</p>
+              <p className='body-small pt-1 text-stone'>
+                {firstName} is a great developer! ...
+              </p>
             </Link>
           </article>
-          <article>
-            <Link
-              href={'/applauds/vanessa'}
-              className='flex flex-col p-2 border border-charcoal'
-            >
-              <div className='flex justify-between'>
-                <h4>Vanessa</h4>
-                <p>Mon, Oct 16, 2023</p>
+          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'>
+            <Link href={'/applauds/vanessa'}>
+              <div className='flex justify-between items-center'>
+                <h4 className='button font-bold'>Vanessa</h4>
+                <p className='title-company'>Mon, Oct 16, 2023</p>
               </div>
-              <p>{firstName} is a talented and ...</p>
+              <p className='body-small pt-1 text-stone'>
+                {firstName} is a talented and ...
+              </p>
             </Link>
           </article>
-          <article>
-            <Link
-              href={'/applauds/ahsan'}
-              className='flex flex-col p-2 border border-charcoal'
-            >
-              <div className='flex justify-between'>
-                <h4>Ahsan</h4>
-                <p>Wed, Oct 18, 2023</p>
+          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'>
+            <Link href={'/applauds/ahsan'}>
+              <div className='flex justify-between items-center'>
+                <h4 className='button font-bold'>Ahsan</h4>
+                <p className='title-company'>Wed, Oct 18, 2023</p>
               </div>
-              <p>Working along side {firstName} on ...</p>
+              <p className='body-small pt-1 text-stone'>
+                Working along side {firstName} on ...
+              </p>
             </Link>
           </article>
         </section>
