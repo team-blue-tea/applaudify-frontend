@@ -56,7 +56,7 @@ const Home = () => {
         >
           Profile
         </Link>
-        <Inbox session={session} />
+        {session && <Inbox session={session} />}
       </header>
       <main className='flex flex-col gap-8 mt-6'>
         <ApplaudCard applauds={applauds} />
