@@ -115,7 +115,7 @@
     #9ed7f3 36.98%,
     #d7bdf5 51.69%,
     #cc81f1 60.85%,
-    #e96069 71.67%,
+    #e96069 68.76%,
     #f09674 91.21%
   );
 }
@@ -138,8 +138,9 @@
 
 .counter {
   background: var(--core-white);
-  padding: 2px 6.5px;
+  padding: 1px 6px;
   border-radius: 30px;
+  text-align: center;
 }
 
 .single-applaud-border {
