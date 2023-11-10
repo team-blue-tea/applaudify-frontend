@@ -78,7 +78,7 @@ const Landing = () => {
         <section className='flex flex-col items-center justify-center gap-24'>
           <article className='flex flex-col gap-5'>
             <div>
-              <h4 className='sub-header text-silver'>
+              <h4 className='sub-header text-grey'>
                 all your applauds in one place
               </h4>
               <h2 className='sub-title text-charcoal'>applauds inbox</h2>
@@ -91,7 +91,7 @@ const Landing = () => {
           </article>
           <article className='flex flex-col gap-5'>
             <div>
-              <h4 className='sub-header text-silver'>
+              <h4 className='sub-header text-grey'>
                 celebrate achievements together
               </h4>
               <h2 className='sub-title text-charcoal'>social feed</h2>
@@ -103,7 +103,7 @@ const Landing = () => {
           </article>
           <article className='flex flex-col gap-5'>
             <div>
-              <h4 className='sub-header text-silver'>
+              <h4 className='sub-header text-grey'>
                 redefining your professional profile
               </h4>
               <h2 className='sub-title text-charcoal'>dynamic profile</h2>
