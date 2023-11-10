@@ -32,15 +32,14 @@ const Applauds = () => {
       <header className='flex justify-between items-center'>
         <Link href='/home'>
           <Image
-          src={back}
-          alt='back'
-          width={30}
-          height={30}
-          >
-          </Image>
+            src={back}
+            alt='back'
+            width={30}
+            height={30}
+          ></Image>
         </Link>
         <Link
-          className='text-center button w-20 px-2 py-1 border border-silver rounded-3xl'
+          className='header-btn'
           href='/compose'
         >
           New
@@ -66,25 +65,29 @@ const Applauds = () => {
             return (
               applaud && (
                 <article
-                  className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'
+                  className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'
                   key={applaud.id}
                 >
                   <Link
                     href={`applauds/${applaud.id}`}
                     onClick={() => setApplaudRead(applaud.id as string)}
                   >
-                    <div className='flex justify-between w-full items-center'>
-                      <div className='flex items-center justify-center gap-5'>
+                    <div className='flex justify-between w-full items-center bg-white'>
+                      <div className='flex items-center justify-center gap-5 bg-white'>
                         {!applaud.read && (
-                          <h4 className='button text-blue-400'>•</h4>
+                          <h4 className='button text-blue-400 bg-white'>•</h4>
                         )}
-                        {<h4 className='button font-bold'>{firstName}</h4>}
+                        {
+                          <h4 className='button font-bold bg-white'>
+                            {firstName}
+                          </h4>
+                        }
                       </div>
-                      <p className='title-company'>
+                      <p className='title-company bg-white'>
                         {weekdayString}, {dateString}
                       </p>
                     </div>
-                    <p className='body-small pt-1 text-stone'>
+                    <p className='body-small pt-1 text-stone bg-white'>
                       {commentPreview}...
                     </p>
                   </Link>
@@ -92,35 +95,35 @@ const Applauds = () => {
               )
             );
           })}
-          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'>
+          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
             <Link href={'/applauds/hugo'}>
-              <div className='flex justify-between items-center'>
-                <h4 className='button font-bold'>Hugo</h4>
-                <p className='title-company'>Thu, May 24, 2023</p>
+              <div className='flex justify-between items-center bg-white'>
+                <h4 className='button font-bold bg-white'>Hugo</h4>
+                <p className='title-company bg-white'>Thu, May 24, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone'>
+              <p className='body-small pt-1 text-stone bg-white'>
                 {firstName} is a great developer! ...
               </p>
             </Link>
           </article>
-          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'>
+          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
             <Link href={'/applauds/vanessa'}>
-              <div className='flex justify-between items-center'>
-                <h4 className='button font-bold'>Vanessa</h4>
-                <p className='title-company'>Mon, Oct 16, 2023</p>
+              <div className='flex justify-between items-center bg-white'>
+                <h4 className='button font-bold bg-white'>Vanessa</h4>
+                <p className='title-company bg-white'>Mon, Oct 16, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone'>
+              <p className='body-small pt-1 text-stone bg-white'>
                 {firstName} is a talented and ...
               </p>
             </Link>
           </article>
-          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full'>
+          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
             <Link href={'/applauds/ahsan'}>
-              <div className='flex justify-between items-center'>
-                <h4 className='button font-bold'>Ahsan</h4>
-                <p className='title-company'>Wed, Oct 18, 2023</p>
+              <div className='flex justify-between items-center bg-white'>
+                <h4 className='button font-bold bg-white'>Ahsan</h4>
+                <p className='title-company bg-white'>Wed, Oct 18, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone'>
+              <p className='body-small pt-1 text-stone bg-white'>
                 Working along side {firstName} on ...
               </p>
             </Link>
