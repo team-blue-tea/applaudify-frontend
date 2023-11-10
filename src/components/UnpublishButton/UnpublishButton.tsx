@@ -23,7 +23,7 @@ const UnpublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
 
   return (
     <button
-      className='text-center border-solid border border-metal p-2'
+      className='btn mt-20'
       onClick={handlePublishClick}
     >
       Unpublish Applaud
