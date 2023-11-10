@@ -13,22 +13,28 @@
     @apply font-josefin text-60 font-700 lowercase;
   }
   .header-logo {
-    @apply font-josefin text-36 font-700 lowercase;
+    @apply font-josefin text-24 font-700 lowercase;
   }
   .sub-title {
     @apply font-josefin text-30 font-600 lowercase;
   }
   .sub-header {
-    @apply font-josefin text-16 font-600 lowercase;
+    @apply font-avenir text-16 font-500 lowercase;
   }
   .header {
     @apply font-josefin text-30 font-700 lowercase;
+  }
+  .body-large {
+    @apply font-josefin text-20 font-700;
   }
   .body-main {
     @apply font-avenir text-16 font-500;
   }
   .body-small {
     @apply font-avenir text-14 font-500;
+  }
+  .body-skill{
+    @apply font-josefin text-14 font-400;
   }
   .button {
     @apply font-josefin text-16 font-400;
@@ -45,10 +51,10 @@
 
   /* Applaud Card Layout */
   .applaud-card {
-    @apply flex flex-col p-4 mb-8 gap-2.5 border-solid border border-silver rounded-3xl;
+    @apply flex flex-col p-4 mb-8 gap-2.5 border-solid border border-silver bg-white rounded-3xl overflow-hidden;
   }
   .sender-name-card {
-    @apply flex items-center justify-end gap-8 px-3.5 py-2 border-solid border border-silver rounded-2xl;
+    @apply flex items-center justify-end gap-8 px-3.5 py-2 border-solid border bg-white border-silver rounded-2xl;
   }
   .receiver-name-card {
     @apply flex items-center gap-8 px-3.5 py-2 border-solid border border-silver rounded-2xl bg-paper;
@@ -62,13 +68,19 @@
 
   /* Button */
   .header-btn {
-    @apply border-solid border border-silver rounded-2xl px-2.5 py-1 h-8;
+    @apply flex items-center border-solid border border-silver rounded-2xl px-2.5 py-1 h-8 bg-white;
   }
   .start-btn {
-    @apply flex items-center justify-center w-full border-solid border border-silver rounded-3xl p-2.5;
+    @apply flex items-center justify-center w-full border-solid border border-silver rounded-3xl p-2.5 bg-white;
   }
   .login-btn {
-    @apply flex items-center justify-between w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5;
+    @apply flex items-center justify-between w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5 bg-white;
+  }
+  .btn {
+    @apply flex items-center justify-center w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5 bg-white;
+  }
+  .skill-btn {
+    @apply flex items-center border-solid border border-silver rounded-2xl px-2.5 py-1 h-8 body-skill;
   }
 
   /* Special */
@@ -82,8 +94,10 @@
   --core-black: #000000;
   --core-metal: #0d0d0d;
   --core-charcoal: #303030;
-  --core-stone: #626262;
-  --core-silver: #bab8b5;
+  --core-stone: #5a5a5a;
+  --core-grey: #919191;
+  --core-silver: #b8b8b8;
+  --core-light: #f6f6f6;
   --core-paper: #f8f6f2;
   --core-white: #ffffff;
   --core-border: linear-gradient(
@@ -112,7 +126,7 @@
   box-sizing: border-box;
   text-decoration: none;
   color: var(--core-metal);
-  background-color: var(--core-white);
+  background-color: var(--core-light);
 }
 
 .counter-border {
@@ -125,5 +139,17 @@
 .counter {
   background: var(--core-white);
   padding: 2px 6.5px;
+  border-radius: 30px;
+}
+
+.single-applaud-border {
+  border-radius: 30px;
+  padding: 1.5px;
+  background-image: var(--core-logo);
+}
+
+.single-applaud {
+  background: var(--core-white);
+  padding: 16px 30px;
   border-radius: 30px;
 }
