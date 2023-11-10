@@ -21,13 +21,13 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
               key={applauds.indexOf(applaud)}
               className='applaud-card'
             >
-              <Link href={`/member/${sender.id}`}>
+              <Link href={`/member/${sender.id}`} className='bg-white'>
               <article className='sender-name-card'>
-                <div className='name-card-spacing text-right'>
-                  <h4 className='name'>{sender.name}</h4>
+                <div className='name-card-spacing text-right bg-white'>
+                  <h4 className='name bg-white'>{sender.name}</h4>
                   <div>
-                    <p className='title-company'>{sender.jobTitle}</p>
-                    <p className='title-company'>{sender.company}</p>
+                    <p className='title-company bg-white'>{sender.jobTitle}</p>
+                    <p className='title-company bg-white'>{sender.company}</p>
                   </div>
                 </div>
                 <Image
@@ -44,9 +44,9 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                 alt='Arrow'
                 width={14}
                 height={16}
-                className='self-center'
+                className='self-center bg-white'
               ></Image>
-              <Link href={`/member/${receiver.id}`}>
+              <Link href={`/member/${receiver.id}`} className=' bg-white'>
               <article className='receiver-name-card'>
                 <Image
                   src={receiver.avatarUrl}
@@ -64,7 +64,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                 </div>
               </article>
               </Link>
-              <p className='text-center pt-5 body-main'>&apos;{comment}&apos;</p>
+              <p className='text-center pt-5 body-main bg-white'>&apos;{comment}&apos;</p>
             </section>
           );
         })}
