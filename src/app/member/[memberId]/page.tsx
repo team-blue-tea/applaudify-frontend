@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllMembers, getPublishedApplaudsByMemberEmail } from '@/libs/DB';
+import { getAllMembers, getPublishedApplauds } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
 import { motion, AnimatePresence } from 'framer-motion';
 import { initialTabs as tabs } from '@/types/Tabs';
@@ -24,14 +24,16 @@ const MemberProfile = () => {
 
   useEffect(() => {
     (async () => {
-        const urlString = window.location.href;
-        const urlObject = new URL(urlString);
-        const pathname = urlObject.pathname;
-        const parts = pathname.split("/");
-        const memberId = parts[parts.length - 1];   
-        const members: MemberT[] = await getAllMembers();
-        setMember(members.find((member) => member.id === memberId))
-        const publishedApplaudsByMemberEmail = await getPublishedApplaudsByMemberEmail(member?.email as string);
+      const urlString = window.location.href;
+      const urlObject = new URL(urlString);
+      const pathname = urlObject.pathname;
+      const parts = pathname.split('/');
+      const memberId = parts[parts.length - 1];
+      const members: MemberT[] = await getAllMembers();
+      setMember(members.find((member) => member.id === memberId));
+      const publishedApplaudsByMemberEmail = await getPublishedApplauds(
+        member?.email as string
+      );
       setPublishedApplauds(publishedApplaudsByMemberEmail);
     })();
   }, [member]);
@@ -223,12 +225,12 @@ const MemberProfile = () => {
             ></Image>
           </article>
           <Image
-                src={arrow}
-                alt='Arrow'
-                width={14}
-                height={16}
-                className='self-center'
-              ></Image>
+            src={arrow}
+            alt='Arrow'
+            width={14}
+            height={16}
+            className='self-center'
+          ></Image>
           <article className='receiver-name-card'>
             <Image
               src={member?.avatarUrl!}
@@ -268,12 +270,12 @@ const MemberProfile = () => {
             ></Image>
           </article>
           <Image
-                src={arrow}
-                alt='Arrow'
-                width={14}
-                height={16}
-                className='self-center'
-              ></Image>
+            src={arrow}
+            alt='Arrow'
+            width={14}
+            height={16}
+            className='self-center'
+          ></Image>
           <article className='receiver-name-card'>
             <Image
               src={member?.avatarUrl!}
