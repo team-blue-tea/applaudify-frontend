@@ -12,15 +12,14 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
     setTimeout(() => {
       window.location.href = '/applauds/published';
     }, 500);
-
   };
 
   return (
     <button
-      className='text-center border-solid border border-metal p-2'
+      className='btn mt-20'
       onClick={handlePublishClick}
     >
-      Publish to Profile
+      Publish
     </button>
   );
 };
