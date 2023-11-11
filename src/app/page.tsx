@@ -5,13 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/assets/logo.png';
 import ombreLogo from '@/assets/ombre-logo.png';
+import Header from '@/components/Header/Header';
 
 const Landing = () => {
   const { data: session } = useSession();
 
   return (
     <div className='flex flex-col items-center mx-10 my-10'>
-      <header className='flex w-full justify-between items-center mb-20'>
+      {/* <header className='flex w-full justify-between items-center mb-20'>
         <Link href='/'>
           <Image
             src={logo}
@@ -48,10 +49,11 @@ const Landing = () => {
             Sign out
           </button>
         )}
-      </header>
-      <main className='flex flex-col w-full gap-20'>
+      </header> */}
+      <Header />
+      <main className='flex flex-col w-full gap-20 mt-20'>
         <section className='flex flex-col items-center gap-8'>
-          <h1 className='title-logo ombre-text'>applaudify</h1>
+          <h1 className='title-logo'>applaudify</h1>
           <h3 className='sub-title text-center text-charcoal'>
             Where achievements get applauded
           </h3>
@@ -71,7 +73,7 @@ const Landing = () => {
               href='/home'
               className='button start-btn'
             >
-              Let&apos;s Start
+              Return to Applauds
             </Link>
           )}
         </section>
@@ -131,7 +133,7 @@ const Landing = () => {
             href='/home'
             className='button start-btn'
           >
-            Let&apos;s Start
+            Return to Applauds
           </Link>
         )}
         <p className='small text-center text-stone mt-20'>© 2023 Applaudify</p>
