@@ -162,7 +162,7 @@
 }
 
 .profile-button {
-  transition: all 1s;
+  transition: all 0.3s;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -196,7 +196,7 @@
   background-color: black;
 }
 
-.profile-button.clicked::before {
+/* .profile-button.clicked::before {
   width: 100%;
   background-color: black;
-}
+} */
