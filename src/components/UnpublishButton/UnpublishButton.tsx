@@ -23,10 +23,10 @@ const UnpublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
 
   return (
     <button
-      className='btn mt-20'
+      className='btn mt-10'
       onClick={handlePublishClick}
     >
-      Unpublish Applaud
+      Unpublish
     </button>
   );
 };
