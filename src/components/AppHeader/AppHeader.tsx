@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import Inbox from '@/components/Inbox/Inbox';
-import  Menu  from '@/components/Menu/Menu';
 
 const AppHeader = () => {
   const { data: session } = useSession();
@@ -16,13 +15,12 @@ const AppHeader = () => {
             <h1 className='header ombre-text'>applaudify</h1>
           </Link>
           <div className='flex items-center gap-3'>
-            {/* <Link
+            <Link
               href='/menu'
               className='header-nav'
             >
               Menu
-            </Link> */}
-            <Menu />
+            </Link>
             {session && <Inbox session={session} />}
           </div>
         </div>
