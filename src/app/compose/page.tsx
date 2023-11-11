@@ -97,7 +97,7 @@ const Compose = () => {
   };
 
   const handleBlur = () => {
-    setApplaudText('Applaud');
+    setApplaudText('Start your applaud here...');
   };
 
   return (
