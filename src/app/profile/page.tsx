@@ -9,7 +9,7 @@ import { initialTabs as tabs } from '@/types/Tabs';
 import { MemberT } from '@/types/MemberT';
 import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import arrow from '@/assets/card/arrow.png';
-import AppHeader from '@/components/AppHeader/AppHeader';
+import AppHeader from '@/components/Header/Header';
 import MockAppluadCards from '@/components/MockAppluadCards/MockAppluadCards';
 
 const Profile = () => {
