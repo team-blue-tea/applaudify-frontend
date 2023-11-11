@@ -108,15 +108,19 @@ const Profile = () => {
                 )}
                 {activeTab === 'Skills' && (
                   <section className='flex flex-wrap gap-2'>
-                    <div className='skill-btn'>JavaScript</div>
                     <div className='skill-btn'>TypeScript</div>
+                    <div className='skill-btn'>JavaScript</div>
                     <div className='skill-btn'>React</div>
                     <div className='skill-btn'>Next.js</div>
                     <div className='skill-btn'>Node.js</div>
                     <div className='skill-btn'>Framer-Motion</div>
-                    <div className='skill-btn'>PostgreSQL</div>
+                    <div className='skill-btn'>SQL</div>
                     <div className='skill-btn'>MongoDB</div>
                     <div className='skill-btn'>UX / UI</div>
+                    <div className='skill-btn'>HTML</div>
+                    <div className='skill-btn'>CSS</div>
+                    <div className='skill-btn'>Tailwind</div>
+                    <div className='skill-btn'>Figma</div>
                   </section>
                 )}
                 {activeTab === 'Experience' && (
