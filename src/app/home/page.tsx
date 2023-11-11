@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
 import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
-import AppHeader from '@/components/AppHeader/AppHeader';
+import Header from '@/components/Header/Header';
 
 const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
@@ -40,7 +40,8 @@ const Home = () => {
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
-      <AppHeader />
+      <Header />
+      {/* <button className='search-btn w-full text-silver'>Search</button> */}
       <main className='flex flex-col gap-8 mt-1'>
         <h2 className='small-header'>applauds from everyone</h2>
         <ApplaudCard applauds={applauds} />
