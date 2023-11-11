@@ -7,7 +7,6 @@ import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
 import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
 import AppHeader from '@/components/AppHeader/AppHeader';
-import Menu from '@/components/Menu/Menu';
 
 const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
