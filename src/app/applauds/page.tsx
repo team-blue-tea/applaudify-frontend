@@ -75,7 +75,7 @@ const Applauds = () => {
                     <div className='flex justify-between w-full items-center bg-white'>
                       <div className='flex items-center justify-center gap-5 bg-white'>
                         {!applaud.read && (
-                          <h4 className='button text-blue-400 bg-white'>•</h4>
+                          <h4 className='button text-blue bg-white'>•</h4>
                         )}
                         {
                           <h4 className='button font-bold bg-white'>
