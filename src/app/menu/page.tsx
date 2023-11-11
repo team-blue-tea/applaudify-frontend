@@ -30,6 +30,12 @@ const Menu = () => {
             height={30}
           ></Image>
         </Link>
+        <Link
+          href='/profile'
+          className='sub-title'
+        >
+          Profile
+        </Link>
         {session && (
           <button
             className='sub-title'
