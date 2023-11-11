@@ -16,13 +16,16 @@
     @apply font-josefin text-24 font-700 lowercase;
   }
   .sub-title {
-    @apply font-josefin text-30 font-600 lowercase;
+    @apply font-josefin text-30 font-600;
   }
   .sub-header {
     @apply font-avenir text-16 font-500 lowercase;
   }
   .header {
     @apply font-josefin text-30 font-700 lowercase;
+  }
+  .small-header {
+    @apply font-josefin text-24 font-500 lowercase;
   }
   .body-large {
     @apply font-josefin text-20 font-700;
@@ -33,17 +36,17 @@
   .body-small {
     @apply font-avenir text-14 font-500;
   }
-  .body-skill{
+  .body-skill {
     @apply font-josefin text-14 font-400;
   }
   .button {
     @apply font-josefin text-16 font-400;
   }
   .name {
-    @apply font-josefin text-16 font-600 capitalize;
+    @apply font-josefin text-14 font-600 capitalize;
   }
   .title-company {
-    @apply font-avenir text-12 font-500;
+    @apply font-avenir text-10 font-500;
   }
   .small {
     @apply font-avenir text-10 font-500;
@@ -51,7 +54,7 @@
 
   /* Applaud Card Layout */
   .applaud-card {
-    @apply flex flex-col p-4 mb-8 gap-2.5 border-solid border border-silver bg-white rounded-3xl overflow-hidden;
+    @apply flex flex-col p-4 mb-8 gap-2.5 border-solid border border-silver bg-white rounded-3xl;
   }
   .sender-name-card {
     @apply flex items-center justify-end gap-8 px-3.5 py-2 border-solid border bg-white border-silver rounded-2xl;
@@ -75,6 +78,9 @@
   }
   .login-btn {
     @apply flex items-center justify-between w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5 bg-white;
+  }
+  .search-btn {
+    @apply flex items-center border-solid border border-light rounded-2xl px-2.5 py-1 h-8 bg-white;
   }
   .btn {
     @apply flex items-center justify-center w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5 bg-white;
@@ -153,4 +159,44 @@
   background: var(--core-white);
   padding: 16px 30px;
   border-radius: 30px;
+}
+
+.profile-button {
+  transition: all 1s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.profile-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.profile-button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+  background-color: var(--core-white);
+}
+
+.profile-button.clicked {
+  color: var(--core-white);
+  background-color: black;
+}
+
+.profile-button.clicked::before {
+  width: 100%;
+  background-color: black;
 }
