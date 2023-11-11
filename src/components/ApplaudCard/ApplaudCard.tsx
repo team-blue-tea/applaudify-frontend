@@ -64,7 +64,7 @@ const ApplaudCard: React.FC<ApplaudProps> = ({ applauds }) => {
                 </div>
               </article>
               </Link>
-              <p className='text-center pt-5 body-main bg-white'>&apos;{comment}&apos;</p>
+              <p className='pt-5 body-main bg-white'>&apos;{comment}&apos;</p>
             </section>
           );
         })}
