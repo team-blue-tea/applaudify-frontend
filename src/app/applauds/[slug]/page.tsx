@@ -6,6 +6,7 @@ import { ApplaudT } from '@/types/ApplaudT';
 import PublishButton from '@/components/PublishButton/PublishButton';
 import UnpublishButton from '@/components/UnpublishButton/UnpublishButton';
 import back from '@/assets/nav/back.png';
+import { AnimatePresence } from "framer-motion";
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
@@ -15,49 +16,49 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { sender, comment, published } = filteredApplaud[0];
 
   return (
-    <div className='flex flex-col mx-10 mt-14 gap-10'>
-      <header className='flex justify-between items-center'>
-        <Link href='/applauds'>
-          <Image
-            src={back}
-            alt='back'
-            width={30}
-            height={30}
-          ></Image>
-        </Link>
-        <h4 className='body-main'>Applaud from {sender.name.split(' ')[0]}</h4>
-        <div></div>
-      </header>
-      <main className='flex flex-col items-center'>
-        <div className='single-applaud-border mt-14'>
-          <section className='flex flex-col gap-8 single-applaud small px-4 py-8 p-2'>
-            <article className='flex items-center bg-white gap-8'>
-              <Image
-                src={sender.avatarUrl}
-                alt='Sender Profile'
-                width={61}
-                height={61}
-                className='rounded-full'
-              ></Image>
-              <div className='flex flex-col'>
-                <h4 className='name bg-white'>{sender.name}</h4>
-                <p className='title-company bg-white'>{sender.jobTitle}</p>
-                <p className='title-company bg-white'>{sender.company}</p>
-              </div>
-            </article>
-            <p className='body-main bg-white'>{comment}</p>
-          </section>
-        </div>
-        {published ? (
-          <div className='flex flex-col items-center gap-10'>
-            <p className='text-center button'>Applaud Published!</p>
-            <UnpublishButton slug={slug} />
+      <div className='flex flex-col mx-10 mt-14 gap-10'>
+        <header className='flex justify-between items-center'>
+          <Link href='/applauds'>
+            <Image
+              src={back}
+              alt='back'
+              width={30}
+              height={30}
+            ></Image>
+          </Link>
+          <h4 className='body-main'>Applaud from {sender.name.split(' ')[0]}</h4>
+          <div></div>
+        </header>
+        <main className='flex flex-col items-center'>
+          <div className='single-applaud-border mt-14'>
+            <section className='flex flex-col gap-8 single-applaud small px-4 py-8 p-2'>
+              <article className='flex items-center bg-white gap-8'>
+                <Image
+                  src={sender.avatarUrl}
+                  alt='Sender Profile'
+                  width={61}
+                  height={61}
+                  className='rounded-full'
+                ></Image>
+                <div className='flex flex-col'>
+                  <h4 className='name bg-white'>{sender.name}</h4>
+                  <p className='title-company bg-white'>{sender.jobTitle}</p>
+                  <p className='title-company bg-white'>{sender.company}</p>
+                </div>
+              </article>
+              <p className='body-main bg-white'>{comment}</p>
+            </section>
           </div>
-        ) : (
-          <PublishButton slug={slug} />
-        )}
-      </main>
-    </div>
+          {published ? (
+            <div className='flex flex-col items-center'>
+              <p className='text-center button mt-10'>Applaud Published!</p>
+              <UnpublishButton slug={slug} />
+            </div>
+          ) : (
+            <PublishButton slug={slug} />
+          )}
+        </main>
+      </div>
   );
 };
 
