@@ -42,31 +42,41 @@
   .button {
     @apply font-josefin text-16 font-400;
   }
-  .name {
-    @apply font-josefin text-14 font-600 capitalize;
+  .sender {
+    @apply font-josefin text-12 font-600 capitalize;
   }
-  .title-company {
-    @apply font-avenir text-10 font-500;
+  .sender-info {
+    @apply font-avenir text-10 font-500 text-stone;
+  }
+  .send-date {
+    @apply font-avenir text-8 font-500 text-stone;
+  }
+  .receiver-name{
+    @apply font-josefin text-16 font-600 capitalize;
+  }
+  .receiver-info{
+    @apply font-avenir text-12 font-500 text-charcoal;
   }
   .small {
     @apply font-avenir text-10 font-500;
   }
 
+
   /* Applaud Card Layout */
   .applaud-card {
-    @apply flex flex-col p-4 mb-8 gap-2.5 border-solid border border-silver bg-white rounded-3xl;
+    @apply flex flex-col items-center justify-center p-2.5 mb-8 gap-5 border-solid border border-silver bg-white rounded-3xl;
   }
-  .sender-name-card {
-    @apply flex items-center justify-end gap-8 px-3.5 py-2 border-solid border bg-white border-silver rounded-2xl;
+  .sender-layout {
+    @apply flex items-center gap-2 px-3.5 py-2;
   }
-  .receiver-name-card {
-    @apply flex items-center gap-8 px-3.5 py-2 border-solid border border-silver rounded-2xl bg-paper;
+  .receiver-layout {
+    @apply flex flex-col items-center justify-center gap-2.5;
   }
-  .name-card-spacing {
-    @apply flex flex-col gap-1;
+  .receiver-spacing {
+    @apply ;
   }
   .profile-img {
-    @apply rounded-full outline outline-1 outline-silver;
+    @apply rounded-full;
   }
 
   /* Button */
@@ -90,8 +100,11 @@
   }
 
   /* Special */
-  .ombre-text {
+  /* .ombre-text {
     @apply text-transparent bg-clip-text bg-logo;
+  } */
+  .ombre-text {
+    @apply bg-transparent;
   }
 }
 
@@ -102,6 +115,7 @@
   --core-charcoal: #303030;
   --core-stone: #5a5a5a;
   --core-grey: #919191;
+  --core-hdr: #f6f6f67a;
   --core-silver: #b8b8b8;
   --core-light: #f6f6f6;
   --core-paper: #f8f6f2;
@@ -132,6 +146,9 @@
   box-sizing: border-box;
   text-decoration: none;
   color: var(--core-metal);
+}
+
+body {
   background-color: var(--core-light);
 }
 
@@ -202,5 +219,5 @@
 } */
 
 .header-background {
-  background-color: transparent;
+  background-color: gray, 0.5;
 }
