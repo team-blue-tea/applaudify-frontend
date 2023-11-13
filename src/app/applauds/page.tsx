@@ -39,7 +39,7 @@ const Applauds = () => {
           ></Image>
         </Link>
         <Link
-          className='header-btn'
+          className='header-nav'
           href='/compose'
         >
           New
@@ -72,22 +72,22 @@ const Applauds = () => {
                     href={`applauds/${applaud.id}`}
                     onClick={() => setApplaudRead(applaud.id as string)}
                   >
-                    <div className='flex justify-between w-full items-center bg-white'>
-                      <div className='flex items-center justify-center gap-5 bg-white'>
+                    <div className='flex justify-between w-full items-center'>
+                      <div className='flex items-center justify-center gap-5'>
                         {!applaud.read && (
-                          <h4 className='button text-blue bg-white'>•</h4>
+                          <h4 className='button text-blue'>•</h4>
                         )}
                         {
-                          <h4 className='button font-bold bg-white'>
+                          <h4 className='button font-bold'>
                             {firstName}
                           </h4>
                         }
                       </div>
-                      <p className='title-company bg-white'>
+                      <p className='small text-stone'>
                         {weekdayString}, {dateString}
                       </p>
                     </div>
-                    <p className='body-small pt-1 text-stone bg-white'>
+                    <p className='body-small pt-1 text-stone'>
                       {commentPreview}...
                     </p>
                   </Link>
@@ -97,33 +97,33 @@ const Applauds = () => {
           })}
           <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
             <Link href={'/applauds/hugo'}>
-              <div className='flex justify-between items-center bg-white'>
-                <h4 className='button font-bold bg-white'>Hugo</h4>
-                <p className='title-company bg-white'>Thu, May 24, 2023</p>
+              <div className='flex justify-between items-center'>
+                <h4 className='button font-bold'>Hugo</h4>
+                <p className='small text-stone'>Thu, May 24, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone bg-white'>
+              <p className='body-small pt-1 text-stone'>
                 {firstName} is a great developer! ...
               </p>
             </Link>
           </article>
           <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
             <Link href={'/applauds/vanessa'}>
-              <div className='flex justify-between items-center bg-white'>
-                <h4 className='button font-bold bg-white'>Vanessa</h4>
-                <p className='title-company bg-white'>Mon, Oct 16, 2023</p>
+              <div className='flex justify-between items-center'>
+                <h4 className='button font-bold'>Vanessa</h4>
+                <p className='small text-stone'>Mon, Oct 16, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone bg-white'>
+              <p className='body-small pt-1 text-stone'>
                 {firstName} is a talented and ...
               </p>
             </Link>
           </article>
           <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
             <Link href={'/applauds/ahsan'}>
-              <div className='flex justify-between items-center bg-white'>
-                <h4 className='button font-bold bg-white'>Ahsan</h4>
-                <p className='title-company bg-white'>Wed, Oct 18, 2023</p>
+              <div className='flex justify-between items-center'>
+                <h4 className='button font-bold'>Ahsan</h4>
+                <p className='small text-stone'>Wed, Oct 18, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone bg-white'>
+              <p className='body-small pt-1 text-stone'>
                 Working along side {firstName} on ...
               </p>
             </Link>
