@@ -14,6 +14,7 @@ const MemberProfile = () => {
   const [individualApplauds, setIndividualApplauds] = useState<ApplaudT[]>([]);
 
   const firstName = member?.name.split(' ')[0] as string;
+  const fullName = member?.name as string;
 
   useEffect(() => {
     (async () => {
@@ -45,12 +46,12 @@ const MemberProfile = () => {
               className='rounded-full border border-silver'
             ></Image>
             <div className='w-3/5'>
-              <h4 className='body-large'>{member?.name}</h4>
+              <h4 className='body-large'>{fullName}</h4>
               <p className='body-small'>{member?.jobTitle}</p>
               <p className='body-small'>{member?.company}</p>
             </div>
           </div>
-          <ProfileInfo name={member?.name} />
+          <ProfileInfo name={fullName} />
         </section>
         <h3 className='sub-title'>{firstName}&apos;s applauds</h3>
         <section className='flex flex-col w-full'>
