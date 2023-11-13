@@ -18,12 +18,12 @@ const UnpublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
   };
   return (
     <div ref={scope}>
-      <button
-        className='btn mt-10'
-        onClick={handlePublishClick}
-      >
-        Unpublish
-      </button>
+    <button
+      className='btn mt-10'
+      onClick={handlePublishClick}
+    >
+      Unpublish
+    </button>
     </div>
   );
 };
