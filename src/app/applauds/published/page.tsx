@@ -1,23 +1,28 @@
 'use client';
-import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const Published = () => {
-
   const router = useRouter();
 
   useEffect(() => {
-    (() => {
-      setTimeout(() => {
-        router.back();
-      }, 1000);
-    })();
+    const timeoutId = setTimeout(() => {
+      router.back();
+    }, 2000);
+    return () => clearTimeout(timeoutId);
   }, [router]);
 
   return (
-    <main className='flex justify-center items-center w-screen h-screen'>
-      <h2>Applaud published!</h2>
-    </main>
+    <motion.main
+      className='flex justify-center items-center w-screen h-screen'
+      animate={{
+        scale: [1, 2, 2, 1, 1],
+        rotate: [0, 0, 270, 270, 0],
+      }}
+    >
+      <motion.h2>Applaud published!</motion.h2>
+    </motion.main>
   );
 };
 
