@@ -6,7 +6,6 @@ import { ApplaudT } from '@/types/ApplaudT';
 import PublishButton from '@/components/PublishButton/PublishButton';
 import UnpublishButton from '@/components/UnpublishButton/UnpublishButton';
 import back from '@/assets/nav/back.png';
-import { AnimatePresence } from "framer-motion";
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
