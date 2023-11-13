@@ -5,8 +5,9 @@ import { getAllApplauds, getAllMembers, addNewMember } from '@/libs/DB';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
-import ApplaudCard from '@/components/ApplaudCard/ApplaudCard';
+import CardForHome from '@/components/CardForHome/CardForHome';
 import Header from '@/components/Header/Header';
+import Search from '@/components/Search/Search';
 
 const Home = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
@@ -39,12 +40,11 @@ const Home = () => {
   }, [session]);
 
   return (
-    <div className='flex flex-col mx-10 mt-14 gap-10'>
+    <div className='flex flex-col gap-10 mt-8'>
       <Header />
-      {/* <button className='search-btn w-full text-silver'>Search</button> */}
-      <main className='flex flex-col gap-8 mt-1'>
-        <h2 className='small-header'>applauds from everyone</h2>
-        <ApplaudCard applauds={applauds} />
+      <Search />
+      <main className='flex flex-col gap-8 mt-1 mx-10'>
+        <CardForHome applauds={applauds} />
       </main>
     </div>
   );
