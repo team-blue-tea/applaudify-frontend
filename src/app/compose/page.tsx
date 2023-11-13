@@ -8,19 +8,19 @@ import React, {
 } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import back from '@/assets/nav/back.png';
+import { useSession } from 'next-auth/react';
 import { getAllMembers, sendNewApplaud } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
-import { useSession } from 'next-auth/react';
 import { NewApplaudT } from '@/types/NewApplaudT';
+import back from '@/assets/nav/back.png';
 
 const Compose = () => {
-  const [members, setMembers] = useState<MemberT[]>([]);
-  const [applaudText, setApplaudText] = useState<string>('');
   const [searchValue, setSearchValue] = useState<string>('');
+  const [applaudText, setApplaudText] = useState<string>('Start a applaud here...');
+  const [members, setMembers] = useState<MemberT[]>([]);
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
-  const { data: session } = useSession();
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const { data: session } = useSession();
 
   const commentRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -93,17 +93,17 @@ const Compose = () => {
   };
 
   const handleFocus = () => {
-    setApplaudText('Start your applaud here...');
+    setApplaudText('Start a applaud here...');
   };
 
   const handleBlur = () => {
-    setApplaudText('Start your applaud here...');
+    setApplaudText('Start a applaud here...');
   };
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between items-center'>
-        <Link href='/home'>
+        <Link href='/applauds'>
           <Image
             src={back}
             alt='back'
@@ -113,7 +113,7 @@ const Compose = () => {
         </Link>
         {searchValue && filteredMembers.length > 0 ? (
           <button
-            className='text-center button w-20 px-2 py-1 border border-silver rounded-3xl'
+            className='header-nav'
             type='submit'
             form='sendApplaud'
             onClick={handleSubmit}
@@ -122,7 +122,7 @@ const Compose = () => {
           </button>
         ) : (
           <button
-            className='text-center text-silver w-20 px-2 py-1 border border-paper rounded-3xl'
+            className='header-nav text-silver'
             type='submit'
             form='sendApplaud'
             disabled
@@ -138,14 +138,14 @@ const Compose = () => {
         ref={formRef}
       >
         <div className='flex'>
-          <p className='border-b border-b-gray-200 button'>To:</p>
+          <p className='border-b border-silver button'>To:</p>
           <input
             type='text'
             value={searchValue}
             onChange={handleInputChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            className='border-b border-b-gray-200 button w-full caret-blue-500 focus:outline-none px-2'
+            className='border-b border-silver button w-full caret-blue-500 focus:outline-none px-2 bg-transparent'
           />
         </div>
         {searchValue &&
@@ -172,7 +172,7 @@ const Compose = () => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           ref={commentRef}
-          className='border rounded-3xl p-3 focus:outline-silver'
+          className='border border-silver rounded-3xl p-3 focus:outline-silver'
         />
       </form>
     </div>
