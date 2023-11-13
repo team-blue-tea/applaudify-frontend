@@ -1,33 +1,30 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { setApplaudUnpublished } from '@/libs/DB';
+import { useRouter } from 'next/navigation';
+import { useAnimate } from "framer-motion";
 
 type PublishButtonProps = {
   slug: string;
 };
 
 const UnpublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
+  const [scope, animate] = useAnimate();
+  const router = useRouter();
   const handlePublishClick = () => {
     setApplaudUnpublished(slug);
-    setTimeout(() => {
-      window.location.href = '/applauds/unpublished';
-    }, 500);
+    router.refresh();
+    window.location.reload();
   };
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     window.location.reload();
-  //   }, 100);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
   return (
-    <button
-      className='btn mt-10'
-      onClick={handlePublishClick}
-    >
-      Unpublish
-    </button>
+    <div ref={scope}>
+      <button
+        className='btn mt-10'
+        onClick={handlePublishClick}
+      >
+        Unpublish
+      </button>
+    </div>
   );
 };
 
