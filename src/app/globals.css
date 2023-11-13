@@ -200,3 +200,7 @@
   width: 100%;
   background-color: black;
 } */
+
+.header-background {
+  background-color: transparent;
+}

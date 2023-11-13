@@ -1,12 +1,12 @@
-'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useSession, signOut } from 'next-auth/react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Inbox from '@/components/Inbox/Inbox';
-import closeMenu from '@/assets/nav/close-menu.png';
-import logo from '@/assets/logo.png';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
+import { motion, AnimatePresence } from "framer-motion";
+import Inbox from "@/components/Inbox/Inbox";
+import closeMenu from "@/assets/nav/close-menu.png";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -17,26 +17,26 @@ const Header = () => {
 
   const navLinks = [
     {
-      text: 'Profile',
-      href: '/profile',
+      text: "Profile",
+      href: "/profile",
       condition: () => session,
     },
     {
-      text: 'About',
-      href: '/about',
-      target: '_blank',
-      rel: 'noopener noreferrer',
+      text: "About",
+      href: "/about",
+      target: "_blank",
+      rel: "noopener noreferrer",
     },
     {
-      text: 'Docs',
-      href: 'https://github.com/orgs/team-blue-tea/repositories',
-      target: '_blank',
-      rel: 'noopener noreferrer',
+      text: "Docs",
+      href: "https://github.com/orgs/team-blue-tea/repositories",
+      target: "_blank",
+      rel: "noopener noreferrer",
     },
     {
-      text: session ? 'Sign out' : 'Login / Signup',
-      href: session ? '' : '/login',
-      onClick: session ? () => signOut({ callbackUrl: '/' }) : undefined,
+      text: session ? "Sign out" : "Login / Signup",
+      href: session ? "" : "/login",
+      onClick: session ? () => signOut({ callbackUrl: "/" }) : undefined,
     },
   ];
 
@@ -77,7 +77,7 @@ const Header = () => {
   };
   const menuItemVariants = {
     initial: {
-      y: '30vh',
+      y: "30vh",
       transition: {
         duration: 0.5,
         ease: [0.37, 0, 0.63, 1],
@@ -93,40 +93,37 @@ const Header = () => {
   };
 
   return (
-    <header className='flex flex-col w-full justify-between items-center gap-3'>
-      <div className='flex w-full items-center justify-between'>
-        <Link href='/home'>
-          <h1 className='header ombre-text'>applaudify</h1>
+    <header className="sticky bg-opacity-50 top-0 pt-2 flex flex-col w-full justify-between items-center gap-3">
+      <div className="flex w-full bg-opacity-50 items-center justify-between">
+        <Link href="/home">
+          <h1 className="header ombre-text">applaudify</h1>
         </Link>
-        <div className='flex items-center gap-3'>
-          <div
-            className='header-nav'
-            onClick={toggleMenu}
-          >
+        <div className="flex header-background items-center gap-3">
+          <div className="header-nav" onClick={toggleMenu}>
             Menu
           </div>
           <AnimatePresence>
             {dropDown && (
               <motion.div
                 variants={menuVariants}
-                initial='initial'
-                animate='animate'
-                exit='exit'
-                className='origin-top h-screen w-full fixed left-0 top-0 gap-40 p-10 z-10'
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="origin-top h-screen w-full fixed left-0 top-0 gap-40 p-10 z-10"
               >
-                <div className='flex h-full flex-col'>
-                  <div className='flex justify-between'>
-                    <Link href='/'>
+                <div className="flex h-full flex-col">
+                  <div className="flex justify-between">
+                    <Link href="/">
                       <Image
                         src={logo}
-                        alt='logo'
+                        alt="logo"
                         width={30}
                         height={30}
                       ></Image>
                     </Link>
                     <Image
                       src={closeMenu}
-                      alt='close menu'
+                      alt="close menu"
                       width={30}
                       height={30}
                       onClick={toggleMenu}
@@ -134,10 +131,10 @@ const Header = () => {
                   </div>
                   <motion.div
                     variants={menuItemsContainerVariants}
-                    initial='initial'
-                    animate='open'
-                    exit='initial'
-                    className='flex flex-col h-full justify-center items-center gap-10'
+                    initial="initial"
+                    animate="open"
+                    exit="initial"
+                    className="flex flex-col h-full justify-center items-center gap-10"
                   >
                     {navLinks.map((link, index) => {
                       if (link.condition && !link.condition()) {
@@ -145,21 +142,21 @@ const Header = () => {
                       }
                       return (
                         <div
-                          className='overflow-hidden'
+                          className="overflow-hidden"
                           key={index + link.text}
                         >
                           <motion.div
                             variants={menuItemVariants}
-                            initial='initial'
-                            animate='open'
-                            exit='initial'
+                            initial="initial"
+                            animate="open"
+                            exit="initial"
                           >
                             <Link
                               href={link.href}
                               rel={link.rel}
                               target={link.target}
                               onClick={link.onClick}
-                              className='sub-title'
+                              className="sub-title"
                             >
                               {link.text}
                             </Link>
