@@ -16,7 +16,9 @@ import back from '@/assets/nav/back.png';
 
 const Compose = () => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const [applaudText, setApplaudText] = useState<string>('Start a applaud here...');
+  const [applaudText, setApplaudText] = useState<string>(
+    'Start a applaud here...'
+  );
   const [members, setMembers] = useState<MemberT[]>([]);
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -145,7 +147,7 @@ const Compose = () => {
             onChange={handleInputChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            className='border-b border-silver w-full bg-transparent'
+            className='border-b border-silver rounded-none w-full bg-transparent'
           />
         </div>
         {searchValue &&
