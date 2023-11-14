@@ -21,29 +21,37 @@ const CardForProfile: React.FC<CardForProfileProps> = ({ applauds }) => {
             day: 'numeric',
           });
           return (
-            <section key={applauds.indexOf(applaud)}>
-              <Link href={`/member/${sender.id}`}>
-                <article className='sender-layout'>
-                  <Image
-                    src={sender.avatarUrl}
-                    alt='Sender Profile'
-                    width={30}
-                    height={30}
-                    className='profile-img'
-                  ></Image>
-                  <div className='flex w-full justify-between items-end'>
-                    <div>
-                      <h4 className='sender'>{sender.name}</h4>
-                      <p className='sender-info'>
-                        {sender.jobTitle}, {sender.company}
-                      </p>
+            <section
+              key={applauds.indexOf(applaud)}
+              className='applaud-card'
+            >
+              <article className='flex flex-col items-center'>
+                <p className='send-date'>{dateString}</p>
+                <p className='p-2.5 body-main text-center'>
+                  &apos;{comment}&apos;
+                </p>
+              </article>
+              <article className='flex flex-col items-center'>
+                <p className='sender-info text-stone'>From</p>
+                <Link href={`/member/${sender.id}`}>
+                  <div className='sender-layout'>
+                    <Image
+                      src={sender.avatarUrl}
+                      alt='Sender Profile'
+                      width={30}
+                      height={30}
+                      className='profile-img'
+                    ></Image>
+                    <div className='flex w-full justify-between items-end'>
+                      <div>
+                        <h4 className='sender'>{sender.name}</h4>
+                        <p className='sender-info'>
+                          {sender.jobTitle}
+                        </p>
+                      </div>
                     </div>
-                    <p className='send-date'>{dateString}</p>
                   </div>
-                </article>
-              </Link>
-              <article className='applaud-card'>
-                <p className='p-2.5 body-main'>&apos;{comment}&apos;</p>
+                </Link>
               </article>
             </section>
           );
