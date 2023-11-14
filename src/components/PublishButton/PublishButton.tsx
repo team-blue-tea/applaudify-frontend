@@ -1,24 +1,21 @@
 'use client';
 import React from 'react';
-import { setApplaudPublished } from '@/libs/DB';
-import { useAnimate } from 'framer-motion';
-import { stagger } from 'framer-motion';
-import { animate } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-
-type AnimationSequence = Parameters<typeof animate>[0];
+import { setApplaudPublished } from '@/libs/DB';
+import { useAnimate, animate, stagger } from 'framer-motion';
 
 type PublishButtonProps = {
   slug: string;
 };
-
-const randomNumberBetween = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+type AnimationSequence = Parameters<typeof animate>[0];
 
 const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
   const router = useRouter();
   const [scope, animate] = useAnimate();
+
+  const randomNumberBetween = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
 
   const handlePublishClick = () => {
     setApplaudPublished(slug);
@@ -28,6 +25,7 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
     }, 300);
 
     const sparkles = Array.from({ length: 20 });
+
     const sparklesAnimation: AnimationSequence = sparkles.map((_, index) => [
       `.sparkle-${index}`,
       {
@@ -80,7 +78,6 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
       className='flex justify-center w-full'
     >
       <button
-        // className='relative border border-silver rounded-2xl px-2.5 py-1 w-2/3 mt-20'
         className='btn mt-20'
         onClick={handlePublishClick}
       >
@@ -112,6 +109,7 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
               viewBox='0 0 122 117'
               width='10'
               height='10'
+              // fill='var(--core-logo)'
             >
               <path d='M64.39,2,80.11,38.76,120,42.33a3.2,3.2,0,0,1,1.83,5.59h0L91.64,74.25l8.92,39a3.2,3.2,0,0,1-4.87,3.4L61.44,96.19,27.09,116.73a3.2,3.2,0,0,1-4.76-3.46h0l8.92-39L1.09,47.92A3.2,3.2,0,0,1,3,42.32l39.74-3.56L58.49,2a3.2,3.2,0,0,1,5.9,0Z' />
             </svg>
