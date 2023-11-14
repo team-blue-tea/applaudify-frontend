@@ -45,11 +45,20 @@
   .sender {
     @apply font-josefin text-12 font-600 capitalize;
   }
+  .sender-lg {
+    @apply font-josefin text-14 font-600 capitalize;
+  }
   .sender-info {
     @apply font-avenir text-10 font-500 text-stone;
   }
+  .sender-info-lg {
+    @apply font-avenir text-12 font-500 text-stone;
+  }
   .send-date {
     @apply font-avenir text-10 font-500 text-stone;
+  }
+  .send-date-lg {
+    @apply font-avenir text-12 font-500 text-stone;
   }
   .receiver-name {
     @apply font-josefin text-16 font-600 capitalize;
@@ -67,6 +76,9 @@
   }
   .sender-layout {
     @apply flex items-center gap-2 px-3.5 pt-2;
+  }
+  .sender-layout-lg {
+    @apply flex items-center gap-4 px-3.5 pt-4;
   }
   .receiver-layout {
     @apply flex flex-col w-full items-center justify-center p-2.5 gap-2.5 border-b border-silver/50;
@@ -164,7 +176,7 @@ body {
 
 .applaud-card-container {
   border-radius: 24px;
-  padding: 1.5px;
+  padding: 2px;
   background-image: var(--core-logo);
 }
 
@@ -173,8 +185,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  gap: 30px;
+  padding: 20px;
+  gap: 20px;
   border-radius: 24px;
   background: var(--core-white);
 }
