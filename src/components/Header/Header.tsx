@@ -93,7 +93,7 @@ const Header = () => {
   };
 
   return (
-    <header className='sticky top-0 px-10 py-2 backdrop-blur-sm flex flex-col w-full justify-between items-center gap-3 z-10'>
+    <header className='sticky top-0 px-10 py-2 backdrop-blur-xl border-b bg-light/50 border-silver/50 flex flex-col w-full justify-between items-center gap-3 z-10'>
       <div className='flex w-full bg-transparent items-center justify-between'>
         <Link href='/'>
           <h1 className='header ombre-text'>applaudify</h1>
@@ -118,12 +118,6 @@ const Header = () => {
                   <div className='flex justify-between items-center'>
                     <Link href='/'>
                       <h1 className='header ombre-text'>applaudify</h1>
-                      {/* <Image
-                        src={logo}
-                        alt='logo'
-                        width={30}
-                        height={30}
-                      ></Image> */}
                     </Link>
                     <Image
                       src={closeMenu}
@@ -173,7 +167,12 @@ const Header = () => {
               </motion.div>
             )}
           </AnimatePresence>
-          {session && <Inbox session={session} />}
+          <Link
+            href='/profile'
+            className='header-nav'
+          >
+            Profile
+          </Link>
         </div>
       </div>
     </header>
