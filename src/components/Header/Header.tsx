@@ -14,11 +14,11 @@ const Header = () => {
   };
 
   const navLinks = [
-    {
-      text: 'Profile',
-      href: '/profile',
-      condition: () => session,
-    },
+    // {
+    //   text: 'Profile',
+    //   href: '/profile',
+    //   condition: () => session,
+    // },
     {
       text: 'About',
       href: '/about',
@@ -136,9 +136,9 @@ const Header = () => {
                     className='flex flex-col h-full justify-center items-center gap-10'
                   >
                     {navLinks.map((link, index) => {
-                      if (link.condition && !link.condition()) {
-                        return null;
-                      }
+                      // if (link.condition && !link.condition()) {
+                      //   return null;
+                      // }
                       return (
                         <div
                           className='overflow-hidden'

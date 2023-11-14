@@ -138,14 +138,14 @@ const Compose = () => {
         ref={formRef}
       >
         <div className='flex'>
-          <p className='border-b border-silver button'>To:</p>
+          <p className='border-b border-silver'>To:</p>
           <input
             type='text'
             value={searchValue}
             onChange={handleInputChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            className='border-b border-silver button w-full caret-blue-500 focus:outline-none px-2 bg-transparent'
+            className='border-b border-silver w-full caret-blue-500 focus:outline-none px-2 bg-transparent'
           />
         </div>
         {searchValue &&
