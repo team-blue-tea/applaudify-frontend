@@ -14,7 +14,7 @@ const Landing = () => {
         <section className='flex flex-col items-center gap-8'>
           <h1 className='title-logo'>applaudify</h1>
           <h3 className='sub-title text-center text-charcoal'>
-            Where achievements get applauded
+            where achievements get applauded
           </h3>
           <p className='body-main text-stone text-center'>
             Collect, manage, and showcase your professional testimonials -
