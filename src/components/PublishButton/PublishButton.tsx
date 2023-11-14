@@ -41,7 +41,7 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
         at: '<',
       },
     ]);
-    const sparklesFadeOut = sparkles.map((_, index) => [
+    const sparklesFadeOut: AnimationSequence = sparkles.map((_, index) => [
       `.sparkle-${index}`,
       {
         opacity: 0,
@@ -94,7 +94,7 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
               className='letter relative inline-block h-8 leading-8
               after:absolute after:left-0 after:top-full after:h-8
               after:content-[attr(data-letter)]'
-              key={`${letter}-${index}`}
+              key={`${letter}-${index}`} 
             >
               {letter}
             </span>

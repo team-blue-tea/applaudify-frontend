@@ -149,7 +149,7 @@
 }
 
 body {
-  /* background-color: var(--core-light); */
+  background-color: var(--core-light);
 }
 
 .counter-border {
