@@ -172,7 +172,7 @@ const Compose = () => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           ref={commentRef}
-          className='border border-silver rounded-3xl p-3 focus:outline-silver'
+          className='border border-silver rounded-3xl p-3'
         />
       </form>
     </div>
