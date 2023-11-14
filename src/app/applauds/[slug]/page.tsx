@@ -12,7 +12,7 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const applauds = (await getAllApplauds()) as ApplaudT[];
   const filteredApplaud = applauds.filter((applaud) => applaud.id === slug);
 
-  const { sender, comment, published, createdAt } = filteredApplaud[0];
+  const { sender,  comment, published, createdAt } = filteredApplaud[0];
   const date = new Date(createdAt);
   const dateString = date.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -34,31 +34,35 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
         <h4 className='body-main'>Applaud from {sender.name.split(' ')[0]}</h4>
         <div></div>
       </header>
-      <main className='flex flex-col items-center'>
-        <div className='applaud-card-container mt-14'>
+      <main className='flex flex-col items-center mt-10'>
+        <div className='applaud-card-container'>
           <section className='applaud-card-ombre'>
-            <article className='flex flex-col items-center'>
-              <p className='send-date'>{dateString}</p>
-              <p className='p-2.5 body-main text-center'>&apos;{comment}&apos;</p>
+            <article className='flex flex-col items-center gap-2'>
+              <p className='send-date-lg'>{dateString}</p>
+              <p className='p-2.5 body-main text-center'>
+                &apos;{comment}&apos;
+              </p>
             </article>
             <article className='flex flex-col items-center'>
-              <p className='sender-info text-stone'>From</p>
-              <div className='sender-layout'>
-                <Image
-                  src={sender.avatarUrl}
-                  alt='Sender Profile'
-                  width={60}
-                  height={60}
-                  className='rounded-full'
-                ></Image>
-                <div className='flex w-full justify-between items-end'>
-                  <div>
-                    <h4 className='receiver-name'>{sender.name}</h4>
-                    <p className='receiver-info'>{sender.jobTitle}</p>
-                    <p className='receiver-info'>{sender.company}</p>
+              <p className='sender-info-lg text-stone'>From</p>
+              <Link href={`/member/${sender.id}`}>
+                <div className='sender-layout-lg'>
+                  <Image
+                    src={sender.avatarUrl}
+                    alt='Sender Profile'
+                    width={50}
+                    height={50}
+                    className='rounded-full'
+                  ></Image>
+                  <div className='flex w-full justify-between items-end'>
+                    <div>
+                      <h4 className='sender-lg'>{sender.name}</h4>
+                      <p className='sender-info-lg'>{sender.jobTitle}</p>
+                      <p className='sender-info-lg'>{sender.company}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </article>
           </section>
         </div>
