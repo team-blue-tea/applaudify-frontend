@@ -8,7 +8,7 @@ import github from '@/assets/login/github.png';
 
 const Login = () => {
   return (
-    <div className='flex flex-col mx-10 my-10 gap-10'>
+    <div className='flex flex-col mx-10 my-14 gap-10'>
       <header className='flex justify-start'>
         <Link href={'/'}>
         <Image
@@ -20,9 +20,9 @@ const Login = () => {
         </Link>
       </header>
       <div className='flex flex-col items-center gap-36'>
-        <div className='flex flex-col gap-10'>
+        <div className='flex flex-col gap-5'>
           <h1 className='title-logo ombre-text'>applaudify</h1>
-          <h3 className='sub-title text-center text-charcoal'>
+          <h3 className='small-header text-center text-charcoal'>
             login / signup
           </h3>
         </div>

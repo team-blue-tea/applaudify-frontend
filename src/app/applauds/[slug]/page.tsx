@@ -67,7 +67,7 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
           </section>
         </div>
         {published ? (
-          <div className='flex flex-col items-center w-full'>
+          <div className='flex flex-col items-center w-full mt-5'>
             <p className='body-small mt-5 text-silver'>Published Applaud</p>
             <UnpublishButton slug={slug} />
           </div>

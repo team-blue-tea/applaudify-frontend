@@ -23,7 +23,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ name }) => {
             key={item.label}
             className={`${
               item === selectedTab ? 'profile-button clicked' : 'profile-button'
-            } w-24 p-2 border border-silver rounded-3xl`}
+            } w-24 p-2 border border-silver/50 rounded-3xl body-small`}
             onClick={() => {
               handleTabClick(item.label);
               setSelectedTab(item);

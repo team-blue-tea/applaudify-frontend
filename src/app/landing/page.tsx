@@ -23,14 +23,14 @@ const Landing = () => {
           {!session ? (
             <Link
               href='/login'
-              className='button start-btn'
+              className='body-main start-btn'
             >
-              Let&apos;s Start
+              Let&apos;s Start !
             </Link>
           ) : (
             <Link
               href='/home'
-              className='button start-btn'
+              className='body-main start-btn'
             >
               Return to Applauds
             </Link>
@@ -83,14 +83,14 @@ const Landing = () => {
         {!session ? (
           <Link
             href='/login'
-            className='button start-btn'
+            className='body-main start-btn'
           >
-            Let&apos;s Start
+            Let&apos;s Start !
           </Link>
         ) : (
           <Link
             href='/home'
-            className='button start-btn'
+            className='body-main start-btn'
           >
             Return to Applauds
           </Link>

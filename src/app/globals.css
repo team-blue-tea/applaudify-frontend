@@ -92,22 +92,22 @@
 
   /* Button */
   .header-btn {
-    @apply flex items-center border-solid border border-silver/50 rounded-2xl px-2.5 py-1 h-8 bg-white;
+    @apply flex items-center border-solid border border-silver/50 rounded-3xl px-2.5 py-1 h-8 bg-white;
   }
   .start-btn {
-    @apply flex items-center justify-center w-full border-solid border border-silver rounded-2xl p-2.5 bg-white;
+    @apply flex items-center justify-center w-full border-solid border border-silver/50 rounded-3xl p-2.5 bg-white;
   }
   .login-btn {
-    @apply flex items-center justify-between w-2/3 border-solid border border-silver rounded-2xl px-5 py-2.5 bg-white;
+    @apply flex items-center justify-between w-2/3 border-solid border border-silver rounded-3xl px-5 py-2.5 bg-white;
   }
   .search-btn {
-    @apply flex items-center justify-center border-solid border border-light rounded-2xl px-2.5 py-1 h-8 bg-white;
+    @apply flex items-center justify-center border-solid border border-light rounded-3xl px-2.5 py-1 h-8 bg-white;
   }
   .btn {
-    @apply flex items-center justify-center w-2/3 border-solid border border-silver rounded-2xl px-2.5 py-1 h-10 bg-white;
+    @apply flex items-center justify-center w-2/3 border-solid border border-silver rounded-3xl px-2.5 py-1 h-10 bg-white;
   }
   .skill-btn {
-    @apply flex items-center border-solid border border-silver rounded-2xl px-2.5 py-1 h-8 body-skill;
+    @apply flex items-center border-solid border border-silver rounded-3xl px-2.5 py-1 h-8 body-skill;
   }
 
   .ombre-text {
