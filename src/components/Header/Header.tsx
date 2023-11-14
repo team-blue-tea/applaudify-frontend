@@ -38,29 +38,6 @@ const Header = () => {
     },
   ];
 
-  // const menuVariants = {
-  //   initial: {
-  //     scaleY: 0,
-  //   },
-  //   animate: {
-  //     scaleY: 1,
-  //     transition: {
-  //       duration: 0.3,
-  //       // ease: [0.12, 0, 0.39, 0],
-  //       ease: [1, 0, 1, 0],
-  //     },
-  //   },
-  //   exit: {
-  //     scaleY: 0,
-  //     transition: {
-  //       delay: 0.5,
-  //       duration: 0.3,
-  //       // ease: [0.22, 1, 0.36, 1],
-  //       ease: [0, 1, 0, 1],
-  //     },
-  //   },
-  // };
-
   const menuVariants = {
     initial: {
       opacity: 0,
@@ -82,34 +59,35 @@ const Header = () => {
       },
     },
   };
-  
+
   const menuItemsContainerVariants = {
     initial: {
       transition: {
-        staggerChildren: 0.9,
+        staggerChildren: 0.45,
         staggerDirection: -1,
       },
     },
     open: {
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        delayChildren: 0.15,
+        staggerChildren: 0.1,
         staggerDirection: 1,
       },
     },
   };
+
   const menuItemVariants = {
     initial: {
       y: '30vh',
       transition: {
-        duration: 0.5,
+        duration: 0.25,
         ease: [0.37, 0, 0.63, 1],
       },
     },
     open: {
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.35,
         ease: [0, 0.55, 0.45, 1],
       },
     },
