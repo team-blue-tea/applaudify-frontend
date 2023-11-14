@@ -147,7 +147,7 @@ const Compose = () => {
             onChange={handleInputChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            className='border-b border-silver rounded-none w-full bg-transparent'
+            className='border-b border-silver w-full bg-transparent rounded-none'
           />
         </div>
         {searchValue &&
