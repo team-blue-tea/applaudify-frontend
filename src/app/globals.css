@@ -49,31 +49,39 @@
     @apply font-avenir text-10 font-500 text-stone;
   }
   .send-date {
-    @apply font-avenir text-8 font-500 text-stone;
+    @apply font-avenir text-10 font-500 text-stone;
   }
-  .receiver-name{
+  .receiver-name {
     @apply font-josefin text-16 font-600 capitalize;
   }
-  .receiver-info{
+  .receiver-info {
     @apply font-avenir text-12 font-500 text-charcoal;
   }
   .small {
     @apply font-avenir text-10 font-500;
   }
 
-
   /* Applaud Card Layout */
   .applaud-card {
-    @apply flex flex-col items-center justify-center p-2.5 mb-8 gap-5 border-solid border border-silver bg-white rounded-3xl;
+    @apply flex flex-col items-center justify-center p-4 mb-8 gap-5 border-solid border border-silver/50 bg-white rounded-3xl;
   }
-  .sender-layout {
+  /* .sender-layout {
     @apply flex items-center gap-2 px-3.5 py-2;
   }
   .receiver-layout {
     @apply flex flex-col items-center justify-center gap-2.5;
   }
   .receiver-spacing {
-    @apply ;
+    @apply;
+  } */
+  .sender-layout {
+    @apply flex items-center gap-2 px-3.5 pt-2;
+  }
+  .receiver-layout {
+    @apply flex flex-col w-full items-center justify-center p-2.5 gap-2.5 border-b border-silver/50;
+  }
+  .receiver-spacing {
+    @apply;
   }
   .profile-img {
     @apply rounded-full;
@@ -81,7 +89,7 @@
 
   /* Button */
   .header-btn {
-    @apply flex items-center border-solid border border-silver rounded-2xl px-2.5 py-1 h-8 bg-white;
+    @apply flex items-center border-solid border border-silver/50 rounded-2xl px-2.5 py-1 h-8 bg-white;
   }
   .start-btn {
     @apply flex items-center justify-center w-full border-solid border border-silver rounded-3xl p-2.5 bg-white;
@@ -114,7 +122,8 @@
   --core-metal: #0d0d0d;
   --core-charcoal: #303030;
   --core-stone: #5a5a5a;
-  --core-grey: #919191;
+  --core-gray: #919191;
+  --core-hdrln: rgba(178, 178, 178, 0.856);
   --core-hdr: #f6f6f67a;
   --core-silver: #b8b8b8;
   --core-light: #f6f6f6;
