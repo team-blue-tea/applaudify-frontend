@@ -21,50 +21,54 @@ const CardForHome: React.FC<CardForHomeProps> = ({ applauds }) => {
             day: 'numeric',
           });
           return (
-            <section key={applauds.indexOf(applaud)}>
-              <Link href={`/member/${sender.id}`}>
-                <article className='sender-layout'>
+            <section
+              key={applauds.indexOf(applaud)}
+              className='applaud-card'
+            >
+              <Link href={`/member/${receiver.id}`}>
+                <article className='receiver-layout'>
                   <Image
-                    src={sender.avatarUrl}
-                    alt='Sender Profile'
-                    width={30}
-                    height={30}
+                    src={receiver.avatarUrl}
+                    alt='Receiver Profile'
+                    width={60}
+                    height={60}
                     className='profile-img'
                   ></Image>
-                  <div className='flex w-full justify-between items-end'>
-                    <div>
-                      <h4 className='sender'>{sender.name}</h4>
-                      <p className='sender-info'>
-                        {sender.jobTitle}, {sender.company}
-                      </p>
-                    </div>
-                    <p className='send-date'>{dateString}</p>
+                  <div>
+                    <h4 className='receiver-name text-center'>
+                      {receiver.name}
+                    </h4>
+                    <p className='receiver-info text-center'>
+                      {receiver.jobTitle}
+                    </p>
+                    <p className='receiver-info text-center'>
+                      {receiver.company}
+                    </p>
                   </div>
                 </article>
               </Link>
-              <article className='applaud-card'>
-                <p className='p-2.5 body-main'>&apos;{comment}&apos;</p>
-                <Link href={`/member/${receiver.id}`}>
-                  <article className='receiver-layout'>
+              <p className='send-date'>{dateString}</p>
+              <p className='p-2.5 body-main text-center'>
+                &apos;{comment}&apos;
+              </p>
+              <article className='flex flex-col items-center'>
+                <p className='sender-info text-stone'>From</p>
+                <Link href={`/member/${sender.id}`}>
+                  <div className='sender-layout'>
                     <Image
-                      src={receiver.avatarUrl}
-                      alt='Receiver Profile'
-                      width={60}
-                      height={60}
+                      src={sender.avatarUrl}
+                      alt='Sender Profile'
+                      width={30}
+                      height={30}
                       className='profile-img'
                     ></Image>
-                    <div>
-                      <h4 className='receiver-name text-center'>
-                        {receiver.name}
-                      </h4>
-                      <p className='receiver-info text-center'>
-                        {receiver.jobTitle}
-                      </p>
-                      <p className='receiver-info text-center'>
-                        {receiver.company}
-                      </p>
+                    <div className='flex w-full justify-between items-end'>
+                      <div>
+                        <h4 className='sender'>{sender.name}</h4>
+                        <p className='sender-info'>{sender.jobTitle}</p>
+                      </div>
                     </div>
-                  </article>
+                  </div>
                 </Link>
               </article>
             </section>
