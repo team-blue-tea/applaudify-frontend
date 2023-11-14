@@ -38,26 +38,51 @@ const Header = () => {
     },
   ];
 
+  // const menuVariants = {
+  //   initial: {
+  //     scaleY: 0,
+  //   },
+  //   animate: {
+  //     scaleY: 1,
+  //     transition: {
+  //       duration: 0.3,
+  //       // ease: [0.12, 0, 0.39, 0],
+  //       ease: [1, 0, 1, 0],
+  //     },
+  //   },
+  //   exit: {
+  //     scaleY: 0,
+  //     transition: {
+  //       delay: 0.5,
+  //       duration: 0.3,
+  //       // ease: [0.22, 1, 0.36, 1],
+  //       ease: [0, 1, 0, 1],
+  //     },
+  //   },
+  // };
+
   const menuVariants = {
     initial: {
-      scaleY: 0,
+      opacity: 0,
+      scale: 0.95
     },
     animate: {
-      scaleY: 1,
+      opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.5,
-        ease: [0.12, 0, 0.39, 0],
+        duration: 0.2,
+        ease: "easeInOut"
       },
     },
     exit: {
-      scaleY: 0,
+      opacity: 0,
       transition: {
-        delay: 0.5,
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.2,
+        ease: "easeInOut"
       },
     },
   };
+  
   const menuItemsContainerVariants = {
     initial: {
       transition: {
