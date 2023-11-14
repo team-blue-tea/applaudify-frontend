@@ -9,6 +9,7 @@ import MockAppluadCards from '@/components/MockAppluadCards/MockAppluadCards';
 import ProfileInfo from '@/components/ProfileInfo/ProfileInfo';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
+import Inbox from '@/components/Inbox/Inbox';
 
 const Profile = () => {
   const [member, setMember] = useState<MemberT>();
@@ -38,20 +39,25 @@ const Profile = () => {
       <Header />
       <main className='flex flex-col items-center gap-10 mx-10'>
         <section className='flex flex-col gap-8 items-center w-full'>
-          <div className='flex items-center justify-center w-full gap-8 px-2 py-3'>
-            {session && (
-              <Image
-                src={imageURL}
-                alt='Profile photo'
-                width={88}
-                height={88}
-                className='rounded-full border border-silver'
-              ></Image>
-            )}
-            <div className='w-3/5'>
-              <h4 className='body-large'>{member?.name}</h4>
-              <p className='body-small'>{member?.jobTitle}</p>
-              <p className='body-small'>{member?.company}</p>
+          <div className='flex w-full flex-col gap-3'>
+            <div className='flex justify-end'>
+              {session && <Inbox session={session} />}
+            </div>
+            <div className='flex items-center justify-center w-full gap-8 px-2 py-3'>
+              {session && (
+                <Image
+                  src={imageURL}
+                  alt='Profile photo'
+                  width={88}
+                  height={88}
+                  className='rounded-full border border-silver'
+                ></Image>
+              )}
+              <div className='w-3/5'>
+                <h4 className='body-large'>{member?.name}</h4>
+                <p className='body-small'>{member?.jobTitle}</p>
+                <p className='body-small'>{member?.company}</p>
+              </div>
             </div>
           </div>
           <ProfileInfo name={name} />
