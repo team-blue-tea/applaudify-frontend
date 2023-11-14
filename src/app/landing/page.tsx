@@ -8,7 +8,7 @@ const Landing = () => {
   const { data: session } = useSession();
 
   return (
-    <div className='flex flex-col items-center my-10'>
+    <div className='flex flex-col items-center mt-4'>
       <Header />
       <main className='flex flex-col gap-20 mt-20 mx-10'>
         <section className='flex flex-col items-center gap-8'>

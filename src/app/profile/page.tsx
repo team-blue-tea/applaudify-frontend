@@ -35,7 +35,7 @@ const Profile = () => {
   }, [session]);
 
   return (
-    <div className='flex flex-col mt-14 gap-10'>
+    <div className='flex flex-col mt-4 gap-10'>
       <Header />
       <main className='flex flex-col items-center gap-10 mx-10'>
         <section className='flex flex-col gap-8 items-center w-full'>

@@ -7,7 +7,7 @@ const Home = async () => {
   const applauds = await getAllApplauds();
 
   return (
-    <div className='flex flex-col gap-10 mt-8'>
+    <div className='flex flex-col gap-10 mt-4'>
       <Header />
       <NewMemberCheck />
       <main className='flex flex-col gap-8 mt-1 mx-10'>
