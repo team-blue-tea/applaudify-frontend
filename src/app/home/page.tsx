@@ -11,6 +11,7 @@ const Home = async () => {
       <Header />
       <NewMemberCheck />
       <main className='flex flex-col gap-8 mt-1 mx-10'>
+        <h1 className='small-header'>👏 Spotlights</h1>
         <CardForHome applauds={applauds} />
       </main>
     </div>

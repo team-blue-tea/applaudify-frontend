@@ -113,7 +113,7 @@ const Header = () => {
                 initial='initial'
                 animate='animate'
                 exit='exit'
-                className='origin-top h-screen w-full fixed left-0 top-0 gap-40 p-10 z-10 bg-light'
+                className='origin-top h-screen w-full fixed left-0 top-0 gap-40 px-10 py-4 z-10 bg-light'
               >
                 <div className='flex h-full flex-col'>
                   <div className='flex justify-between items-center'>
@@ -136,9 +136,6 @@ const Header = () => {
                     className='flex flex-col h-full justify-center items-center gap-10'
                   >
                     {navLinks.map((link, index) => {
-                      // if (link.condition && !link.condition()) {
-                      //   return null;
-                      // }
                       return (
                         <div
                           className='overflow-hidden'
