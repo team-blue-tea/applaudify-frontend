@@ -80,7 +80,8 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
       className='flex justify-center w-full'
     >
       <button
-        className='relative border border-silver rounded-3xl px-5 py-2.5 w-2/3 mt-20'
+        // className='relative border border-silver rounded-2xl px-2.5 py-1 w-2/3 mt-20'
+        className='btn mt-20'
         onClick={handlePublishClick}
       >
         <span className='sr-only'>Publish</span>
@@ -94,7 +95,7 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
               className='letter relative inline-block h-8 leading-8
               after:absolute after:left-0 after:top-full after:h-8
               after:content-[attr(data-letter)]'
-              key={`${letter}-${index}`} 
+              key={`${letter}-${index}`}
             >
               {letter}
             </span>
@@ -102,11 +103,11 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
         </span>
         <span
           aria-hidden
-          className='pointer-events-none absolute inset-0 -z-10 block'
+          className='rounded-3xl pointer-events-none absolute inset-0 -z-10 block'
         >
           {Array.from({ length: 20 }).map((_, index) => (
             <svg
-              className={`absolute fill-blue left-1/2 top-1/2 opacity-0 sparkle-${index}`}
+              className={`absolute logo-ombre left-1/2 top-1/2 opacity-0 sparkle-${index}`}
               key={index}
               viewBox='0 0 122 117'
               width='10'
