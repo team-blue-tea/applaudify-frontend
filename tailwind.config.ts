@@ -9,6 +9,7 @@ const config: Config = {
         metal: '#0d0d0d',
         charcoal: '#303030',
         stone: '#5a5a5a',
+        hdrln: 'rgba(178, 178, 178, 0.856)',
         gray: '#919191',
         silver: '#b8b8b8',
         light: '#f6f6f6',
