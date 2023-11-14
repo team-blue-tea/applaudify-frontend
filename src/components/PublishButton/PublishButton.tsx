@@ -22,7 +22,7 @@ const PublishButton: React.FC<PublishButtonProps> = ({ slug }) => {
     setTimeout(() => {
       router.refresh();
       window.location.reload();
-    }, 300);
+    }, 800);
 
     const sparkles = Array.from({ length: 20 });
 
