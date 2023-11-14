@@ -12,7 +12,13 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const applauds = (await getAllApplauds()) as ApplaudT[];
   const filteredApplaud = applauds.filter((applaud) => applaud.id === slug);
 
-  const { sender, comment, published } = filteredApplaud[0];
+  const { sender, comment, published, createdAt } = filteredApplaud[0];
+  const date = new Date(createdAt);
+  const dateString = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
@@ -29,28 +35,36 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
         <div></div>
       </header>
       <main className='flex flex-col items-center'>
-        <div className='single-applaud-border mt-14'>
-          <section className='flex flex-col gap-8 single-applaud small px-4 py-8 p-2'>
-            <article className='flex items-center bg-white gap-8'>
-              <Image
-                src={sender.avatarUrl}
-                alt='Sender Profile'
-                width={61}
-                height={61}
-                className='rounded-full'
-              ></Image>
-              <div className='flex flex-col'>
-                <h4 className='name bg-white'>{sender.name}</h4>
-                <p className='title-company bg-white'>{sender.jobTitle}</p>
-                <p className='title-company bg-white'>{sender.company}</p>
+        <div className='applaud-card-container mt-14'>
+          <section className='applaud-card-ombre'>
+            <article className='flex flex-col items-center'>
+              <p className='send-date'>{dateString}</p>
+              <p className='p-2.5 body-main text-center'>&apos;{comment}&apos;</p>
+            </article>
+            <article className='flex flex-col items-center'>
+              <p className='sender-info text-stone'>From</p>
+              <div className='sender-layout'>
+                <Image
+                  src={sender.avatarUrl}
+                  alt='Sender Profile'
+                  width={60}
+                  height={60}
+                  className='rounded-full'
+                ></Image>
+                <div className='flex w-full justify-between items-end'>
+                  <div>
+                    <h4 className='receiver-name'>{sender.name}</h4>
+                    <p className='receiver-info'>{sender.jobTitle}</p>
+                    <p className='receiver-info'>{sender.company}</p>
+                  </div>
+                </div>
               </div>
             </article>
-            <p className='body-main bg-white'>{comment}</p>
           </section>
         </div>
         {published ? (
           <div className='flex flex-col items-center w-full'>
-            <p className='text-center button mt-10'>Applaud Published!</p>
+            <p className='body-small mt-10 text-silver'>Published Applaud</p>
             <UnpublishButton slug={slug} />
           </div>
         ) : (
