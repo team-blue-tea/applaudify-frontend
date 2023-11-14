@@ -1,62 +1,73 @@
 'use client';
-import React, { useState, useEffect, ChangeEvent, FormEvent, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  ChangeEvent,
+  FormEvent,
+  useRef,
+} from 'react';
+import { getAllMembers } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
-import { getAllMembers, getAllApplauds } from '@/libs/DB';
+import { ApplaudT } from '@/types/ApplaudT';
+import CardForHome from '../CardForHome/CardForHome';
 
-const Search = () => {
-  const [searchValue, setSearchValue] = useState<string>('');
+const SearchComponent = () => {
+  const [applauds, setApplauds] = useState<ApplaudT[]>([]);
   const [members, setMembers] = useState<MemberT[]>([]);
+  const [searchValue, setSearchValue] = useState<string>('');
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    getAllMembers()
-      .then((members) => {
-        setMembers(members);
-      })
-      .catch((error) => {
-        console.error('Error fetching members:', error);
-      });
+    (async () => {
+      const members = await getAllMembers();
+      setMembers(members);
+    })();
   }, []);
 
-  useEffect(() => {
-    setFilteredMembers(
-      members.filter((member) =>
-        member.name.toLowerCase().includes(searchValue.toLowerCase())
-      )
-    );
-  }, [searchValue, members]);
+  setFilteredMembers(
+    members.filter((member) =>
+      member.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+  );
 
   const handleMemberSelect = (name: string) => {
     setSearchValue(name);
+    setApplauds(
+      applauds.filter(
+        (applaud) =>
+          applaud.receiver.name === name || applaud.sender.name === name
+      )
+    );
+  };
+
+  const handleReset = (e: FormEvent) => {
+    e.preventDefault();
+    setApplauds(applauds);
+    setSearchValue('');
+    const form = formRef.current;
+    form?.reset();
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
-
-  const handleReset = () => {
-    const form = formRef.current;
-    form?.reset();
-    const applauds = getAllApplauds();
-  }
-
   return (
     <>
       <form
-        id='searchMember'
         className='flex flex-col gap-3 items-center mx-10'
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleReset(e);
+        }}
       >
         <input
           type='text'
           value={searchValue}
           onChange={handleInputChange}
-          placeholder='Search Applauds by Member..'
-          className='border rounded-2xl border-silver button w-full caret-blue-500 focus:outline-none px-2 bg-transparent'
+          placeholder='Search'
+          className='header-btn header-nav w-2/3'
         />
         {searchValue &&
           filteredMembers.length > 0 &&
@@ -75,9 +86,22 @@ const Search = () => {
         {searchValue && filteredMembers.length === 0 && (
           <div>No Member found</div>
         )}
+        {searchValue &&
+          filteredMembers.length === 1 &&
+          searchValue === filteredMembers[0].name && (
+            <button
+              className='search-btn header-nav w-1/2'
+              onClick={handleReset}
+              type='submit'
+              form='searchMember'
+            >
+              Reset
+            </button>
+          )}
       </form>
+      <CardForHome applauds={applauds} />
     </>
   );
 };
 
-export default Search;
+export default SearchComponent;
