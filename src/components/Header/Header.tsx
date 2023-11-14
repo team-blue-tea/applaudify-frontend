@@ -4,9 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Inbox from '@/components/Inbox/Inbox';
 import closeMenu from '@/assets/nav/close-menu.png';
-import logo from '@/assets/logo.png';
 
 const Header = () => {
   const { data: session } = useSession();
@@ -93,7 +91,7 @@ const Header = () => {
   };
 
   return (
-    <header className='sticky top-0 px-10 py-2 backdrop-blur-xl border-b bg-light/50 border-silver/50 flex flex-col w-full justify-between items-center gap-3 z-10'>
+    <header className='sticky top-0 px-10 py-4 backdrop-blur-xl border-b bg-light/50 border-silver/50 flex flex-col w-full justify-between items-center gap-3 z-10'>
       <div className='flex w-full bg-transparent items-center justify-between'>
         <Link href='/'>
           <h1 className='header ombre-text'>applaudify</h1>
@@ -167,12 +165,21 @@ const Header = () => {
               </motion.div>
             )}
           </AnimatePresence>
-          <Link
-            href='/profile'
-            className='header-nav'
-          >
-            Profile
-          </Link>
+          {session ? (
+            <Link
+              href='/profile'
+              className='header-nav'
+            >
+              Profile
+            </Link>
+          ) : (
+            <Link
+              href='/login'
+              className='header-nav'
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </header>
