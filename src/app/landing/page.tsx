@@ -8,7 +8,7 @@ import Header from '@/components/Header/Header';
 const Landing = () => {
   // const { data: session } = useSession();
   const session = getServerSession();
-  console.log(session);
+  // console.log(session);
 
   return (
     <div className='flex flex-col items-center mt-4'>
