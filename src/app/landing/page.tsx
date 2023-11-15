@@ -1,11 +1,14 @@
-'use client';
+// 'use client';
 import React from 'react';
 import { signOut, useSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import Header from '@/components/Header/Header';
 
 const Landing = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
+  const session = getServerSession();
+  console.log(session);
 
   return (
     <div className='flex flex-col items-center mt-4'>
@@ -20,21 +23,12 @@ const Landing = () => {
             Collect, manage, and showcase your professional testimonials -
             because every applaud matters.
           </p>
-          {!session ? (
-            <Link
-              href='/login'
-              className='body-main start-btn'
-            >
-              Let&apos;s Start !
-            </Link>
-          ) : (
-            <Link
-              href='/home'
-              className='body-main start-btn'
-            >
-              Return to Applauds
-            </Link>
-          )}
+          <Link
+            href='/login'
+            className='body-main start-btn'
+          >
+            Let&apos;s Start !
+          </Link>
         </section>
         <section className='flex flex-col items-center justify-center gap-24'>
           <article className='flex flex-col gap-5'>
@@ -80,21 +74,12 @@ const Landing = () => {
         <h3 className='sub-title text-center text-charcoal'>
           ready to showcase your achievements?
         </h3>
-        {!session ? (
-          <Link
-            href='/login'
-            className='body-main start-btn'
-          >
-            Let&apos;s Start !
-          </Link>
-        ) : (
-          <Link
-            href='/home'
-            className='body-main start-btn'
-          >
-            Return to Applauds
-          </Link>
-        )}
+        <Link
+          href='/login'
+          className='body-main start-btn'
+        >
+          Let&apos;s Start !
+        </Link>
         <p className='small text-center text-stone mt-20'>© 2023 Applaudify</p>
       </footer>
     </div>
