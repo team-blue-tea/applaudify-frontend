@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllApplauds } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
-import PublishButton from '@/components/PublishButton/PublishButton';
+import PublishButton from '@/components/Publish/PublishButton';
 import UnpublishButton from '@/components/UnpublishButton/UnpublishButton';
 import back from '@/assets/nav/back.png';
 
