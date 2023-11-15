@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+// import { getServerSession } from 'next-auth';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
 import back from '@/assets/nav/back.png';
@@ -10,9 +11,10 @@ import back from '@/assets/nav/back.png';
 const Applauds = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
+  // console.log(session);
 
   const firstName = session?.user?.name?.split(' ')[0];
-
+  
   useEffect(() => {
     if (!session) {
       return;
@@ -27,10 +29,18 @@ const Applauds = () => {
     })();
   }, [session, filteredApplauds]);
 
+
+  // const session = await getServerSession()
+  // const applauds: ApplaudT[] = await getAllApplauds();
+  // const filteredApplauds = applauds.filter(
+  //   (applaud) => applaud.receiver.name === session?.user?.name
+  // );
+  // const firstName = session?.user?.name?.split(' ')[0];
+
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between items-center'>
-        <Link href='/home'>
+        <Link href='/profile'>
           <Image
             src={back}
             alt='back'
