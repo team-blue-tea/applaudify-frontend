@@ -1,16 +1,16 @@
 // 'use client';
 // import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 // import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 import { getAllMembers, getPublishedApplauds } from '@/libs/DB';
 import Header from '@/components/Header/Header';
+import Inbox from '@/components/Inbox/Inbox';
 import CardForProfile from '@/components/CardForProfile/CardForProfile';
 import MockAppluadCards from '@/components/MockAppluadCards/MockAppluadCards';
 import ProfileInfo from '@/components/ProfileInfo/ProfileInfo';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
-import Inbox from '@/components/Inbox/Inbox';
 
 const Profile = async () => {
   // const [member, setMember] = useState<MemberT>();
