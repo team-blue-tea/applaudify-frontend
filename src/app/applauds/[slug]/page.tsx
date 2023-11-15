@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllApplauds } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
-import PublishButton from '@/Components/Publish/PublishButton';
+import PublishButton from '@/Components/Publish/Publish';
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
