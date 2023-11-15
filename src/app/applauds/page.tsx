@@ -11,7 +11,6 @@ import back from '@/assets/nav/back.png';
 const Applauds = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
-  // console.log(session);
 
   const firstName = session?.user?.name?.split(' ')[0];
   
@@ -27,7 +26,7 @@ const Applauds = () => {
       );
       setFilteredApplauds(filteredApplauds);
     })();
-  }, [session, filteredApplauds]);
+  }, []);
 
 
   // const session = await getServerSession()

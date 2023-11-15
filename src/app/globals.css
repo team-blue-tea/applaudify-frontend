@@ -7,7 +7,7 @@
 @layer components {
   /* Text Styles */
   .header-nav {
-    @apply font-avenir text-16 font-500 capitalize;
+    @apply font-avenir text-16 font-500 capitalize cursor-pointer;
   }
   .title-logo {
     @apply font-josefin text-60 font-700 lowercase;
