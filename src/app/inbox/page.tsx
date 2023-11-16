@@ -6,13 +6,14 @@ import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
 import back from '@/assets/nav/back.png';
+import BackButton from '@/components/BackButton/BackButton';
 
 const Inbox = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
 
   const firstName = session?.user?.name?.split(' ')[0];
-  
+
   useEffect(() => {
     if (!session) {
       return;
@@ -27,7 +28,6 @@ const Inbox = () => {
     })();
   }, []);
 
-
   // const session = await getServerSession()
   // const applauds: ApplaudT[] = await getAllApplauds();
   // const filteredApplauds = applauds.filter(
@@ -38,14 +38,7 @@ const Inbox = () => {
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between items-center'>
-        <Link href='/profile'>
-          <Image
-            src={back}
-            alt='back'
-            width={30}
-            height={30}
-          ></Image>
-        </Link>
+        <BackButton />
         <Link
           className='header-nav'
           href='/compose'
@@ -85,11 +78,7 @@ const Inbox = () => {
                         {!applaud.read && (
                           <h4 className='button text-blue'>•</h4>
                         )}
-                        {
-                          <h4 className='button font-bold'>
-                            {firstName}
-                          </h4>
-                        }
+                        {<h4 className='button font-bold'>{firstName}</h4>}
                       </div>
                       <p className='small text-stone'>
                         {weekdayString}, {dateString}
