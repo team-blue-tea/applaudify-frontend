@@ -58,7 +58,7 @@ const Inbox = () => {
                   key={applaud.id}
                 >
                   <Link
-                    href={`applauds/${applaud.id}`}
+                    href={`inbox/${applaud.id}`}
                     onClick={() => setApplaudRead(applaud.id as string)}
                   >
                     <div className='flex justify-between w-full items-center'>
@@ -81,10 +81,10 @@ const Inbox = () => {
             );
           })}
           <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
-            <Link href={'/applauds/hugo'}>
+            <Link href={'/inbox/hugo'}>
               <div className='flex justify-between items-center'>
                 <h4 className='button font-bold'>Hugo</h4>
-                <p className='small text-stone'>Thu, May 24, 2023</p>
+                <p className='small text-stone'>Thu, Oct 19, 2023</p>
               </div>
               <p className='body-small pt-1 text-stone'>
                 {firstName} is a great developer! ...
@@ -92,10 +92,10 @@ const Inbox = () => {
             </Link>
           </article>
           <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
-            <Link href={'/applauds/vanessa'}>
+            <Link href={'/inbox/vanessa'}>
               <div className='flex justify-between items-center'>
                 <h4 className='button font-bold'>Vanessa</h4>
-                <p className='small text-stone'>Mon, Oct 16, 2023</p>
+                <p className='small text-stone'>Mon, Oct 2, 2023</p>
               </div>
               <p className='body-small pt-1 text-stone'>
                 {firstName} is a talented and ...
@@ -103,10 +103,10 @@ const Inbox = () => {
             </Link>
           </article>
           <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
-            <Link href={'/applauds/ahsan'}>
+            <Link href={'/inbox/ahsan'}>
               <div className='flex justify-between items-center'>
                 <h4 className='button font-bold'>Ahsan</h4>
-                <p className='small text-stone'>Wed, Oct 18, 2023</p>
+                <p className='small text-stone'>Wed, Sep 6, 2023</p>
               </div>
               <p className='body-small pt-1 text-stone'>
                 Working along side {firstName} on ...
