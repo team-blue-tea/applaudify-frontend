@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
-import back from '@/assets/nav/back.png';
 import BackButton from '@/components/BackButton/BackButton';
 
 const Inbox = () => {
@@ -13,27 +12,17 @@ const Inbox = () => {
   const { data: session } = useSession();
 
   const firstName = session?.user?.name?.split(' ')[0];
+  const fullName = session?.user?.name;
 
   useEffect(() => {
-    if (!session) {
-      return;
-    }
-    const filteredName = session?.user?.name;
     (async () => {
       const applauds: ApplaudT[] = await getAllApplauds();
       const filteredApplauds = applauds.filter(
-        (applaud) => applaud.receiver.name === filteredName
+        (applaud) => applaud.receiver.name === fullName
       );
       setFilteredApplauds(filteredApplauds);
     })();
-  }, []);
-
-  // const session = await getServerSession()
-  // const applauds: ApplaudT[] = await getAllApplauds();
-  // const filteredApplauds = applauds.filter(
-  //   (applaud) => applaud.receiver.name === session?.user?.name
-  // );
-  // const firstName = session?.user?.name?.split(' ')[0];
+  }, [fullName]);
 
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
