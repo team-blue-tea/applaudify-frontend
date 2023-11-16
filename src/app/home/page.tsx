@@ -1,18 +1,10 @@
 import { getAllApplauds, getAllMembers } from '@/libs/DB';
-import { getServerSession } from 'next-auth';
-// import { useRouter } from 'next/navigation';
 import CardForHome from '@/components/CardForHome/CardForHome';
 import Header from '@/components/Header/Header';
 import NewMemberCheck from '@/components/NewMemberCheck/NewMemeberCheck';
 
 const Home = async () => {
   const applauds = await getAllApplauds();
-  // const session = await getServerSession();
-  // const router = useRouter();
-
-  // if (!session) {
-  //   router.push('/landing');
-  // }
 
   return (
     <div className='flex flex-col gap-10 mt-4'>

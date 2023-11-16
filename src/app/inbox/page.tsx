@@ -3,12 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-// import { getServerSession } from 'next-auth';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
 import back from '@/assets/nav/back.png';
 
-const Applauds = () => {
+const Inbox = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
 
@@ -143,4 +142,4 @@ const Applauds = () => {
   );
 };
 
-export default Applauds;
+export default Inbox;

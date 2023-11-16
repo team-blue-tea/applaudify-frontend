@@ -24,6 +24,8 @@ const Compose = () => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const { data: session } = useSession();
 
+
+
   const commentRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 

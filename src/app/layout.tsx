@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import NextAuthProviders from '@/utils/nextAuthProviders';
-import { Josefin_Sans} from 'next/font/google';
+import { Josefin_Sans } from 'next/font/google';
 import './globals.css';
+import SessionCheck from '@/components/SessionCheck/SessionCheck';
 
 const josefin = Josefin_Sans({ subsets: ['latin'] });
 
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={josefin.className}>
-        <NextAuthProviders>{children}</NextAuthProviders>
+        <NextAuthProviders>
+          <SessionCheck />
+          {children}
+        </NextAuthProviders>
       </body>
     </html>
   );

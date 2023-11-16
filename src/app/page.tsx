@@ -1,19 +1,13 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 const Dashboard = () => {
-  const [isInitialRender, setIsInitialRender] = useState(true);
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    if (isInitialRender) {
-      setIsInitialRender(false);
-      return;
-    }
-
     if (status === 'loading') {
       return;
     }
@@ -23,7 +17,7 @@ const Dashboard = () => {
     } else {
       router.push('/landing');
     }
-  }, [isInitialRender, status, session, router]);
+  }, [session, status, router]);
 
   return <div className='bg-light w-full h-screen'></div>;
 };
