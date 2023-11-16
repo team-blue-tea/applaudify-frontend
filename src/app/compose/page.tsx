@@ -13,6 +13,7 @@ import { getAllMembers, sendNewApplaud } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
 import { NewApplaudT } from '@/types/NewApplaudT';
 import back from '@/assets/nav/back.png';
+import BackButton from '@/components/BackButton/BackButton';
 
 const Compose = () => {
   const [searchValue, setSearchValue] = useState<string>('');
@@ -23,8 +24,6 @@ const Compose = () => {
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const { data: session } = useSession();
-
-
 
   const commentRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -107,14 +106,7 @@ const Compose = () => {
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between items-center'>
-        <Link href='/applauds'>
-          <Image
-            src={back}
-            alt='back'
-            width={30}
-            height={30}
-          ></Image>
-        </Link>
+        <BackButton />
         {searchValue && filteredMembers.length > 0 ? (
           <button
             className='header-nav'
