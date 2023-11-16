@@ -11,7 +11,7 @@ import sudha from '@/assets/about/sudha.png';
 const About = () => {
 
   return (
-    <div className='flex flex-col items-center mb-10'>
+    <div className='flex flex-col items-center mb-10 mt-4'>
       <Header />
       <main className='flex flex-col gap-20 mt-20 mx-10'>
         <section className='flex flex-col items-center gap-10'>
