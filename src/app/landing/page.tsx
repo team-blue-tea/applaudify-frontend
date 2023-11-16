@@ -6,9 +6,6 @@ import Link from 'next/link';
 import Header from '@/components/Header/Header';
 
 const Landing = async () => {
-  // const { data: session } = useSession();
-  // const session = getServerSession();
-
 
   return (
     <div className='flex flex-col items-center mt-4'>
