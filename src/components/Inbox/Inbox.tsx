@@ -32,7 +32,7 @@ const Inbox = async () => {
 
   return (
     <Link
-      href='/applauds'
+      href='/inbox'
       className='flex gap-2 items-center header-nav header-btn'
     >
       Inbox
