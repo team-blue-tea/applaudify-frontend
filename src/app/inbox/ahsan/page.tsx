@@ -15,32 +15,42 @@ const Ahsan = () => {
         <h4 className='body-main'>Applaud from Ahsan</h4>
         <div></div>
       </header>
-      <main className='flex flex-col items-center'>
-        <div className='single-applaud-border mt-14'>
-          <section className='flex flex-col gap-8 single-applaud small px-4 py-8 p-2'>
-            <article className='flex items-center bg-white gap-8'>
-              <Image
-                src='https://avatars.githubusercontent.com/u/9844254?v=4'
-                alt='Sender Profile'
-                width={61}
-                height={61}
-                className='rounded-full'
-              ></Image>
-              <div className='flex flex-col'>
-                <h4 className='name bg-white'>Muhammad Ahsan Ayaz</h4>
-                <p className='title-company bg-white'>Principal Engineer</p>
-                <p className='title-company bg-white'>Airbnb</p>
+      <main className='flex flex-col items-center mt-10'>
+        <div className='applaud-card-container'>
+          <section className='applaud-card-ombre'>
+            <article className='flex flex-col items-center gap-2'>
+              <p className='send-date-lg'>Sep 6, 2023</p>
+              <p className='p-2.5 body-main text-center'>
+                &apos;Working along side {firstName} on various projects has
+                been nothing short of delightful. {firstName} has a keen eye for
+                detail and profound understanding of user experience, which had
+                an immense impact on the outcome of the project.&apos;
+              </p>
+            </article>
+            <article className='flex flex-col items-center'>
+              <p className='sender-info-lg text-stone'>From</p>
+              <div className='sender-layout-lg'>
+                <Image
+                  src='https://avatars.githubusercontent.com/u/9844254?v=4'
+                  alt='Sender Profile'
+                  width={50}
+                  height={50}
+                  className='rounded-full'
+                ></Image>
+                <div className='flex w-full justify-between items-end'>
+                  <div>
+                    <h4 className='sender-lg'>Muhammad Ahsan Ayaz</h4>
+                    <p className='sender-info-lg'>Principal Engineer</p>
+                    <p className='sender-info-lg'>Airbnb</p>
+                  </div>
+                </div>
               </div>
             </article>
-            <p className='body-main bg-white'>
-              &apos;Working along side {firstName} on various projects has been
-              nothing short of delightful. {firstName} has a keen eye for detail
-              and profound understanding of user experience, which had an
-              immense impact on the outcome of the project.&apos;
-            </p>
           </section>
         </div>
-        <p className='text-center button mt-20'>Applaud Published</p>
+        <div className='flex flex-col items-center w-full mt-5'>
+          <p className='body-small mt-5 text-silver'>Published Applaud</p>
+        </div>
       </main>
     </div>
   );
