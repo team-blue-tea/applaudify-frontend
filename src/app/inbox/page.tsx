@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
