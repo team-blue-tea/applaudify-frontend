@@ -36,7 +36,7 @@ const Profile = () => {
       <main className='flex flex-col items-center gap-10 mx-10'>
         <section className='flex flex-col gap-8 items-center w-full'>
           <div className='flex w-full flex-col gap-3'>
-            <div className='flex justify-end'>{session && <Inbox />}</div>
+            <div className='flex justify-end'>{session && <Inbox session={session}/>}</div>
             <div className='flex items-center justify-center w-full gap-8 px-2 py-3'>
               {session && (
                 <Image
