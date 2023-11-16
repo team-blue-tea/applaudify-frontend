@@ -1,23 +1,15 @@
 'use client';
 import React from 'react';
 import { signIn } from 'next-auth/react';
-import Link from 'next/link';
 import Image from 'next/image';
-import back from '@/assets/nav/back.png';
 import github from '@/assets/login/github.png';
+import BackButton from '@/components/BackButton/BackButton';
 
 const Login = () => {
   return (
     <div className='flex flex-col mx-10 my-14 gap-10'>
       <header className='flex justify-start'>
-        <Link href={'/'}>
-        <Image
-          src={back}
-          alt='back'
-          width={30}
-          height={30}
-        ></Image>
-        </Link>
+        <BackButton />
       </header>
       <div className='flex flex-col items-center gap-36'>
         <div className='flex flex-col gap-5'>
