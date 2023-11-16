@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import back from '@/assets/nav/back.png';
+import BackButton from '@/components/BackButton/BackButton';
 
 const Vanessa = () => {
   const { data: session } = useSession();
@@ -12,14 +12,7 @@ const Vanessa = () => {
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between items-center'>
-        <Link href='/applauds'>
-          <Image
-            src={back}
-            alt='back'
-            width={30}
-            height={30}
-          ></Image>
-        </Link>
+        <BackButton />
         <h4 className='body-main'>Applaud from Vanessa</h4>
         <div></div>
       </header>
