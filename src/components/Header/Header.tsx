@@ -14,16 +14,9 @@ const Header = () => {
   };
 
   const navLinks = [
-    // {
-    //   text: 'Profile',
-    //   href: '/profile',
-    //   condition: () => session,
-    // },
     {
       text: 'About',
       href: '/about',
-      target: '_blank',
-      rel: 'noopener noreferrer',
     },
     {
       text: 'Docs',
