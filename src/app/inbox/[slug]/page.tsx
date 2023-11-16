@@ -5,14 +5,14 @@ import { getAllApplauds } from '@/libs/DB';
 import { ApplaudT } from '@/types/ApplaudT';
 import PublishButton from '@/components/PublishButton/PublishButton';
 import UnpublishButton from '@/components/UnpublishButton/UnpublishButton';
-import back from '@/assets/nav/back.png';
+import BackButton from '@/components/BackButton/BackButton';
 
 const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const applauds = (await getAllApplauds()) as ApplaudT[];
   const filteredApplaud = applauds.filter((applaud) => applaud.id === slug);
 
-  const { sender,  comment, published, createdAt } = filteredApplaud[0];
+  const { sender, comment, published, createdAt } = filteredApplaud[0];
   const date = new Date(createdAt);
   const dateString = date.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -23,14 +23,7 @@ const SingleApplaud = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className='flex flex-col mx-10 mt-14 gap-10'>
       <header className='flex justify-between items-center'>
-        <Link href='/applauds'>
-          <Image
-            src={back}
-            alt='back'
-            width={30}
-            height={30}
-          ></Image>
-        </Link>
+        <BackButton />
         <h4 className='body-main'>Applaud from {sender.name.split(' ')[0]}</h4>
         <div></div>
       </header>
