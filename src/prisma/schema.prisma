@@ -26,22 +26,3 @@ model Applaud {
   recipientId Int // ID of the person who received the applaud
   createdAt   DateTime @default(now())
 }
-
-// Lvan id 1 create a applaud id 3 sent to ilija id 2 
-
-// Lvan {
-//   id: 1
-//   authoredApplauds: [3]
-//   receivedApplauds: []
-// }
-
-// ilija {
-//  id: 2
-//  authoredApplauds: []
-//  receivedApplauds: [3]
-// }
-
-// Applaud {
-//  id: 3
-//  authorId: 1
-//  recipientId: 2
