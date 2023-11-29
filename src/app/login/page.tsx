@@ -19,20 +19,22 @@ const Login = () => {
             login / signup
           </h3>
         </div>
-        <button
-          className="button login-btn"
-          onClick={() => signIn("github", { callbackUrl: "/home" })}
-        >
-          <Image src={github} alt="github" width={20} height={20}></Image>
-          Continue with GitHub
-        </button>
-        <button
-          className="button login-btn"
-          onClick={() => signIn("linkedin", { callbackUrl: "/home" })}
-        >
-          <Image src={linkedin} alt="linkedin" width={20} height={20}></Image>
-          Continue with LinkedIn
-        </button>
+        <div className="flex flex-col items-center gap-6">
+          <button
+            className="button login-btn w-full"
+            onClick={() => signIn("github", { callbackUrl: "/home" })}
+          >
+            <Image src={github} alt="github" width={20} height={20}></Image>
+            Continue with GitHub
+          </button>
+          <button
+            className="button login-btn w-full"
+            onClick={() => signIn("linkedin", { callbackUrl: "/home" })}
+          >
+            <Image src={linkedin} alt="linkedin" width={20} height={20}></Image>
+            Continue with LinkedIn
+          </button>
+        </div>
       </div>
     </div>
   );
