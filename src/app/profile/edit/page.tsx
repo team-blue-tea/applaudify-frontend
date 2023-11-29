@@ -1,24 +1,24 @@
-"use client";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import Header from "@/components/Header/Header";
-import { getAllMembers, updateMember } from "@/libs/DB";
-import { MemberT } from "@/types/MemberT";
-import { UpdatedMemberT } from "@/types/UpdatedMemberT";
+'use client';
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import BackButton from '@/components/BackButton/BackButton';
+import { getAllMembers, updateMember } from '@/libs/DB';
+import { MemberT } from '@/types/MemberT';
+import { UpdatedMemberT } from '@/types/UpdatedMemberT';
 
-const page = () => {
+const EditProfile = () => {
   const { data: session } = useSession();
   const [member, setMember] = useState<MemberT>();
-  const [memberName, setMemberName] = useState("");
-  const [memberJobTitle, setMemberJobTitle] = useState("");
-  const [memberCompany, setMemberCompany] = useState("");
-  const [memberBio, setMemberBio] = useState("");
-  const [memberExperience, setMemberExperience] = useState("");
+  const [memberName, setMemberName] = useState('');
+  const [memberJobTitle, setMemberJobTitle] = useState('');
+  const [memberCompany, setMemberCompany] = useState('');
+  const [memberBio, setMemberBio] = useState('');
+  const [memberExperience, setMemberExperience] = useState('');
   const [memberSkills, setMemberSkills] = useState<string[]>([]);
-  const [newSkill, setNewSkill] = useState<string>("");
-  const [skillsErrorMessage, setSkillsErrorMessage] = useState<string>("");
-  const [nameErrorMessage, setNameErrorMessage] = useState<string>("");
+  const [newSkill, setNewSkill] = useState<string>('');
+  const [skillsErrorMessage, setSkillsErrorMessage] = useState<string>('');
+  const [nameErrorMessage, setNameErrorMessage] = useState<string>('');
 
   const formRef = useRef<HTMLFormElement>(null);
   const bioRef = useRef<HTMLTextAreaElement>(null);
@@ -43,7 +43,7 @@ const page = () => {
       setMemberBio(currentMember?.bio as string);
       setMemberExperience(currentMember?.experience as string);
       if (currentMember?.skills) {
-        setMemberSkills(currentMember.skills.split(","));
+        setMemberSkills(currentMember.skills.split(','));
       }
     })();
   }, [session, memberEmail]);
@@ -57,7 +57,7 @@ const page = () => {
   const handleAddSkill = () => {
     const newSkill = newSkillRef.current?.value.trim();
     if (!newSkill) {
-      setNewSkill("");
+      setNewSkill('');
       return;
     }
     if (
@@ -66,11 +66,11 @@ const page = () => {
       )
     ) {
       setMemberSkills([...memberSkills, newSkill]);
-      setNewSkill("");
+      setNewSkill('');
     } else {
-      setSkillsErrorMessage("That skill is already added.");
+      setSkillsErrorMessage('That skill is already added.');
       setTimeout(() => {
-        setSkillsErrorMessage("");
+        setSkillsErrorMessage('');
       }, 5000);
     }
   };
@@ -91,14 +91,14 @@ const page = () => {
   };
 
   const handleSave = () => {
-    if (memberName.trim() === "") {
-      setNameErrorMessage("Name cannot be empty.");
+    if (memberName.trim() === '') {
+      setNameErrorMessage('Name cannot be empty.');
       setTimeout(() => {
-        setNameErrorMessage("");
+        setNameErrorMessage('');
       }, 5000);
       return;
     }
-    const memberSkillsString = memberSkills.join(",");
+    const memberSkillsString = memberSkills.join(',');
     const memberBio = bioRef.current?.value;
     const memberExperience = experienceRef.current?.value;
 
@@ -114,70 +114,81 @@ const page = () => {
     updateMember(updatedMember, member?.id as string);
 
     setTimeout(() => {
-      window.location.href = "/profile";
+      window.location.href = '/profile';
     }, 500);
   };
 
   return (
-    <div className="flex flex-col mt-4 gap-10">
-      <Header />
-      <main className="flex flex-col items-center gap-10 mx-10">
-        <section className="flex flex-col gap-8 items-center w-full pb-24">
-          <div className="flex w-full flex-col gap-8">
-            <div className="flex items-center justify-center w-full gap-8 px-2 py-3">
+    <div className='flex flex-col mx-10 mt-14 gap-10'>
+      <header className='flex justify-between items-center'>
+        <BackButton />
+        <button
+          className='header-nav'
+          onClick={handleSave}
+        >
+          Save
+        </button>
+      </header>
+      <main className='flex flex-col items-center gap-10 mx-10'>
+        <section className='flex flex-col gap-8 items-center w-full pb-24'>
+          <div className='flex w-full flex-col gap-8'>
+            <div className='flex items-center justify-center w-full gap-8 px-2 py-3'>
               {session && (
                 <Image
                   src={imageURL}
-                  alt="Profile photo"
+                  alt='Profile photo'
                   width={88}
                   height={88}
-                  className="rounded-full border border-silver"
+                  className='rounded-full border border-silver'
                 ></Image>
               )}
-              <div className="w-3/5">
+              <div className='flex flex-col gap-2'>
                 <input
-                  type="text"
+                  type='text'
                   value={memberName}
                   onChange={(e) => setMemberName(e.target.value)}
-                  className="body-large bg-paper text-charcoal"
-                  placeholder="Name"
+                  className='body-large bg-white text-charcoal border border-silver rounded-xl p-2 w-full'
+                  placeholder='Name'
                 />
                 {nameErrorMessage}
                 <input
-                  type="text"
+                  type='text'
                   value={memberJobTitle}
                   onChange={(e) => setMemberJobTitle(e.target.value)}
-                  className="body-small bg-paper text-charcoal"
-                  placeholder="Job Title"
+                  className='body-small bg-white text-charcoal border border-silver rounded-xl p-2 w-full'
+                  placeholder='Job Title'
                 />
                 <input
-                  type="text"
+                  type='text'
                   value={memberCompany}
                   onChange={(e) => setMemberCompany(e.target.value)}
-                  className="body-small bg-paper text-charcoal"
-                  placeholder="Company"
+                  className='body-small bg-white text-charcoal border border-silver rounded-xl p-2 w-full'
+                  placeholder='Company'
                 />
               </div>
             </div>
             <form
-              id="editProfile"
-              className="flex flex-col gap-10"
+              id='editProfile'
+              className='flex flex-col gap-10'
               ref={formRef}
             >
               <textarea
                 rows={6}
-                placeholder="Bio"
+                placeholder='Bio'
                 ref={bioRef}
                 value={memberBio}
                 onChange={handleBioChange}
-                className="border border-silver rounded-3xl p-3"
+                className='border border-silver rounded-xl p-3'
                 maxLength={1000}
               />
             </form>
-            <div className="flex flex-col justify-center items-center gap-4">
-              <div className="flex gap-2 justify-center flex-wrap">
+            <div className='flex flex-col justify-center items-center gap-4'>
+              <div className='flex gap-2 justify-center flex-wrap'>
                 {memberSkills.map((skill, index) => (
-                  <div key={index} className="skill-btn">
+                  <div
+                    key={index}
+                    className='skill-btn'
+                  >
                     <button onClick={() => handleRemoveSkill(index)}>
                       {skill} x
                     </button>
@@ -185,37 +196,37 @@ const page = () => {
                 ))}
               </div>
               {skillsErrorMessage}
-              <div className="flex gap-2 justify-center">
+              <div className='flex gap-2 justify-center'>
                 <input
-                  type="text"
-                  placeholder="New Skill.."
+                  type='text'
+                  placeholder='New Skill..'
                   ref={newSkillRef}
                   value={newSkill}
                   onChange={handleSkillChange}
-                  className="w-1/2 border border-silver rounded-3xl px-3"
+                  className='w-1/2 border border-silver rounded-xl px-3'
                 />
-                <button className="btn w-1/3" onClick={handleAddSkill}>
+                <button
+                  className='btn w-1/3'
+                  onClick={handleAddSkill}
+                >
                   Add
                 </button>
               </div>
             </div>
             <textarea
               rows={10}
-              placeholder="Experience"
+              placeholder='Experience'
               ref={experienceRef}
               value={memberExperience}
               onChange={handleExperienceChange}
-              className="border border-silver rounded-3xl p-3"
+              className='border border-silver rounded-xl p-3'
               maxLength={1000}
             />
           </div>
-          <button className="btn" onClick={handleSave}>
-            Save
-          </button>
         </section>
       </main>
     </div>
   );
 };
 
-export default page;
+export default EditProfile;
