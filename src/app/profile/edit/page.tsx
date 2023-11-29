@@ -1,63 +1,219 @@
-'use client';
-import React from 'react';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import Header from '@/components/Header/Header';
-
+"use client";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Header from "@/components/Header/Header";
+import { getAllMembers, updateMember } from "@/libs/DB";
+import { MemberT } from "@/types/MemberT";
+import { UpdatedMemberT } from "@/types/UpdatedMemberT";
 
 const page = () => {
   const { data: session } = useSession();
-  const name = session?.user?.name as string;
-  const firstName = session?.user?.name?.split(' ')[0] as string;
+  const [member, setMember] = useState<MemberT>();
+  const [memberName, setMemberName] = useState("");
+  const [memberJobTitle, setMemberJobTitle] = useState("");
+  const [memberCompany, setMemberCompany] = useState("");
+  const [memberBio, setMemberBio] = useState("");
+  const [memberExperience, setMemberExperience] = useState("");
+  const [memberSkills, setMemberSkills] = useState<string[]>([]);
+  const [newSkill, setNewSkill] = useState<string>("");
+  const [skillsErrorMessage, setSkillsErrorMessage] = useState<string>("");
+  const [nameErrorMessage, setNameErrorMessage] = useState<string>("");
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const bioRef = useRef<HTMLTextAreaElement>(null);
+  const newSkillRef = useRef<HTMLInputElement>(null);
+  const experienceRef = useRef<HTMLTextAreaElement>(null);
   const imageURL = session?.user?.image as string;
+  const memberEmail = session?.user?.email;
+
+  useEffect(() => {
+    if (!session) {
+      return;
+    }
+    (async () => {
+      const members: MemberT[] = await getAllMembers();
+      const currentMember = members.find(
+        (member) => member.email === memberEmail
+      );
+      setMember(currentMember);
+      setMemberName(currentMember?.name as string);
+      setMemberJobTitle(currentMember?.jobTitle as string);
+      setMemberCompany(currentMember?.company as string);
+      setMemberBio(currentMember?.bio as string);
+      setMemberExperience(currentMember?.experience as string);
+      if (currentMember?.skills) {
+        setMemberSkills(currentMember.skills.split(","));
+      }
+    })();
+  }, [session, memberEmail]);
+
+  const handleRemoveSkill = (indexToRemove: number) => {
+    const updatedSkills = [...memberSkills];
+    updatedSkills.splice(indexToRemove, 1);
+    setMemberSkills(updatedSkills);
+  };
+
+  const handleAddSkill = () => {
+    const newSkill = newSkillRef.current?.value.trim();
+    if (!newSkill) {
+      setNewSkill("");
+      return;
+    }
+    if (
+      !memberSkills.find(
+        (skill) => skill.toLowerCase() === newSkill.toLowerCase()
+      )
+    ) {
+      setMemberSkills([...memberSkills, newSkill]);
+      setNewSkill("");
+    } else {
+      setSkillsErrorMessage("That skill is already added.");
+      setTimeout(() => {
+        setSkillsErrorMessage("");
+      }, 5000);
+    }
+  };
+
+  const handleSkillChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setNewSkill(e.target.value);
+  };
+
+  const handleBioChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    setMemberBio(e.target.value);
+  };
+
+  const handleExperienceChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    setMemberExperience(e.target.value);
+  };
+
+  const handleSave = () => {
+    if (memberName.trim() === "") {
+      setNameErrorMessage("Name cannot be empty.");
+      setTimeout(() => {
+        setNameErrorMessage("");
+      }, 5000);
+      return;
+    }
+    const memberSkillsString = memberSkills.join(",");
+    const memberBio = bioRef.current?.value;
+    const memberExperience = experienceRef.current?.value;
+
+    const updatedMember: UpdatedMemberT = {
+      name: memberName,
+      jobTitle: memberJobTitle,
+      company: memberCompany,
+      bio: memberBio,
+      skills: memberSkillsString,
+      experience: memberExperience,
+    };
+
+    updateMember(updatedMember, member?.id as string);
+
+    setTimeout(() => {
+      window.location.href = "/profile";
+    }, 500);
+  };
 
   return (
-    <div className='flex flex-col mt-4 gap-10'>
+    <div className="flex flex-col mt-4 gap-10">
       <Header />
-      <main className='flex flex-col items-center gap-10 mx-10'>
-        <section className='flex flex-col gap-8 items-center w-full'>
-          <div className='flex w-full flex-col gap-3'>
-            <div className='flex items-center justify-end gap-4 '>
-              <Link
-                href='/profile/edit'
-                className='header-nav'
-              >
-                Edit
-              </Link>
-              <div className='flex justify-end'>
-              </div>
-            </div>
-            <div className='flex items-center justify-center w-full gap-8 px-2 py-3'>
+      <main className="flex flex-col items-center gap-10 mx-10">
+        <section className="flex flex-col gap-8 items-center w-full pb-24">
+          <div className="flex w-full flex-col gap-8">
+            <div className="flex items-center justify-center w-full gap-8 px-2 py-3">
               {session && (
                 <Image
                   src={imageURL}
-                  alt='Profile photo'
+                  alt="Profile photo"
                   width={88}
                   height={88}
-                  className='rounded-full border border-silver'
+                  className="rounded-full border border-silver"
                 ></Image>
               )}
-              <div className='w-3/5'>
-                <h4 className='body-large'>{member?.name}</h4>
-                <p className='body-small'>{member?.jobTitle}</p>
-                <p className='body-small'>{member?.company}</p>
+              <div className="w-3/5">
+                <input
+                  type="text"
+                  value={memberName}
+                  onChange={(e) => setMemberName(e.target.value)}
+                  className="body-large bg-paper text-charcoal"
+                  placeholder="Name"
+                />
+                {nameErrorMessage}
+                <input
+                  type="text"
+                  value={memberJobTitle}
+                  onChange={(e) => setMemberJobTitle(e.target.value)}
+                  className="body-small bg-paper text-charcoal"
+                  placeholder="Job Title"
+                />
+                <input
+                  type="text"
+                  value={memberCompany}
+                  onChange={(e) => setMemberCompany(e.target.value)}
+                  className="body-small bg-paper text-charcoal"
+                  placeholder="Company"
+                />
               </div>
             </div>
+            <form
+              id="editProfile"
+              className="flex flex-col gap-10"
+              ref={formRef}
+            >
+              <textarea
+                rows={6}
+                placeholder="Bio"
+                ref={bioRef}
+                value={memberBio}
+                onChange={handleBioChange}
+                className="border border-silver rounded-3xl p-3"
+                maxLength={1000}
+              />
+            </form>
+            <div className="flex flex-col justify-center items-center gap-4">
+              <div className="flex gap-2 justify-center flex-wrap">
+                {memberSkills.map((skill, index) => (
+                  <div key={index} className="skill-btn">
+                    <button onClick={() => handleRemoveSkill(index)}>
+                      {skill} x
+                    </button>
+                  </div>
+                ))}
+              </div>
+              {skillsErrorMessage}
+              <div className="flex gap-2 justify-center">
+                <input
+                  type="text"
+                  placeholder="New Skill.."
+                  ref={newSkillRef}
+                  value={newSkill}
+                  onChange={handleSkillChange}
+                  className="w-1/2 border border-silver rounded-3xl px-3"
+                />
+                <button className="btn w-1/3" onClick={handleAddSkill}>
+                  Add
+                </button>
+              </div>
+            </div>
+            <textarea
+              rows={10}
+              placeholder="Experience"
+              ref={experienceRef}
+              value={memberExperience}
+              onChange={handleExperienceChange}
+              className="border border-silver rounded-3xl p-3"
+              maxLength={1000}
+            />
           </div>
-          <ProfileInfo name={name} />
-        </section>
-        <h3 className='sub-title'>{firstName}&apos;s applauds</h3>
-        <section className='flex flex-col w-full'>
-          <CardForProfile applauds={individualApplauds} />
-          <MockAppluadCards
-            firstName={firstName}
-            imageURL={imageURL}
-          />
+          <button className="btn" onClick={handleSave}>
+            Save
+          </button>
         </section>
       </main>
-
-      </form>
     </div>
   );
 };
