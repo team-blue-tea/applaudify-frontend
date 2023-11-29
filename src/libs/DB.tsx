@@ -2,6 +2,7 @@ import axios from 'axios';
 import { NewMemberT } from '@/types/NewMemberT';
 import { NewApplaudT } from '@/types/NewApplaudT';
 import { ApplaudT } from '@/types/ApplaudT';
+import { UpdatedMemberT } from '@/types/UpdatedMemberT';
 
 const java_backend_uri =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'https://applaudify-backend.fly.dev';
@@ -100,7 +101,12 @@ const getPublishedApplauds = async (memberEmail: string) => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds/published/${memberEmail}`;
     const getPublishedApplaudsByMemberId = await axios.get(uri);
-    return getPublishedApplaudsByMemberId.data;
+    const applauds = getPublishedApplaudsByMemberId.data;
+    return applauds.sort((a: ApplaudT, b: ApplaudT) => {
+      let dateA = new Date(a.createdAt).getTime();
+      let dateB = new Date(b.createdAt).getTime();
+      return dateB - dateA;
+    });
   } catch (error) {
     console.error(
       'An error occurred while fetching Applauds by Member Email -------->',
@@ -124,6 +130,20 @@ const getUnreadApplauds = async (memberEmail: string) => {
   }
 };
 
+const updateMember = async (
+  updatedMember: UpdatedMemberT,
+  updatedMemberId: string
+) => {
+  try {
+    const uri = `${java_backend_uri}/api/v1/members/${updatedMemberId}`;
+    const res = await axios.put(uri, updatedMember);
+    return res.data;
+  } catch (error) {
+    console.error('An error occured while updating Member ---->', error);
+    return null;
+  }
+};
+
 export {
   getAllApplauds,
   getAllMembers,
@@ -134,4 +154,5 @@ export {
   setApplaudUnpublished,
   getPublishedApplauds,
   getUnreadApplauds,
+  updateMember,
 };
