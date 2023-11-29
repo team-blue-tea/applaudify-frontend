@@ -129,7 +129,7 @@ const EditProfile = () => {
           Save
         </button>
       </header>
-      <main className='flex flex-col items-center gap-10 mx-10'>
+
         <section className='flex flex-col gap-8 items-center w-full pb-24'>
           <div className='flex w-full flex-col gap-8'>
             <div className='flex items-center justify-center w-full gap-8 px-2 py-3'>
@@ -224,7 +224,6 @@ const EditProfile = () => {
             />
           </div>
         </section>
-      </main>
     </div>
   );
 };
