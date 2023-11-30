@@ -19,7 +19,7 @@ const Login = () => {
             login / signup
           </h3>
         </div>
-        <div className='flex flex-col items-center gap-6'>
+        <div className='flex flex-col items-center gap-6 w-4/5 '>
           <button
             className='button login-btn'
             onClick={() => signIn('github', { callbackUrl: '/home' })}
