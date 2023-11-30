@@ -5,7 +5,7 @@ const Sent = () => {
   useEffect(() => {
     (() => {
       setTimeout(() => {
-        window.location.href = "/inbox";
+        window.location.href = "/profile";
       }, 800);
     })();
   }, []);
