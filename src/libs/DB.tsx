@@ -1,16 +1,21 @@
-import axios from 'axios';
-import { NewMemberT } from '@/types/NewMemberT';
-import { NewApplaudT } from '@/types/NewApplaudT';
-import { ApplaudT } from '@/types/ApplaudT';
-import { UpdatedMemberT } from '@/types/UpdatedMemberT';
+import axios from "axios";
+import { NewMemberT } from "@/types/NewMemberT";
+import { NewApplaudT } from "@/types/NewApplaudT";
+import { ApplaudT } from "@/types/ApplaudT";
+import { UpdatedMemberT } from "@/types/UpdatedMemberT";
 
 const java_backend_uri =
-  process.env.NEXT_PUBLIC_API_BASE_URL || 'https://applaudify-backend.fly.dev';
+  process.env.NEXT_PUBLIC_API_BASE_URL || "https://applaudify-backend.fly.dev";
 
 const getAllApplauds = async () => {
   try {
     const uri = `${java_backend_uri}/api/v1/applauds`;
-    const res = await axios.get(uri);
+    const res = await axios.get(uri, {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    });
+
     const applauds = res.data;
     return applauds.sort((a: ApplaudT, b: ApplaudT) => {
       let dateA = new Date(a.createdAt).getTime();
@@ -18,7 +23,7 @@ const getAllApplauds = async () => {
       return dateB - dateA;
     });
   } catch (error) {
-    console.error('An error occurred while fetching applauds -------->', error);
+    console.error("An error occurred while fetching applauds -------->", error);
     return null;
   }
 };
@@ -28,7 +33,7 @@ const addNewMember = async (newMember: NewMemberT) => {
     const uri = `${java_backend_uri}/api/v1/members`;
     await axios.post(uri, newMember);
   } catch (error) {
-    console.error('An error occurred while adding new member -------->', error);
+    console.error("An error occurred while adding new member -------->", error);
   }
 };
 
@@ -37,7 +42,7 @@ const sendNewApplaud = async (newApplaud: NewApplaudT) => {
     const uri = `${java_backend_uri}/api/v1/applauds`;
     await axios.post(uri, newApplaud);
   } catch (error) {
-    console.error('An error occured while sending a new applaud --->', error);
+    console.error("An error occured while sending a new applaud --->", error);
   }
 };
 
@@ -47,7 +52,7 @@ const getAllMembers = async () => {
     const res = await axios.get(uri);
     return res.data;
   } catch (error) {
-    console.error('An error occurred while fetching members -------->', error);
+    console.error("An error occurred while fetching members -------->", error);
     return null;
   }
 };
@@ -60,7 +65,7 @@ const setApplaudRead = async (applaudId: string) => {
     });
   } catch (error) {
     console.error(
-      'An error occurred while setting Applaud to read --->',
+      "An error occurred while setting Applaud to read --->",
       error
     );
     return null;
@@ -75,7 +80,7 @@ const setApplaudPublished = async (applaudId: string) => {
     });
   } catch (error) {
     console.error(
-      'An error occured while setting Applaud to published --->',
+      "An error occured while setting Applaud to published --->",
       error
     );
     return null;
@@ -90,7 +95,7 @@ const setApplaudUnpublished = async (applaudId: string) => {
     });
   } catch (error) {
     console.error(
-      'An error occured while setting Applaud to published --->',
+      "An error occured while setting Applaud to published --->",
       error
     );
     return null;
@@ -109,7 +114,7 @@ const getPublishedApplauds = async (memberEmail: string) => {
     });
   } catch (error) {
     console.error(
-      'An error occurred while fetching Applauds by Member Email -------->',
+      "An error occurred while fetching Applauds by Member Email -------->",
       error
     );
     return null;
@@ -123,7 +128,7 @@ const getUnreadApplauds = async (memberEmail: string) => {
     return res.data;
   } catch (error) {
     console.error(
-      'An error occurred while fetching Notifications by Member Email -------->',
+      "An error occurred while fetching Notifications by Member Email -------->",
       error
     );
     return null;
@@ -139,7 +144,7 @@ const updateMember = async (
     const res = await axios.put(uri, updatedMember);
     return res.data;
   } catch (error) {
-    console.error('An error occured while updating Member ---->', error);
+    console.error("An error occured while updating Member ---->", error);
     return null;
   }
 };
