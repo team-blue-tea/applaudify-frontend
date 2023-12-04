@@ -6,7 +6,7 @@ import { UpdatedMemberT } from "@/types/UpdatedMemberT";
 
 const java_backend_uri =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
-  "ec2-16-170-163-140.eu-north-1.compute.amazonaws.com:8080";
+  "http://ec2-16-170-163-140.eu-north-1.compute.amazonaws.com:8080";
 
 const getAllApplauds = async () => {
   try {
