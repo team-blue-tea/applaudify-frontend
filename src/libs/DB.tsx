@@ -5,7 +5,7 @@ import { ApplaudT } from "@/types/ApplaudT";
 import { UpdatedMemberT } from "@/types/UpdatedMemberT";
 
 const java_backend_uri =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "https://applaudify-backend.fly.dev";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://16.171.37.9";
 
 const getAllApplauds = async () => {
   try {
@@ -59,7 +59,7 @@ const getAllMembers = async () => {
 
 const setApplaudRead = async (applaudId: string) => {
   try {
-    const uri = `${java_backend_uri}/api/v1/applauds/unread/${applaudId}`;
+    const uri = `${java_backend_uri}/api/v1/applauds/update/${applaudId}?field=read`;
     await axios.put(uri, {
       read: true,
     });
@@ -74,7 +74,7 @@ const setApplaudRead = async (applaudId: string) => {
 
 const setApplaudPublished = async (applaudId: string) => {
   try {
-    const uri = `${java_backend_uri}/api/v1/applauds/published/${applaudId}`;
+    const uri = `${java_backend_uri}/api/v1/applauds/published/${applaudId}?field=published`;
     await axios.put(uri, {
       published: true,
     });
