@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
 import BackButton from '@/components/BackButton/BackButton';
+import Header from '@/components/Header/Header';
+import { useWindowSize } from '@uidotdev/usehooks';
 
 const Inbox = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
@@ -12,6 +14,8 @@ const Inbox = () => {
 
   const firstName = session?.user?.name?.split(' ')[0];
   const fullName = session?.user?.name;
+
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     (async () => {
@@ -23,19 +27,25 @@ const Inbox = () => {
     })();
   }, [fullName]);
 
+  const handleNavbar = (size: number) => {
+    if (size > 660) {
+      return <Header />;
+    } else {
+      return null;
+    }
+  };
+
   return (
-    <div className='flex flex-col mx-10 mt-14 gap-10'>
-      <header className='flex justify-between items-center'>
+    <div className="flex flex-col mt-4 gap-10">
+      {windowSize.width && handleNavbar(windowSize.width)}
+      <header className="flex justify-between items-center  mx-10 md:min-w-[700px] md:self-center">
         <BackButton />
-        <Link
-          className='header-nav'
-          href='/compose'
-        >
+        <Link className="header-nav" href="/compose">
           New
         </Link>
       </header>
-      <main className='flex flex-col items-center'>
-        <section className='flex flex-col gap-7 w-full'>
+      <main className="flex flex-col items-center  mx-10">
+        <section className="flex flex-col gap-7 w-full sm:min-w-[550px]">
           {filteredApplauds.map((applaud) => {
             const firstName = applaud.sender.name.split(' ')[0];
             const commentPreview = applaud.comment
@@ -54,25 +64,25 @@ const Inbox = () => {
             return (
               applaud && (
                 <article
-                  className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'
+                  className="flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white"
                   key={applaud.id}
                 >
                   <Link
                     href={`inbox/${applaud.id}`}
                     onClick={() => setApplaudRead(applaud.id as string)}
                   >
-                    <div className='flex justify-between w-full items-center'>
-                      <div className='flex items-center justify-center gap-5'>
+                    <div className="flex justify-between w-full items-center">
+                      <div className="flex items-center justify-center gap-5">
                         {!applaud.read && (
-                          <h4 className='button text-blue'>•</h4>
+                          <h4 className="button text-blue">•</h4>
                         )}
-                        {<h4 className='button font-bold'>{firstName}</h4>}
+                        {<h4 className="button font-bold">{firstName}</h4>}
                       </div>
-                      <p className='small text-stone'>
+                      <p className="small text-stone">
                         {weekdayString}, {dateString}
                       </p>
                     </div>
-                    <p className='body-small pt-1 text-stone'>
+                    <p className="body-small pt-1 text-stone">
                       {commentPreview}...
                     </p>
                   </Link>
@@ -80,35 +90,35 @@ const Inbox = () => {
               )
             );
           })}
-          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
+          <article className="flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white">
             <Link href={'/inbox/hugo'}>
-              <div className='flex justify-between items-center'>
-                <h4 className='button font-bold'>Hugo</h4>
-                <p className='small text-stone'>Thu, Oct 19, 2023</p>
+              <div className="flex justify-between items-center">
+                <h4 className="button font-bold">Hugo</h4>
+                <p className="small text-stone">Thu, Oct 19, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone'>
+              <p className="body-small pt-1 text-stone">
                 {firstName} is a great developer! ...
               </p>
             </Link>
           </article>
-          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
+          <article className="flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white">
             <Link href={'/inbox/vanessa'}>
-              <div className='flex justify-between items-center'>
-                <h4 className='button font-bold'>Vanessa</h4>
-                <p className='small text-stone'>Mon, Oct 2, 2023</p>
+              <div className="flex justify-between items-center">
+                <h4 className="button font-bold">Vanessa</h4>
+                <p className="small text-stone">Mon, Oct 2, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone'>
+              <p className="body-small pt-1 text-stone">
                 {firstName} is a talented and ...
               </p>
             </Link>
           </article>
-          <article className='flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white'>
+          <article className="flex flex-col px-5 py-3 gap-2 border border-silver rounded-3xl w-full bg-white">
             <Link href={'/inbox/ahsan'}>
-              <div className='flex justify-between items-center'>
-                <h4 className='button font-bold'>Ahsan</h4>
-                <p className='small text-stone'>Wed, Sep 6, 2023</p>
+              <div className="flex justify-between items-center">
+                <h4 className="button font-bold">Ahsan</h4>
+                <p className="small text-stone">Wed, Sep 6, 2023</p>
               </div>
-              <p className='body-small pt-1 text-stone'>
+              <p className="body-small pt-1 text-stone">
                 Working along side {firstName} on ...
               </p>
             </Link>
