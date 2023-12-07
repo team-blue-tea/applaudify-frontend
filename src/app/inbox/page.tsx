@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
-import BackButton from '@/components/BackButton/BackButton';
-import Header from '@/components/Header/Header';
+import { BackButton, Header } from '@/components';
 import { useWindowSize } from '@uidotdev/usehooks';
 
 const Inbox = () => {
