@@ -4,10 +4,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAllMembers, getPublishedApplauds } from '@/libs/DB';
-import Header from '@/components/Header/Header';
-import Inbox from '@/components/Inbox/Inbox';
-import CardForProfile from '@/components/CardForProfile/CardForProfile';
-import MockAppluadCards from '@/components/MockAppluadCards/MockAppluadCards';
+import { Header, Inbox, CardForProfile, MockApplaudCards } from '@/components';
 import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -134,7 +131,7 @@ const Profile = () => {
         <h3 className="sub-title">{firstName}&apos;s applauds</h3>
         <section className="flex flex-col w-full">
           <CardForProfile applauds={individualApplauds} />
-          <MockAppluadCards firstName={firstName} imageURL={imageURL} />
+          <MockApplaudCards firstName={firstName} imageURL={imageURL} />
         </section>
       </main>
     </div>
