@@ -2,8 +2,7 @@
 import React from 'react';
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
-import github from '@/assets/login/github.png';
-import linkedin from '@/assets/login/linkedin.png';
+import { gitHub, linkedIn } from '@/assets';
 import { BackButton } from '@/components';
 
 const Login = () => {
@@ -24,14 +23,14 @@ const Login = () => {
             className="button login-btn"
             onClick={() => signIn('github', { callbackUrl: '/home' })}
           >
-            <Image src={github} alt="github" width={20} height={20}></Image>
+            <Image src={gitHub} alt="github" width={20} height={20}></Image>
             Continue with GitHub
           </button>
           <button
             className="button login-btn"
             onClick={() => signIn('linkedin', { callbackUrl: '/home' })}
           >
-            <Image src={linkedin} alt="linkedin" width={20} height={20}></Image>
+            <Image src={linkedIn} alt="linkedin" width={20} height={20}></Image>
             Continue with LinkedIn
           </button>
         </div>
