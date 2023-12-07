@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Ilija, Lvan, Sebastian, Sudha, Tim } from '@/assets/about';
+import { Ilija, Lvan, Sebastian, Sudha, Tim } from '@/assets';
 
 const About = () => {
   return (
