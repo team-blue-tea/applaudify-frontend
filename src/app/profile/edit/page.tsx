@@ -6,8 +6,6 @@ import BackButton from '@/components/BackButton/BackButton';
 import { getAllMembers, updateMember } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
 import { UpdatedMemberT } from '@/types/UpdatedMemberT';
-import Header from '@/components/Header/Header';
-import { useWindowSize } from '@uidotdev/usehooks';
 
 const EditProfile = () => {
   const { data: session } = useSession();
@@ -28,8 +26,6 @@ const EditProfile = () => {
   const experienceRef = useRef<HTMLTextAreaElement>(null);
   const imageURL = session?.user?.image as string;
   const memberEmail = session?.user?.email;
-
-  const windowSize = useWindowSize();
 
   useEffect(() => {
     if (!session) {
@@ -122,25 +118,16 @@ const EditProfile = () => {
     }, 500);
   };
 
-  const handleNavbar = (size: number) => {
-    if (size > 660) {
-      return <Header />;
-    } else {
-      return null;
-    }
-  };
-
   return (
-    <div className="flex flex-col mt-4 gap-10">
-      {windowSize.width && handleNavbar(windowSize.width)}
-      <header className="flex mx-10 justify-between items-center md:min-w-[700px] md:self-center">
+    <div className="flex flex-col mx-10 mt-14 gap-10">
+      <header className="flex justify-between items-center">
         <BackButton />
         <button className="header-nav" onClick={handleSave}>
           Save
         </button>
       </header>
 
-      <section className="flex mx-10 flex-col gap-8 items-center w-full pb-24 max-w-3xl self-center">
+      <section className="flex flex-col gap-8 items-center w-full pb-24">
         <div className="flex w-full flex-col gap-8">
           <div className="flex items-center justify-center w-full gap-8 px-2 py-3">
             {session && (

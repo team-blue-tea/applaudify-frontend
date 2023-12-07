@@ -5,8 +5,6 @@ import { useSession } from 'next-auth/react';
 import { ApplaudT } from '@/types/ApplaudT';
 import { getAllApplauds, setApplaudRead } from '@/libs/DB';
 import BackButton from '@/components/BackButton/BackButton';
-import Header from '@/components/Header/Header';
-import { useWindowSize } from '@uidotdev/usehooks';
 
 const Inbox = () => {
   const [filteredApplauds, setFilteredApplauds] = useState<ApplaudT[]>([]);
@@ -14,8 +12,6 @@ const Inbox = () => {
 
   const firstName = session?.user?.name?.split(' ')[0];
   const fullName = session?.user?.name;
-
-  const windowSize = useWindowSize();
 
   useEffect(() => {
     (async () => {
@@ -27,25 +23,16 @@ const Inbox = () => {
     })();
   }, [fullName]);
 
-  const handleNavbar = (size: number) => {
-    if (size > 660) {
-      return <Header />;
-    } else {
-      return null;
-    }
-  };
-
   return (
-    <div className="flex flex-col mt-4 gap-10">
-      {windowSize.width && handleNavbar(windowSize.width)}
-      <header className="flex justify-between items-center  mx-10 md:min-w-[700px] md:self-center">
+    <div className="flex flex-col mx-10 mt-14 gap-10">
+      <header className="flex justify-between items-center">
         <BackButton />
         <Link className="header-nav" href="/compose">
           New
         </Link>
       </header>
-      <main className="flex flex-col items-center  mx-10">
-        <section className="flex flex-col gap-7 w-full sm:min-w-[550px]">
+      <main className="flex flex-col items-center">
+        <section className="flex flex-col gap-7 w-full">
           {filteredApplauds.map((applaud) => {
             const firstName = applaud.sender.name.split(' ')[0];
             const commentPreview = applaud.comment
