@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import { Inbox } from '@/components';
 import { useSession, signOut } from 'next-auth/react';
 import { useWindowSize } from '@uidotdev/usehooks';
 
@@ -47,6 +48,7 @@ const DesktopHeader = () => {
                 </div>
               );
             })}
+            {session && <Inbox session={session} />}
             <Link
               className="ml-auto"
               href={session ? '' : '/login'}
