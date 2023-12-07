@@ -9,7 +9,7 @@ import React, {
 import { getAllMembers } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
 import { ApplaudT } from '@/types/ApplaudT';
-import CardForHome from '../CardForHome/CardForHome';
+import { CardForHome } from '@/components';
 
 const SearchComponent = () => {
   const [applauds, setApplauds] = useState<ApplaudT[]>([]);
@@ -56,18 +56,18 @@ const SearchComponent = () => {
   return (
     <>
       <form
-        className='flex flex-col gap-3 items-center mx-10'
+        className="flex flex-col gap-3 items-center mx-10"
         onSubmit={(e) => {
           e.preventDefault();
           handleReset(e);
         }}
       >
         <input
-          type='text'
+          type="text"
           value={searchValue}
           onChange={handleInputChange}
-          placeholder='Search'
-          className='header-btn header-nav w-2/3'
+          placeholder="Search"
+          className="header-btn header-nav w-2/3"
         />
         {searchValue &&
           filteredMembers.length > 0 &&
@@ -90,16 +90,16 @@ const SearchComponent = () => {
           filteredMembers.length === 1 &&
           searchValue === filteredMembers[0].name && (
             <button
-              className='search-btn header-nav w-1/2'
+              className="search-btn header-nav w-1/2"
               onClick={handleReset}
-              type='submit'
-              form='searchMember'
+              type="submit"
+              form="searchMember"
             >
               Reset
             </button>
           )}
       </form>
-      <CardForHome applauds={applauds} />
+      <CardForHome />
     </>
   );
 };
