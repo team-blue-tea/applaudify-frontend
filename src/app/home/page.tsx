@@ -1,6 +1,4 @@
-import CardForHome from '@/components/CardForHome/CardForHome';
-import Header from '@/components/Header/Header';
-import NewMemberCheck from '@/components/NewMemberCheck/NewMemberCheck';
+import { CardForHome, Header, NewMemberCheck } from '@/components';
 
 const Home = () => {
   return (
