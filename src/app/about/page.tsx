@@ -1,12 +1,8 @@
 import React from 'react';
-import Header from '@/components/Header/Header';
+import { Header } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
-import ilija from '@/assets/about/ilija.png';
-import lvan from '@/assets/about/lvan.png';
-import tim from '@/assets/about/tim.png';
-import sudha from '@/assets/about/sudha.png';
-import seb from '@/assets/about/seb.png';
+import { Ilija, Lvan, Sebastian, Sudha, Tim } from '@/assets/about';
 
 const About = () => {
   return (
@@ -35,31 +31,31 @@ const About = () => {
         <section className="grid grid-cols-2 gap-10">
           <Link href="https://www.linkedin.com/in/lvan-ni/">
             <article className="flex flex-col items-center">
-              <Image src={lvan} alt="Lvan Photo" width={100}></Image>
+              <Image src={Lvan} alt="Lvan Photo" width={100}></Image>
               <h4>Lvan Ni</h4>
             </article>
           </Link>
           <Link href="https://www.linkedin.com/in/ilijakrilovic/">
             <article className="flex flex-col items-center">
-              <Image src={ilija} alt="ilija Photo" width={100}></Image>
+              <Image src={Ilija} alt="ilija Photo" width={100}></Image>
               <h4>Ilija Krilovic</h4>
             </article>
           </Link>
           <Link href="https://www.linkedin.com/in/tim-hansson-meng/">
             <article className="flex flex-col items-center">
-              <Image src={tim} alt="tim Photo" width={100}></Image>
+              <Image src={Tim} alt="tim Photo" width={100}></Image>
               <h4 className="text-center">Tim Hansson Meng</h4>
             </article>
           </Link>
           <Link href="https://www.linkedin.com/in/sudha-madhuri-poojari/">
             <article className="flex flex-col items-center">
-              <Image src={sudha} alt="Suhda Photo" width={100}></Image>
+              <Image src={Sudha} alt="Suhda Photo" width={100}></Image>
               <h4 className="text-center">Sudha Madhuri Poojari</h4>
             </article>
           </Link>
           <Link href="https://www.linkedin.com/in/carl-sebastian-palmqvist-7b5992259/">
             <article className="flex flex-col items-center">
-              <Image src={seb} alt="Sebastian Photo" width={100}></Image>
+              <Image src={Sebastian} alt="Sebastian Photo" width={100}></Image>
               <h4 className="text-center">Sebastian Palmqvist</h4>
             </article>
           </Link>
