@@ -1,13 +1,15 @@
 // 'use client';
 // import React, { useEffect, useState } from 'react';
-import Image from "next/image";
-import { getAllMembers, getPublishedApplauds } from "@/libs/DB";
-import Header from "@/components/Header/Header";
-import ProfileInfo from "@/components/ProfileInfo/ProfileInfo";
-import CardForProfile from "@/components/CardForProfile/CardForProfile";
-import MockAppluadCards from "@/components/MockAppluadCards/MockAppluadCards";
+import Image from 'next/image';
+import { getAllMembers, getPublishedApplauds } from '@/libs/DB';
+import {
+  Header,
+  ProfileInfo,
+  CardForProfile,
+  MockApplaudCards,
+} from '@/components';
 // import { ApplaudT } from '@/types/ApplaudT';
-import { MemberT } from "@/types/MemberT";
+import { MemberT } from '@/types/MemberT';
 
 const MemberProfile = async ({ params }: { params: { memberId: string } }) => {
   // const [member, setMember] = useState<MemberT>();
@@ -21,10 +23,10 @@ const MemberProfile = async ({ params }: { params: { memberId: string } }) => {
     member?.email as string
   );
 
-  const firstName = member?.name.split(" ")[0] as string;
+  const firstName = member?.name.split(' ')[0] as string;
   const fullName = member?.name as string;
   const bio = member?.bio as string;
-  const skills = member?.skills?.split(",") as string[];
+  const skills = member?.skills?.split(',') as string[];
   const experience = member?.experience as string;
 
   // useEffect(() => {
@@ -67,7 +69,7 @@ const MemberProfile = async ({ params }: { params: { memberId: string } }) => {
         <h3 className="sub-title">{firstName}&apos;s applauds</h3>
         <section className="flex flex-col w-full">
           <CardForProfile applauds={individualApplauds} />
-          <MockAppluadCards
+          <MockApplaudCards
             firstName={firstName}
             imageURL={member?.avatarUrl!}
           />
