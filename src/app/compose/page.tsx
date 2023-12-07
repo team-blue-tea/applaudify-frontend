@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/react';
 import { getAllMembers, sendNewApplaud } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
 import { NewApplaudT } from '@/types/NewApplaudT';
-import BackButton from '@/components/BackButton/BackButton';
+import { BackButton } from '@/components';
 
 const Compose = () => {
   const [searchValue, setSearchValue] = useState<string>('');
