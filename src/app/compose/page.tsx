@@ -6,13 +6,10 @@ import React, {
   FormEvent,
   useRef,
 } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { getAllMembers, sendNewApplaud } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
 import { NewApplaudT } from '@/types/NewApplaudT';
-import back from '@/assets/nav/back.png';
 import BackButton from '@/components/BackButton/BackButton';
 
 const Compose = () => {
