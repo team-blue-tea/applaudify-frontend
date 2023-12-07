@@ -1,27 +1,27 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import { getAllMembers, getPublishedApplauds } from "@/libs/DB";
-import Header from "@/components/Header/Header";
-import Inbox from "@/components/Inbox/Inbox";
-import CardForProfile from "@/components/CardForProfile/CardForProfile";
-import MockAppluadCards from "@/components/MockAppluadCards/MockAppluadCards";
-import { ApplaudT } from "@/types/ApplaudT";
-import { MemberT } from "@/types/MemberT";
-import { motion, AnimatePresence } from "framer-motion";
-import { initialTabs as tabs } from "@/types/Tabs";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { getAllMembers, getPublishedApplauds } from '@/libs/DB';
+import Header from '@/components/Header/Header';
+import Inbox from '@/components/Inbox/Inbox';
+import CardForProfile from '@/components/CardForProfile/CardForProfile';
+import MockAppluadCards from '@/components/MockAppluadCards/MockAppluadCards';
+import { ApplaudT } from '@/types/ApplaudT';
+import { MemberT } from '@/types/MemberT';
+import { motion, AnimatePresence } from 'framer-motion';
+import { initialTabs as tabs } from '@/types/Tabs';
 
 const Profile = () => {
   const [member, setMember] = useState<MemberT>();
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
-  const [activeTab, setActiveTab] = useState("Bio");
+  const [activeTab, setActiveTab] = useState('Bio');
   const [memberSkills, setMemberSkills] = useState<string[]>([]);
   const [individualApplauds, setIndividualApplauds] = useState<ApplaudT[]>([]);
   const { data: session } = useSession();
 
-  const firstName = session?.user?.name?.split(" ")[0] as string;
+  const firstName = session?.user?.name?.split(' ')[0] as string;
   const imageURL = session?.user?.image as string;
   const memberEmail = session?.user?.email;
 
@@ -33,13 +33,13 @@ const Profile = () => {
     (async () => {
       const applauds = await getPublishedApplauds(memberEmail as string);
       const members: MemberT[] = await getAllMembers();
-      const currentMember = members.find(
+      const currentMember = members?.find(
         (member) => member.email === memberEmail
       );
       setMember(currentMember);
       setIndividualApplauds(applauds);
       if (currentMember?.skills) {
-        setMemberSkills(currentMember.skills.split(","));
+        setMemberSkills(currentMember.skills.split(','));
       }
     })();
   }, [memberEmail]);
@@ -81,8 +81,8 @@ const Profile = () => {
                 key={item.label}
                 className={`${
                   item === selectedTab
-                    ? "profile-button clicked"
-                    : "profile-button"
+                    ? 'profile-button clicked'
+                    : 'profile-button'
                 } w-24 p-2 border border-silver/50 rounded-3xl body-small`}
                 onClick={() => {
                   handleTabClick(item.label);
@@ -99,18 +99,18 @@ const Profile = () => {
           <div>
             <AnimatePresence mode="wait">
               <motion.div
-                key={selectedTab ? selectedTab.label : "empty"}
+                key={selectedTab ? selectedTab.label : 'empty'}
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {activeTab === "Bio" && (
+                {activeTab === 'Bio' && (
                   <section className="flex flex-col">
                     <p>{member?.bio}</p>
                   </section>
                 )}
-                {activeTab === "Skills" && (
+                {activeTab === 'Skills' && (
                   <section className="flex flex-wrap gap-2 justify-center">
                     {memberSkills.map((skill, index) => (
                       <div key={index} className="skill-btn">
@@ -119,10 +119,10 @@ const Profile = () => {
                     ))}
                   </section>
                 )}
-                {activeTab === "Experience" && (
+                {activeTab === 'Experience' && (
                   <section
                     className="flex flex-col gap-3"
-                    style={{ whiteSpace: "pre-wrap" }}
+                    style={{ whiteSpace: 'pre-wrap' }}
                   >
                     {member?.experience}
                   </section>
