@@ -2,11 +2,10 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import BackButton from '@/components/BackButton/BackButton';
+import { BackButton, Header } from '@/components';
 import { getAllMembers, updateMember } from '@/libs/DB';
 import { MemberT } from '@/types/MemberT';
 import { UpdatedMemberT } from '@/types/UpdatedMemberT';
-import Header from '@/components/Header/Header';
 import { useWindowSize } from '@uidotdev/usehooks';
 
 const EditProfile = () => {
