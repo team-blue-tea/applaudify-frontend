@@ -7,6 +7,7 @@ import ilija from '@/assets/about/ilija.png';
 import lvan from '@/assets/about/lvan.png';
 import tim from '@/assets/about/tim.png';
 import sudha from '@/assets/about/sudha.png';
+import seb from '@/assets/about/seb.png';
 
 const About = () => {
   return (
@@ -55,6 +56,12 @@ const About = () => {
             <article className="flex flex-col items-center">
               <Image src={sudha} alt="Suhda Photo" width={100}></Image>
               <h4 className="text-center">Sudha Madhuri Poojari</h4>
+            </article>
+          </Link>
+          <Link href="https://www.linkedin.com/in/carl-sebastian-palmqvist-7b5992259/">
+            <article className="flex flex-col items-center">
+              <Image src={seb} alt="Sebastian Photo" width={100}></Image>
+              <h4 className="text-center">Sebastian Palmqvist</h4>
             </article>
           </Link>
         </section>
