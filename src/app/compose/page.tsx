@@ -1,28 +1,28 @@
-"use client";
+'use client';
 import React, {
   useEffect,
   useState,
   ChangeEvent,
   FormEvent,
   useRef,
-} from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { getAllMembers, sendNewApplaud } from "@/libs/DB";
-import { MemberT } from "@/types/MemberT";
-import { NewApplaudT } from "@/types/NewApplaudT";
-import back from "@/assets/nav/back.png";
-import BackButton from "@/components/BackButton/BackButton";
+} from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { getAllMembers, sendNewApplaud } from '@/libs/DB';
+import { MemberT } from '@/types/MemberT';
+import { NewApplaudT } from '@/types/NewApplaudT';
+import back from '@/assets/nav/back.png';
+import BackButton from '@/components/BackButton/BackButton';
 
 const Compose = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>('');
   const [applaudText, setApplaudText] = useState<string>(
-    "Start a applaud here..."
+    'Start an applaud here...'
   );
   const [members, setMembers] = useState<MemberT[]>([]);
   const [filteredMembers, setFilteredMembers] = useState<MemberT[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const { data: session } = useSession();
 
   const commentRef = useRef<HTMLTextAreaElement>(null);
@@ -44,7 +44,7 @@ const Compose = () => {
         setMembers(members);
       })
       .catch((error) => {
-        console.error("Error fetching members:", error);
+        console.error('Error fetching members:', error);
       });
   }, []);
 
@@ -62,22 +62,22 @@ const Compose = () => {
 
   const handleMemberSelect = (name: string) => {
     setSearchValue(name);
-    setErrorMessage("");
+    setErrorMessage('');
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const applaudComment = commentRef.current?.value || "";
+    const applaudComment = commentRef.current?.value || '';
 
     if (!members.some((member) => member.name === searchValue)) {
-      setErrorMessage("Please select the receiver");
+      setErrorMessage('Please select the receiver');
       return;
     }
-    if (!applaudComment || applaudComment.trim() === "") {
+    if (!applaudComment || applaudComment.trim() === '') {
       setErrorMessage("Let's finish the Applaud before sending");
       setTimeout(() => {
-        setErrorMessage("");
+        setErrorMessage('');
       }, 2000);
       return;
     }
@@ -91,16 +91,16 @@ const Compose = () => {
     form?.reset();
 
     setTimeout(() => {
-      window.location.href = "/inbox/sent";
+      window.location.href = '/inbox/sent';
     }, 500);
   };
 
   const handleFocus = () => {
-    setApplaudText("Start a applaud here...");
+    setApplaudText('Start an applaud here...');
   };
 
   const handleBlur = () => {
-    setApplaudText("Start a applaud here...");
+    setApplaudText('Start an applaud here...');
   };
 
   return (
