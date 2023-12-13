@@ -11,3 +11,4 @@ export { default as UnpublishButton } from './UnpublishButton/UnpublishButton';
 export { default as CardForHome } from './CardForHome/CardForHome';
 export { default as BackButton } from './BackButton/BackButton';
 export { default as PublishButton } from './PublishButton/PublishButton';
+export { default as NewApplaudButton } from './NewApplaudButton/NewApplaudButton';
