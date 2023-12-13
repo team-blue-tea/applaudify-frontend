@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { Inbox } from '@/components';
+import { Inbox, NewApplaudButton } from '@/components';
 import { useSession, signOut } from 'next-auth/react';
 import { useWindowSize } from '@uidotdev/usehooks';
 
@@ -34,6 +34,9 @@ const DesktopHeader = () => {
             <h1 className="header ombre-text">applaudify</h1>
           </Link>
           <div className="flex bg-transparent items-center gap-3 ml-10 w-full">
+            <NewApplaudButton />
+            {session && <Inbox session={session} />}
+
             {navLinksDesktop.map((link, index) => {
               return (
                 <div className="overflow-hidden" key={index + link.text}>
@@ -48,9 +51,8 @@ const DesktopHeader = () => {
                 </div>
               );
             })}
-            {session && <Inbox session={session} />}
             <Link
-              className="ml-auto"
+              className="ml-4"
               href={session ? '' : '/login'}
               onClick={
                 session ? () => signOut({ callbackUrl: '/' }) : undefined
