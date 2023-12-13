@@ -9,6 +9,7 @@ import { ApplaudT } from '@/types/ApplaudT';
 import { MemberT } from '@/types/MemberT';
 import { motion, AnimatePresence } from 'framer-motion';
 import { initialTabs as tabs } from '@/types/Tabs';
+import { useWindowSize } from '@uidotdev/usehooks';
 
 const Profile = () => {
   const [member, setMember] = useState<MemberT>();
@@ -21,6 +22,8 @@ const Profile = () => {
   const firstName = session?.user?.name?.split(' ')[0] as string;
   const imageURL = session?.user?.image as string;
   const memberEmail = session?.user?.email;
+
+  const windowSize = useWindowSize();
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -52,7 +55,9 @@ const Profile = () => {
                 Edit
               </Link>
               <div className="flex justify-end">
-                {session && <Inbox session={session} />}
+                {session && windowSize.width && windowSize.width <= 660 && (
+                  <Inbox session={session} />
+                )}
               </div>
             </div>
             <div className="flex items-center justify-center w-full gap-8 px-2 py-3">
