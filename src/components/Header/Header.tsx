@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { closeMenu } from '@/assets';
+import { closeMenu, menu, profile, inbox } from '@/assets';
 import { useWindowSize } from '@uidotdev/usehooks';
 
 const Header = () => {
@@ -96,80 +96,101 @@ const Header = () => {
           <Link href="/">
             <h1 className="header ombre-text">applaudify</h1>
           </Link>
-          <div className="flex bg-transparent items-center gap-3">
-            <div className="header-nav" onClick={toggleMenu}>
-              Menu
-            </div>
-            <AnimatePresence>
-              {dropDown && (
-                <motion.div
-                  variants={menuVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="origin-top h-screen w-full fixed left-0 top-0 gap-40 px-10 py-4 z-10 bg-light"
-                >
-                  <div className="flex h-full flex-col">
-                    <div className="flex justify-between items-center">
-                      <Link href="/">
-                        <h1 className="header ombre-text">applaudify</h1>
-                      </Link>
-                      <Image
-                        src={closeMenu}
-                        alt="close menu"
-                        width={30}
-                        height={30}
-                        onClick={toggleMenu}
-                        className="cursor-pointer"
-                      ></Image>
-                    </div>
-                    <motion.div
-                      variants={menuItemsContainerVariants}
-                      initial="initial"
-                      animate="open"
-                      exit="initial"
-                      className="flex flex-col h-full justify-center items-center gap-10"
-                    >
-                      {navLinks.map((link, index) => {
-                        return (
-                          <div
-                            className="overflow-hidden"
-                            key={index + link.text}
-                          >
-                            <motion.div
-                              variants={menuItemVariants}
-                              initial="initial"
-                              animate="open"
-                              exit="initial"
-                            >
-                              <Link
-                                href={link.href}
-                                rel={link.rel}
-                                target={link.target}
-                                onClick={link.onClick}
-                                className="sub-title"
-                              >
-                                {link.text}
-                              </Link>
-                            </motion.div>
-                          </div>
-                        );
-                      })}
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            {session ? (
-              <Link href="/profile" className="header-nav">
-                Profile
-              </Link>
-            ) : (
-              <Link href="/login" className="header-nav">
-                Login
-              </Link>
-            )}
+          <div className="header-nav mr-auto" onClick={toggleMenu}>
+            <Image
+              src={menu}
+              width={40}
+              height={40}
+              alt="menu icon"
+              className="header-icon-border ml-2"
+            />
           </div>
+          <AnimatePresence>
+            {dropDown && (
+              <motion.div
+                variants={menuVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="origin-top h-screen w-full fixed left-0 top-0 gap-40 px-10 py-4 z-10 bg-light"
+              >
+                <div className="flex h-full flex-col">
+                  <div className="flex justify-between items-center">
+                    <Link href="/">
+                      <h1 className="header ombre-text">applaudify</h1>
+                    </Link>
+                    <Image
+                      src={closeMenu}
+                      alt="close menu"
+                      width={30}
+                      height={30}
+                      onClick={toggleMenu}
+                      className="cursor-pointer"
+                    ></Image>
+                  </div>
+                  <motion.div
+                    variants={menuItemsContainerVariants}
+                    initial="initial"
+                    animate="open"
+                    exit="initial"
+                    className="flex flex-col h-full justify-center items-center gap-10"
+                  >
+                    {navLinks.map((link, index) => {
+                      return (
+                        <div
+                          className="overflow-hidden"
+                          key={index + link.text}
+                        >
+                          <motion.div
+                            variants={menuItemVariants}
+                            initial="initial"
+                            animate="open"
+                            exit="initial"
+                          >
+                            <Link
+                              href={link.href}
+                              rel={link.rel}
+                              target={link.target}
+                              onClick={link.onClick}
+                              className="sub-title"
+                            >
+                              {link.text}
+                            </Link>
+                          </motion.div>
+                        </div>
+                      );
+                    })}
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          {session ? (
+            <>
+              <Link href="/profile" className="header-nav">
+                <Image
+                  src={profile}
+                  alt="profile icon"
+                  width={40}
+                  height={40}
+                  className="header-icon-border ml-2"
+                ></Image>
+              </Link>
+              <Link href={'/inbox'} className="header-nav">
+                <Image
+                  src={inbox}
+                  alt="inbox icon"
+                  width={40}
+                  height={40}
+                  className="header-icon-border ml-2"
+                ></Image>
+              </Link>
+            </>
+          ) : (
+            <Link href="/login" className="header-nav">
+              Login
+            </Link>
+          )}
         </div>
       </header>
     );
