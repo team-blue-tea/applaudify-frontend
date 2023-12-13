@@ -130,7 +130,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="flex flex-col mt-4 gap-10">
+    <div className="flex flex-col mt-4 gap-10 mx-4">
       {windowSize.width && handleNavbar(windowSize.width)}
       <header className="flex mx-10 justify-between items-center md:min-w-[700px] md:self-center">
         <BackButton />
