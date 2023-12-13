@@ -35,7 +35,7 @@ const Inbox = () => {
   };
 
   return (
-    <div className="flex flex-col mt-4 gap-10">
+    <div className="flex flex-col mt-4 gap-10 min-h-screen">
       {windowSize.width && handleNavbar(windowSize.width)}
       <header className="flex justify-between items-center  mx-10 md:min-w-[700px] md:self-center">
         <BackButton />
