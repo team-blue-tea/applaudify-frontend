@@ -25,13 +25,13 @@ const Inbox: React.FC<InboxProps> = ({ session }) => {
 
   return (
     <Link
-      href='/inbox'
-      className='flex gap-2 items-center header-nav header-btn'
+      href="/inbox"
+      className="flex gap-2 items-center header-nav header-btn ml-1 mr-auto"
     >
       Inbox
       {Numbers !== '' && (
-        <div className='counter-border'>
-          <div className='counter small'>{Numbers}</div>
+        <div className="counter-border">
+          <div className="counter small">{Numbers}</div>
         </div>
       )}
     </Link>
