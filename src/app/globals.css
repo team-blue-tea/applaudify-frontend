@@ -167,6 +167,11 @@ body {
   background-image: var(--core-logo);
 }
 
+.header-icon-border {
+  border-radius: 50%;
+  border: 1px solid var(--core-silver);
+}
+
 .counter {
   background: var(--core-white);
   padding: 1px 6px;
