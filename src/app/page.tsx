@@ -2,22 +2,21 @@
 import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 const Dashboard = () => {
   const { data: session, status } = useSession();
-  const router = useRouter();
 
   useEffect(() => {
     if (status === 'loading') {
       return;
     }
-
     if (session) {
-      router.push('/home');
+     redirect('/home');
     } else {
-      router.push('/landing');
+      redirect('/landing');
     }
-  }, [session, status, router]);
+  }, [session, status]);
 
   return <div className='bg-light w-full h-screen'></div>;
 };
